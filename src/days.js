@@ -50,102 +50,102 @@ const days = {
     file: "<DayTen />"
   },
   11: {
-    title: "Javascript",
+    title: "11 - Custom Video Player",
     completed: false,
     file: "<DayEleven />"
   },
   12: {
-    title: "Javascript",
+    title: "12 - Key Sequence Detection",
     completed: false,
     file: "<DayTwelve />"
   },
   13: {
-    title: "Javascript",
+    title: "13 - Slide in on Scroll",
     completed: false,
     file: "<DayThirteen />"
   },
   14: {
-    title: "Javascript",
+    title: "14 - JavaScript References VS Copying",
     completed: false,
     file: "<DayFourteen />"
   },
   15: {
-    title: "Javascript",
+    title: "15 - LocalStorage",
     completed: false,
     file: "<DayFifteen />"
   },
   16: {
-    title: "Javascript",
+    title: "16 - Mouse Move Shadow",
     completed: false,
     file: "<DaySixteen />"
   },
   17: {
-    title: "Javascript",
+    title: "17 - Sort Without Articles",
     completed: false,
     file: "<DaySeventeen />"
   },
   18: {
-    title: "Javascript",
+    title: "18 - Adding Up Times with Reduce",
     completed: false,
     file: "<DayEighteen />"
   },
   19: {
-    title: "Javascript",
+    title: "19 - Webcam Fun",
     completed: false,
     file: "<DayNineteen />"
   },
   20: {
-    title: "Javascript",
+    title: "20 - Speech Detection",
     completed: false,
     file: "<DayTwenty />"
   },
   21: {
-    title: "Javascript",
+    title: "21 - Geolocation",
     completed: false,
     file: "<DayTwentyOne />"
   },
   22: {
-    title: "Javascript",
+    title: "22 - Follow Along Link Highlighter",
     completed: false,
     file: "<DayTwentyTwo />"
   },
   23: {
-    title: "Javascript",
+    title: "23 - Speech Synthesis",
     completed: false,
     file: "<DayTwentyThree />"
   },
   24: {
-    title: "Javascript",
+    title: "24 - Sticky Nav",
     completed: false,
     file: "<DayTwentyFour />"
   },
   25: {
-    title: "Javascript",
+    title: "25 - Event Capture, Propagation, Bubbling and Once",
     completed: false,
     file: "<DayTwentyFive />"
   },
   26: {
-    title: "Javascript",
+    title: "26 - Stripe Follow Along Nav",
     completed: false,
     file: "<DayTwentySix />"
   },
   27: {
-    title: "Javascript",
+    title: "27 - Click and Drag",
     completed: false,
     file: "<DayTwentySeven />"
   },
   28: {
-    title: "Javascript",
+    title: "28 - Video Speed Controller",
     completed: false,
     file: "<DayTwentyEight />"
   },
   29: {
-    title: "Javascript",
+    title: "29 - Countdown Timer",
     completed: false,
     file: "<DayTwentyNine />"
   },
   30: {
-    title: "Javascript",
+    title: "30 - Whack A Mole",
     completed: false,
     file: "<DayThirty />"
   },
