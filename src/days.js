@@ -1,4 +1,9 @@
 const days = {
+  0: {
+    title: "",
+    completed: true,
+    file: "<Home />"
+  },
   1: {
     title: "01 - Javascript Drum Kit",
     completed: false,
@@ -150,3 +155,5 @@ const days = {
     file: "<DayThirty />"
   },
 }
+
+export default days;

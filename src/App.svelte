@@ -1,25 +1,52 @@
 <script>
-	export let name;
-	name = "chris"
+	import days from './days.js';
+	import Modal from './Modal.svelte';
+
+	let modalOpen = false;
 </script>
 
+<svelte:head>
+	<script src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous"></script>
+</svelte:head>
 <main>
-	<h1>Hello {name}!</h1>
+	<p>30 Days Of Javascript</p>
+	<span class="menu fas fa-bars" on:click={()=>modalOpen = !modalOpen}></span>
+	<div class="main-section">
+		{#if modalOpen}
+			<Modal />
+		{/if}
+		<div class="welcome-description">
+			30 Days of Javascript yeah buddy
+		</div>
+	</div>
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
 		max-width: 240px;
-		margin: 0 auto;
+		position: relative;
 	}
 
-	h1 {
+	p {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+		margin-block-start: 0;
+		margin-block-end: 0;
+	}
+
+	.menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+
+	.main-section{
+		display: flex;
 	}
 
 	@media (min-width: 640px) {
