@@ -1,6 +1,6 @@
 const days = {
   0: {
-    title: "",
+    title: "Home",
     completed: true,
     file: "<Home />"
   },

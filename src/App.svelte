@@ -41,8 +41,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		margin-top: 5px;
-		margin-left: 5px;
+		margin-top: 2%;
+		margin-left: 2%;
 	}
 
 	.main-section{

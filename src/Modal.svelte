@@ -4,7 +4,7 @@
 
 <div class="modal">
 	<ul>
-		{#each Object.values(days).slice(1) as day}
+		{#each Object.values(days) as day}
 			<li>
 				{day.title}
 			</li>
