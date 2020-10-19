@@ -1,8 +1,9 @@
 <script>
+	import { fade, fly } from 'svelte/transition';
 	import days from './days.js';
 </script>
 
-<div class="modal">
+<div class="modal" transition:fly="{{ x: -510, duration: 750 }}">
 	<ul>
 		{#each Object.values(days) as day}
 			<li>
@@ -15,7 +16,8 @@
 <style>
 
   .modal {
-    background: blue;
+		background: black;
+		color: white;
     z-index: 1;
     position: absolute;
     margin-left: none;

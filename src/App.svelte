@@ -49,6 +49,15 @@
 		display: flex;
 	}
 
+	.welcome-description{
+		margin-top: 50px;
+		height:100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
