@@ -1,10 +1,13 @@
+
 const days = {
   0: {
+    day: 'home',
     title: "Home",
     completed: true,
-    file: "<Home />"
+    file: './day_files/Home.svelte'
   },
   1: {
+    day: 1,
     title: "01 - Javascript Drum Kit",
     completed: false,
     file: "<DayOne />"

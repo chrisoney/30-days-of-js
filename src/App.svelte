@@ -1,8 +1,18 @@
 <script>
 	import days from './days.js';
 	import Modal from './Modal.svelte';
+	import Home from './day_files/Home.svelte';
+	import DayOne from './day_files/DayOne.svelte'
+	import { page, modalOpen } from './stores.js';
+	let pageNum = 0;
 
-	let modalOpen = false;
+	function openModal(e){
+		e.preventDefault();
+
+		modalOpen.update(n => n = true);
+	}
+
+	// let modalOpen = false;
 </script>
 
 <svelte:head>
@@ -10,13 +20,16 @@
 </svelte:head>
 <main>
 	<p>30 Days Of Javascript</p>
-	<span class="menu fas fa-bars" on:click={()=>modalOpen = !modalOpen}></span>
+	<span class="menu fas fa-bars" on:click={e => openModal(e)}></span>
 	<div class="main-section">
 		{#if modalOpen}
 			<Modal />
 		{/if}
-		<div class="welcome-description">
-			30 Days of Javascript yeah buddy
+		<div id="home" class="page 0">
+			<Home />
+		</div>
+		<div id="1" class="page 1">
+			<DayOne />
 		</div>
 	</div>
 </main>
@@ -49,13 +62,12 @@
 		display: flex;
 	}
 
-	.welcome-description{
-		margin-top: 50px;
-		height:100%;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	.page {
+		visibility: hidden;
+	}
+
+	#home {
+		visibility: visible;
 	}
 
 	@media (min-width: 640px) {
