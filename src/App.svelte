@@ -177,6 +177,8 @@
 		margin-block-end: 0;
 		margin-left: 20px;
 		margin-right: 20px;
+		width: 100%;
+		background: green;
 	}
 
 	.menu {
@@ -186,6 +188,10 @@
 		margin-top: 2%;
 		margin-left: 2%;
 		cursor: pointer;
+		background: black;
+		color: white;
+		border-radius: 5px;
+		padding: 5px 8px;
 	}
 
 	.main-section{

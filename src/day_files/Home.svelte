@@ -12,11 +12,23 @@
 
 <style>
   .welcome-description{
-		margin-top: 50px;
-		height:100%;
+		height:100vh;
 		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: url(https://i.imgur.com/S7vIpsb.gif) bottom center;
+		background-size: cover;
 	}
 	p {
-		padding: 50px;
+		width: 400px;
+		font-size: 20px;
+		color: white;
+		background: black;
+		border-radius: 5px;
+		padding: 10px;
+	}
+	a {
+		color: white;
 	}
 </style>
