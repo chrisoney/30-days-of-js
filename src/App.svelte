@@ -12,6 +12,28 @@
 	import DayEight from './day_files/DayEight/DayEight.svelte'
 	import DayNine from './day_files/DayNine/DayNine.svelte'
 	import DayTen from './day_files/DayTen/DayTen.svelte'
+	import DayEleven from './day_files/DayEleven/DayEleven.svelte'
+	import DayTwelve from './day_files/DayTwelve/DayTwelve.svelte'
+	import DayThirteen from './day_files/DayThirteen/DayThirteen.svelte'
+	import DayFourteen from './day_files/DayFourteen/DayFourteen.svelte'
+	import DayFifteen from './day_files/DayFifteen/DayFifteen.svelte'
+	import DaySixteen from './day_files/DaySixteen/DaySixteen.svelte'
+	import DaySeventeen from './day_files/DaySeventeen/DaySeventeen.svelte'
+	import DayEighteen from './day_files/DayEighteen/DayEighteen.svelte'
+	import DayNineteen from './day_files/DayNineteen/DayNineteen.svelte'
+	import DayTwenty from './day_files/DayTwenty/DayTwenty.svelte'
+	import DayTwentyOne from './day_files/DayTwentyOne/DayTwentyOne.svelte'
+	import DayTwentyTwo from './day_files/DayTwentyTwo/DayTwentyTwo.svelte'
+	import DayTwentyThree from './day_files/DayTwentyThree/DayTwentyThree.svelte'
+	import DayTwentyFour from './day_files/DayTwentyFour/DayTwentyFour.svelte'
+	import DayTwentyFive from './day_files/DayTwentyFive/DayTwentyFive.svelte'
+	import DayTwentySix from './day_files/DayTwentySix/DayTwentySix.svelte'
+	import DayTwentySeven from './day_files/DayTwentySeven/DayTwentySeven.svelte'
+	import DayTwentyEight from './day_files/DayTwentyEight/DayTwentyEight.svelte'
+	import DayTwentyNine from './day_files/DayTwentyNine/DayTwentyNine.svelte'
+	import DayThirty from './day_files/DayThirty/DayThirty.svelte'
+
+
 	import { page, modalOpen } from './stores.js';
 	let pageNum = 0;
 	let isModalOpen = false;
