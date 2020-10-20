@@ -2,12 +2,12 @@
 
 </script>
 
-<div class="welcome-description">
+<div class="day-main">
   Day One
 </div>
 
 <style>
-  .welcome-description{
+  .day-main{
 		margin-top: 50px;
 		height:100%;
 		width: 100vw;

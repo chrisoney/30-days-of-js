@@ -153,7 +153,7 @@ const days = {
   30: {
     day: 30,
     title: "30 - Whack A Mole",
-    completed: true,
+    completed: false,
   },
 }
 

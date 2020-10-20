@@ -11,8 +11,12 @@
 	});
 
 
-	function switchPage(e,num){
+	function switchPage(e,num, done){
 		e.preventDefault();
+		if (!done) {
+			modalOpen.update(n => n = true);
+			return;
+		}
 		page.update(n => n = num)
 
 		const pages = document.getElementsByClassName('page');
@@ -34,7 +38,7 @@
 	<div class="modal" transition:fly="{{ x: -510, duration: 750 }}">
 		<ul>
 			{#each Object.values(days) as day}
-				<li on:click={(e)=>switchPage(e, day.day)}>
+				<li class={!day.completed ? "not-done" : ""} on:click={(e)=>switchPage(e, day.day, day.completed)}>
 					{day.title}
 				</li>
 			{/each}
@@ -67,6 +71,11 @@
 		width: 100%;
 		padding-right: 20px;
 		padding-top: 5px;
+	}
+
+	.not-done {
+		color: red;
+		cursor: not-allowed;
 	}
 
 </style>

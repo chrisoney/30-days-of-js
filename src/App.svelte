@@ -2,11 +2,16 @@
 	import days from './days.js';
 	import Modal from './Modal.svelte';
 	import Home from './day_files/Home.svelte';
-	import DayOne from './day_files/DayOne.svelte'
-	import DayTwo from './day_files/DayTwo.svelte'
-	import DayThree from './day_files/DayThree.svelte'
-	import DayFour from './day_files/DayFour.svelte'
-	import DayFive from './day_files/DayFive.svelte'
+	import DayOne from './day_files/DayOne/DayOne.svelte'
+	import DayTwo from './day_files/DayTwo/DayTwo.svelte'
+	import DayThree from './day_files/DayThree/DayThree.svelte'
+	import DayFour from './day_files/DayFour/DayFour.svelte'
+	import DayFive from './day_files/DayFive/DayFive.svelte'
+	import DaySix from './day_files/DaySix/DaySix.svelte'
+	import DaySeven from './day_files/DaySeven/DaySeven.svelte'
+	import DayEight from './day_files/DayEight/DayEight.svelte'
+	import DayNine from './day_files/DayNine/DayNine.svelte'
+	import DayTen from './day_files/DayTen/DayTen.svelte'
 	import { page, modalOpen } from './stores.js';
 	let pageNum = 0;
 	let isModalOpen = false;
