@@ -3,13 +3,21 @@
 	import Modal from './Modal.svelte';
 	import Home from './day_files/Home.svelte';
 	import DayOne from './day_files/DayOne.svelte'
+	import DayTwo from './day_files/DayTwo.svelte'
+	import DayThree from './day_files/DayThree.svelte'
+	import DayFour from './day_files/DayFour.svelte'
+	import DayFive from './day_files/DayFive.svelte'
 	import { page, modalOpen } from './stores.js';
 	let pageNum = 0;
+	let isModalOpen = false;
+	const unsubscribe = modalOpen.subscribe(value => {
+		isModalOpen = value;
+	});
 
 	function openModal(e){
 		e.preventDefault();
 
-		modalOpen.update(n => n = true);
+		modalOpen.update(n => n = !n);
 	}
 
 	// let modalOpen = false;
@@ -22,14 +30,28 @@
 	<p>30 Days Of Javascript</p>
 	<span class="menu fas fa-bars" on:click={e => openModal(e)}></span>
 	<div class="main-section">
-		{#if modalOpen}
+		{#if isModalOpen}
 			<Modal />
 		{/if}
-		<div id="home" class="page 0">
-			<Home />
-		</div>
-		<div id="1" class="page 1">
-			<DayOne />
+		<div class="pages">
+			<div id="home" class="page">
+				<Home />
+			</div>
+			<div id="1" class="page">
+				<DayOne />
+			</div>
+			<div id="2" class="page">
+				<DayTwo />
+			</div>
+			<div id="3" class="page">
+				<DayThree />
+			</div>
+			<div id="4" class="page">
+				<DayFour />
+			</div>
+			<div id="5" class="page">
+				<DayFive />
+			</div>
 		</div>
 	</div>
 </main>
@@ -37,8 +59,11 @@
 <style>
 	main {
 		text-align: center;
-		max-width: 240px;
 		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100vw;
 	}
 
 	p {
@@ -48,6 +73,8 @@
 		font-weight: 100;
 		margin-block-start: 0;
 		margin-block-end: 0;
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 
 	.menu {
@@ -56,18 +83,29 @@
 		left: 0;
 		margin-top: 2%;
 		margin-left: 2%;
+		cursor: pointer;
 	}
 
 	.main-section{
 		display: flex;
+		flex-direction: row;
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	.pages{
+		width: 100vw;
+		display: flex;
+		justify-content: center;
 	}
 
 	.page {
-		visibility: hidden;
+		display: none;
 	}
 
 	#home {
-		visibility: visible;
+		display: block;
 	}
 
 	@media (min-width: 640px) {

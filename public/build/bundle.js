@@ -252,6 +252,19 @@ var app = (function () {
     }
     const outroing = new Set();
     let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
@@ -827,21 +840,21 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[4] = list[i];
+    	child_ctx[6] = list[i];
     	return child_ctx;
     }
 
-    // (30:2) {#each Object.values(days) as day}
+    // (36:3) {#each Object.values(days) as day}
     function create_each_block(ctx) {
     	let li;
-    	let t0_value = /*day*/ ctx[4].title + "";
+    	let t0_value = /*day*/ ctx[6].title + "";
     	let t0;
     	let t1;
     	let mounted;
     	let dispose;
 
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[1](/*day*/ ctx[4], ...args);
+    		return /*click_handler*/ ctx[2](/*day*/ ctx[6], ...args);
     	}
 
     	const block = {
@@ -849,8 +862,8 @@ var app = (function () {
     			li = element("li");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(li, "class", "svelte-14vfy8e");
-    			add_location(li, file, 30, 3, 708);
+    			attr_dev(li, "class", "svelte-2b1ofq");
+    			add_location(li, file, 36, 4, 841);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -876,7 +889,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(30:2) {#each Object.values(days) as day}",
+    		source: "(36:3) {#each Object.values(days) as day}",
     		ctx
     	});
 
@@ -884,10 +897,13 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let div;
+    	let div1;
+    	let div0;
     	let ul;
-    	let div_transition;
+    	let div0_transition;
     	let current;
+    	let mounted;
+    	let dispose;
     	let each_value = Object.values(days);
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -898,29 +914,38 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			div1 = element("div");
+    			div0 = element("div");
     			ul = element("ul");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(ul, file, 28, 1, 663);
-    			attr_dev(div, "class", "modal svelte-14vfy8e");
-    			add_location(div, file, 27, 0, 596);
+    			add_location(ul, file, 34, 2, 794);
+    			attr_dev(div0, "class", "modal svelte-2b1ofq");
+    			add_location(div0, file, 33, 1, 726);
+    			attr_dev(div1, "class", "modal-area svelte-2b1ofq");
+    			add_location(div1, file, 32, 0, 669);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, ul);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			append_dev(div0, ul);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul, null);
     			}
 
     			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(div1, "click", /*click_handler_1*/ ctx[3], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*switchPage, Object, days*/ 1) {
@@ -951,21 +976,23 @@ var app = (function () {
     			if (current) return;
 
     			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -510, duration: 750 }, true);
-    				div_transition.run(1);
+    				if (!div0_transition) div0_transition = create_bidirectional_transition(div0, fly, { x: -510, duration: 750 }, true);
+    				div0_transition.run(1);
     			});
 
     			current = true;
     		},
     		o: function outro(local) {
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -510, duration: 750 }, false);
-    			div_transition.run(0);
+    			if (!div0_transition) div0_transition = create_bidirectional_transition(div0, fly, { x: -510, duration: 750 }, false);
+    			div0_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
-    			if (detaching && div_transition) div_transition.end();
+    			if (detaching && div0_transition) div0_transition.end();
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -996,11 +1023,16 @@ var app = (function () {
     		const pages = document.getElementsByClassName("page");
 
     		for (let i = 0; i < pages.length; i++) {
-    			pages[i].style.visibility = "hidden";
+    			pages[i].style.display = "none";
     		}
 
-    		document.getElementById(`${pageNum}`).style.visibility = "visible";
+    		document.getElementById(`${pageNum}`).style.display = "block";
     		modalOpen.update(n => n = false);
+    	}
+
+    	function closeModal(e) {
+    		e.preventDefault();
+    		modalOpen.update(n => false);
     	}
 
     	const writable_props = [];
@@ -1010,6 +1042,7 @@ var app = (function () {
     	});
 
     	const click_handler = (day, e) => switchPage(e, day.day);
+    	const click_handler_1 = e => closeModal(e);
 
     	$$self.$capture_state = () => ({
     		fade,
@@ -1019,7 +1052,8 @@ var app = (function () {
     		days,
     		pageNum,
     		unsubscribe,
-    		switchPage
+    		switchPage,
+    		closeModal
     	});
 
     	$$self.$inject_state = $$props => {
@@ -1030,7 +1064,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [switchPage, click_handler];
+    	return [switchPage, closeModal, click_handler, click_handler_1];
     }
 
     class Modal extends SvelteComponentDev {
@@ -1058,7 +1092,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "30 Days of Javascript yeah buddy";
-    			attr_dev(div, "class", "welcome-description svelte-16jz4hu");
+    			attr_dev(div, "class", "welcome-description svelte-sqs7rk");
     			add_location(div, file$1, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -1123,7 +1157,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day One";
-    			attr_dev(div, "class", "welcome-description svelte-16jz4hu");
+    			attr_dev(div, "class", "welcome-description svelte-sqs7rk");
     			add_location(div, file$2, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -1177,10 +1211,218 @@ var app = (function () {
     	}
     }
 
+    /* src/day_files/DayTwo.svelte generated by Svelte v3.29.0 */
+
+    function create_fragment$3(ctx) {
+    	const block = {
+    		c: noop,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("DayTwo", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwo> was created with unknown prop '${key}'`);
+    	});
+
+    	return [];
+    }
+
+    class DayTwo extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "DayTwo",
+    			options,
+    			id: create_fragment$3.name
+    		});
+    	}
+    }
+
+    /* src/day_files/DayThree.svelte generated by Svelte v3.29.0 */
+
+    function create_fragment$4(ctx) {
+    	const block = {
+    		c: noop,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("DayThree", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayThree> was created with unknown prop '${key}'`);
+    	});
+
+    	return [];
+    }
+
+    class DayThree extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "DayThree",
+    			options,
+    			id: create_fragment$4.name
+    		});
+    	}
+    }
+
+    /* src/day_files/DayFour.svelte generated by Svelte v3.29.0 */
+
+    function create_fragment$5(ctx) {
+    	const block = {
+    		c: noop,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$5.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$5($$self, $$props) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("DayFour", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFour> was created with unknown prop '${key}'`);
+    	});
+
+    	return [];
+    }
+
+    class DayFour extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "DayFour",
+    			options,
+    			id: create_fragment$5.name
+    		});
+    	}
+    }
+
+    /* src/day_files/DayFive.svelte generated by Svelte v3.29.0 */
+
+    function create_fragment$6(ctx) {
+    	const block = {
+    		c: noop,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$6.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$6($$self, $$props) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("DayFive", slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFive> was created with unknown prop '${key}'`);
+    	});
+
+    	return [];
+    }
+
+    class DayFive extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "DayFive",
+    			options,
+    			id: create_fragment$6.name
+    		});
+    	}
+    }
+
     /* src/App.svelte generated by Svelte v3.29.0 */
     const file$3 = "src/App.svelte";
 
-    // (25:2) {#if modalOpen}
+    // (33:2) {#if isModalOpen}
     function create_if_block(ctx) {
     	let modal;
     	let current;
@@ -1212,14 +1454,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(25:2) {#if modalOpen}",
+    		source: "(33:2) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    function create_fragment$3(ctx) {
+    function create_fragment$7(ctx) {
     	let script;
     	let script_src_value;
     	let t0;
@@ -1228,19 +1470,36 @@ var app = (function () {
     	let t2;
     	let span;
     	let t3;
-    	let div2;
+    	let div7;
     	let t4;
+    	let div6;
     	let div0;
     	let home;
     	let t5;
     	let div1;
     	let dayone;
+    	let t6;
+    	let div2;
+    	let daytwo;
+    	let t7;
+    	let div3;
+    	let daythree;
+    	let t8;
+    	let div4;
+    	let dayfour;
+    	let t9;
+    	let div5;
+    	let dayfive;
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block = modalOpen && create_if_block(ctx);
+    	let if_block = /*isModalOpen*/ ctx[0] && create_if_block(ctx);
     	home = new Home({ $$inline: true });
     	dayone = new DayOne({ $$inline: true });
+    	daytwo = new DayTwo({ $$inline: true });
+    	daythree = new DayThree({ $$inline: true });
+    	dayfour = new DayFour({ $$inline: true });
+    	dayfive = new DayFive({ $$inline: true });
 
     	const block = {
     		c: function create() {
@@ -1252,31 +1511,58 @@ var app = (function () {
     			t2 = space();
     			span = element("span");
     			t3 = space();
-    			div2 = element("div");
+    			div7 = element("div");
     			if (if_block) if_block.c();
     			t4 = space();
+    			div6 = element("div");
     			div0 = element("div");
     			create_component(home.$$.fragment);
     			t5 = space();
     			div1 = element("div");
     			create_component(dayone.$$.fragment);
+    			t6 = space();
+    			div2 = element("div");
+    			create_component(daytwo.$$.fragment);
+    			t7 = space();
+    			div3 = element("div");
+    			create_component(daythree.$$.fragment);
+    			t8 = space();
+    			div4 = element("div");
+    			create_component(dayfour.$$.fragment);
+    			t9 = space();
+    			div5 = element("div");
+    			create_component(dayfive.$$.fragment);
     			if (script.src !== (script_src_value = "https://kit.fontawesome.com/a229c5b13d.js")) attr_dev(script, "src", script_src_value);
     			attr_dev(script, "crossorigin", "anonymous");
-    			add_location(script, file$3, 18, 1, 376);
-    			attr_dev(p, "class", "svelte-hxoyb6");
-    			add_location(p, file$3, 21, 1, 489);
-    			attr_dev(span, "class", "menu fas fa-bars svelte-hxoyb6");
-    			add_location(span, file$3, 22, 1, 519);
+    			add_location(script, file$3, 26, 1, 680);
+    			attr_dev(p, "class", "svelte-1frjcy1");
+    			add_location(p, file$3, 29, 1, 793);
+    			attr_dev(span, "class", "menu fas fa-bars svelte-1frjcy1");
+    			add_location(span, file$3, 30, 1, 823);
     			attr_dev(div0, "id", "home");
-    			attr_dev(div0, "class", "page 0 svelte-hxoyb6");
-    			add_location(div0, file$3, 27, 2, 656);
+    			attr_dev(div0, "class", "page svelte-1frjcy1");
+    			add_location(div0, file$3, 36, 3, 985);
     			attr_dev(div1, "id", "1");
-    			attr_dev(div1, "class", "page 1 svelte-hxoyb6");
-    			add_location(div1, file$3, 30, 2, 710);
-    			attr_dev(div2, "class", "main-section svelte-hxoyb6");
-    			add_location(div2, file$3, 23, 1, 588);
-    			attr_dev(main, "class", "svelte-hxoyb6");
-    			add_location(main, file$3, 20, 0, 481);
+    			attr_dev(div1, "class", "page svelte-1frjcy1");
+    			add_location(div1, file$3, 39, 3, 1040);
+    			attr_dev(div2, "id", "2");
+    			attr_dev(div2, "class", "page svelte-1frjcy1");
+    			add_location(div2, file$3, 42, 3, 1094);
+    			attr_dev(div3, "id", "3");
+    			attr_dev(div3, "class", "page svelte-1frjcy1");
+    			add_location(div3, file$3, 45, 3, 1148);
+    			attr_dev(div4, "id", "4");
+    			attr_dev(div4, "class", "page svelte-1frjcy1");
+    			add_location(div4, file$3, 48, 3, 1204);
+    			attr_dev(div5, "id", "5");
+    			attr_dev(div5, "class", "page svelte-1frjcy1");
+    			add_location(div5, file$3, 51, 3, 1259);
+    			attr_dev(div6, "class", "pages svelte-1frjcy1");
+    			add_location(div6, file$3, 35, 2, 962);
+    			attr_dev(div7, "class", "main-section svelte-1frjcy1");
+    			add_location(div7, file$3, 31, 1, 892);
+    			attr_dev(main, "class", "svelte-1frjcy1");
+    			add_location(main, file$3, 28, 0, 785);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1289,33 +1575,75 @@ var app = (function () {
     			append_dev(main, t2);
     			append_dev(main, span);
     			append_dev(main, t3);
-    			append_dev(main, div2);
-    			if (if_block) if_block.m(div2, null);
-    			append_dev(div2, t4);
-    			append_dev(div2, div0);
+    			append_dev(main, div7);
+    			if (if_block) if_block.m(div7, null);
+    			append_dev(div7, t4);
+    			append_dev(div7, div6);
+    			append_dev(div6, div0);
     			mount_component(home, div0, null);
-    			append_dev(div2, t5);
-    			append_dev(div2, div1);
+    			append_dev(div6, t5);
+    			append_dev(div6, div1);
     			mount_component(dayone, div1, null);
+    			append_dev(div6, t6);
+    			append_dev(div6, div2);
+    			mount_component(daytwo, div2, null);
+    			append_dev(div6, t7);
+    			append_dev(div6, div3);
+    			mount_component(daythree, div3, null);
+    			append_dev(div6, t8);
+    			append_dev(div6, div4);
+    			mount_component(dayfour, div4, null);
+    			append_dev(div6, t9);
+    			append_dev(div6, div5);
+    			mount_component(dayfive, div5, null);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(span, "click", /*click_handler*/ ctx[1], false, false, false);
+    				dispose = listen_dev(span, "click", /*click_handler*/ ctx[2], false, false, false);
     				mounted = true;
     			}
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (/*isModalOpen*/ ctx[0]) {
+    				if (if_block) {
+    					if (dirty & /*isModalOpen*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div7, t4);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block);
     			transition_in(home.$$.fragment, local);
     			transition_in(dayone.$$.fragment, local);
+    			transition_in(daytwo.$$.fragment, local);
+    			transition_in(daythree.$$.fragment, local);
+    			transition_in(dayfour.$$.fragment, local);
+    			transition_in(dayfive.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(if_block);
     			transition_out(home.$$.fragment, local);
     			transition_out(dayone.$$.fragment, local);
+    			transition_out(daytwo.$$.fragment, local);
+    			transition_out(daythree.$$.fragment, local);
+    			transition_out(dayfour.$$.fragment, local);
+    			transition_out(dayfive.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -1325,6 +1653,10 @@ var app = (function () {
     			if (if_block) if_block.d();
     			destroy_component(home);
     			destroy_component(dayone);
+    			destroy_component(daytwo);
+    			destroy_component(daythree);
+    			destroy_component(dayfour);
+    			destroy_component(dayfive);
     			mounted = false;
     			dispose();
     		}
@@ -1332,7 +1664,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$3.name,
+    		id: create_fragment$7.name,
     		type: "component",
     		source: "",
     		ctx
@@ -1341,14 +1673,19 @@ var app = (function () {
     	return block;
     }
 
-    function instance$3($$self, $$props, $$invalidate) {
+    function instance$7($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
     	let pageNum = 0;
+    	let isModalOpen = false;
+
+    	const unsubscribe = modalOpen.subscribe(value => {
+    		$$invalidate(0, isModalOpen = value);
+    	});
 
     	function openModal(e) {
     		e.preventDefault();
-    		modalOpen.update(n => n = true);
+    		modalOpen.update(n => n = !n);
     	}
 
     	const writable_props = [];
@@ -1364,33 +1701,40 @@ var app = (function () {
     		Modal,
     		Home,
     		DayOne,
+    		DayTwo,
+    		DayThree,
+    		DayFour,
+    		DayFive,
     		page,
     		modalOpen,
     		pageNum,
+    		isModalOpen,
+    		unsubscribe,
     		openModal
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("pageNum" in $$props) pageNum = $$props.pageNum;
+    		if ("isModalOpen" in $$props) $$invalidate(0, isModalOpen = $$props.isModalOpen);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [openModal, click_handler];
+    	return [isModalOpen, openModal, click_handler];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, {});
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "App",
     			options,
-    			id: create_fragment$3.name
+    			id: create_fragment$7.name
     		});
     	}
     }
