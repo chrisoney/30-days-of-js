@@ -864,7 +864,7 @@ var app = (function () {
     			li = element("li");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(li, "class", li_class_value = "" + (null_to_empty(!/*day*/ ctx[6].completed ? "not-done" : "") + " svelte-jgdrxe"));
+    			attr_dev(li, "class", li_class_value = "" + (null_to_empty(!/*day*/ ctx[6].completed ? "not-done" : "") + " svelte-ho6qms"));
     			add_location(li, file, 40, 4, 913);
     		},
     		m: function mount(target, anchor) {
@@ -925,9 +925,9 @@ var app = (function () {
     			}
 
     			add_location(ul, file, 38, 2, 866);
-    			attr_dev(div0, "class", "modal svelte-jgdrxe");
+    			attr_dev(div0, "class", "modal svelte-ho6qms");
     			add_location(div0, file, 37, 1, 798);
-    			attr_dev(div1, "class", "modal-area svelte-jgdrxe");
+    			attr_dev(div1, "class", "modal-area svelte-ho6qms");
     			add_location(div1, file, 36, 0, 741);
     		},
     		l: function claim(nodes) {
@@ -1109,11 +1109,11 @@ var app = (function () {
     			a.textContent = "here";
     			t2 = text(". Between the great ideas and \n\tthe fantastic tutorials, it's a great way to refine your skills as a developer with\n\tvery little time commitment. Check out the projects I've completed so far and visit\n\tthe site to start doing the same for free!");
     			attr_dev(a, "href", "https://javascript30.com/");
-    			attr_dev(a, "class", "svelte-1ds5gv2");
+    			attr_dev(a, "class", "svelte-1r245p0");
     			add_location(a, file$1, 6, 9, 150);
-    			attr_dev(p, "class", "svelte-1ds5gv2");
+    			attr_dev(p, "class", "svelte-1r245p0");
     			add_location(p, file$1, 5, 1, 56);
-    			attr_dev(div, "class", "welcome-description svelte-1ds5gv2");
+    			attr_dev(div, "class", "welcome-description svelte-1r245p0");
     			add_location(div, file$1, 4, 0, 21);
     		},
     		l: function claim(nodes) {

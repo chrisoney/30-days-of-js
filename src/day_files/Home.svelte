@@ -17,7 +17,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: url(https://i.imgur.com/S7vIpsb.gif) bottom center;
+		background: url(https://i.imgur.com/xP80wyc.jpg) bottom center;
 		background-size: cover;
 	}
 	p {
@@ -25,7 +25,7 @@
 		font-size: 20px;
 		color: white;
 		background: black;
-		border-radius: 5px;
+		border-radius: 10px;
 		padding: 10px;
 	}
 	a {

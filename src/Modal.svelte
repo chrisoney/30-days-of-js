@@ -48,8 +48,8 @@
 
 <style>
 	.modal-area{
-		position: fixed;
-		top: 70px;
+		position: absolute;
+		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
@@ -60,7 +60,7 @@
 		width: 280px;
 		background: black;
 		color: white;
-    position: absolute;
+    /* position: absolute; */
 		margin-left: none;
 		overflow: auto;
 	}
