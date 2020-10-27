@@ -1,23 +1,19 @@
 <script>
-	function removeTransition(e) {
-		e.preventDefault();
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
 
   function playSound(e) {
 		e.preventDefault();
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 		const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+		if (!audio) return;
 
     key.classList.add('playing');
     audio.currentTime = 0;
-    audio.play();
+		audio.play();
+		setTimeout(()=> {
+			key.classList.remove('playing');
+		}, 100);
   }
-
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+	
   document.addEventListener('keydown', playSound);
 </script>
 
@@ -58,7 +54,8 @@
     <div data-key="76" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
-    </div>
+		</div>
+		<div class="playing" style="display:none;"></div> 
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"><track kind="captions"></audio>

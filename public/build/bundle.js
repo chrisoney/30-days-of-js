@@ -104,6 +104,9 @@ var app = (function () {
     function children(element) {
         return Array.from(element.childNodes);
     }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
@@ -1176,8 +1179,8 @@ var app = (function () {
     const file$2 = "src/day_files/DayOne/DayOne.svelte";
 
     function create_fragment$2(ctx) {
+    	let div11;
     	let div10;
-    	let div9;
     	let div0;
     	let kbd0;
     	let t1;
@@ -1223,46 +1226,48 @@ var app = (function () {
     	let t33;
     	let span8;
     	let t35;
+    	let div9;
+    	let t36;
     	let audio0;
     	let track0;
     	let audio0_src_value;
-    	let t36;
+    	let t37;
     	let audio1;
     	let track1;
     	let audio1_src_value;
-    	let t37;
+    	let t38;
     	let audio2;
     	let track2;
     	let audio2_src_value;
-    	let t38;
+    	let t39;
     	let audio3;
     	let track3;
     	let audio3_src_value;
-    	let t39;
+    	let t40;
     	let audio4;
     	let track4;
     	let audio4_src_value;
-    	let t40;
+    	let t41;
     	let audio5;
     	let track5;
     	let audio5_src_value;
-    	let t41;
+    	let t42;
     	let audio6;
     	let track6;
     	let audio6_src_value;
-    	let t42;
+    	let t43;
     	let audio7;
     	let track7;
     	let audio7_src_value;
-    	let t43;
+    	let t44;
     	let audio8;
     	let track8;
     	let audio8_src_value;
 
     	const block = {
     		c: function create() {
+    			div11 = element("div");
     			div10 = element("div");
-    			div9 = element("div");
     			div0 = element("div");
     			kbd0 = element("kbd");
     			kbd0.textContent = "A";
@@ -1326,228 +1331,235 @@ var app = (function () {
     			span8 = element("span");
     			span8.textContent = "tink";
     			t35 = space();
+    			div9 = element("div");
+    			t36 = space();
     			audio0 = element("audio");
     			track0 = element("track");
-    			t36 = space();
+    			t37 = space();
     			audio1 = element("audio");
     			track1 = element("track");
-    			t37 = space();
+    			t38 = space();
     			audio2 = element("audio");
     			track2 = element("track");
-    			t38 = space();
+    			t39 = space();
     			audio3 = element("audio");
     			track3 = element("track");
-    			t39 = space();
+    			t40 = space();
     			audio4 = element("audio");
     			track4 = element("track");
-    			t40 = space();
+    			t41 = space();
     			audio5 = element("audio");
     			track5 = element("track");
-    			t41 = space();
+    			t42 = space();
     			audio6 = element("audio");
     			track6 = element("track");
-    			t42 = space();
+    			t43 = space();
     			audio7 = element("audio");
     			track7 = element("track");
-    			t43 = space();
+    			t44 = space();
     			audio8 = element("audio");
     			track8 = element("track");
     			attr_dev(kbd0, "class", "svelte-12ra47");
-    			add_location(kbd0, file$2, 26, 6, 751);
+    			add_location(kbd0, file$2, 22, 6, 525);
     			attr_dev(span0, "class", "sound svelte-12ra47");
-    			add_location(span0, file$2, 27, 6, 770);
+    			add_location(span0, file$2, 23, 6, 544);
     			attr_dev(div0, "data-key", "65");
     			attr_dev(div0, "class", "key svelte-12ra47");
-    			add_location(div0, file$2, 25, 4, 713);
+    			add_location(div0, file$2, 21, 4, 487);
     			attr_dev(kbd1, "class", "svelte-12ra47");
-    			add_location(kbd1, file$2, 30, 6, 855);
+    			add_location(kbd1, file$2, 26, 6, 629);
     			attr_dev(span1, "class", "sound svelte-12ra47");
-    			add_location(span1, file$2, 31, 6, 874);
+    			add_location(span1, file$2, 27, 6, 648);
     			attr_dev(div1, "data-key", "83");
     			attr_dev(div1, "class", "key svelte-12ra47");
-    			add_location(div1, file$2, 29, 4, 817);
+    			add_location(div1, file$2, 25, 4, 591);
     			attr_dev(kbd2, "class", "svelte-12ra47");
-    			add_location(kbd2, file$2, 34, 6, 960);
+    			add_location(kbd2, file$2, 30, 6, 734);
     			attr_dev(span2, "class", "sound svelte-12ra47");
-    			add_location(span2, file$2, 35, 6, 979);
+    			add_location(span2, file$2, 31, 6, 753);
     			attr_dev(div2, "data-key", "68");
     			attr_dev(div2, "class", "key svelte-12ra47");
-    			add_location(div2, file$2, 33, 4, 922);
+    			add_location(div2, file$2, 29, 4, 696);
     			attr_dev(kbd3, "class", "svelte-12ra47");
-    			add_location(kbd3, file$2, 38, 6, 1064);
+    			add_location(kbd3, file$2, 34, 6, 838);
     			attr_dev(span3, "class", "sound svelte-12ra47");
-    			add_location(span3, file$2, 39, 6, 1083);
+    			add_location(span3, file$2, 35, 6, 857);
     			attr_dev(div3, "data-key", "70");
     			attr_dev(div3, "class", "key svelte-12ra47");
-    			add_location(div3, file$2, 37, 4, 1026);
+    			add_location(div3, file$2, 33, 4, 800);
     			attr_dev(kbd4, "class", "svelte-12ra47");
-    			add_location(kbd4, file$2, 42, 6, 1171);
+    			add_location(kbd4, file$2, 38, 6, 945);
     			attr_dev(span4, "class", "sound svelte-12ra47");
-    			add_location(span4, file$2, 43, 6, 1190);
+    			add_location(span4, file$2, 39, 6, 964);
     			attr_dev(div4, "data-key", "71");
     			attr_dev(div4, "class", "key svelte-12ra47");
-    			add_location(div4, file$2, 41, 4, 1133);
+    			add_location(div4, file$2, 37, 4, 907);
     			attr_dev(kbd5, "class", "svelte-12ra47");
-    			add_location(kbd5, file$2, 46, 6, 1275);
+    			add_location(kbd5, file$2, 42, 6, 1049);
     			attr_dev(span5, "class", "sound svelte-12ra47");
-    			add_location(span5, file$2, 47, 6, 1294);
+    			add_location(span5, file$2, 43, 6, 1068);
     			attr_dev(div5, "data-key", "72");
     			attr_dev(div5, "class", "key svelte-12ra47");
-    			add_location(div5, file$2, 45, 4, 1237);
+    			add_location(div5, file$2, 41, 4, 1011);
     			attr_dev(kbd6, "class", "svelte-12ra47");
-    			add_location(kbd6, file$2, 50, 6, 1379);
+    			add_location(kbd6, file$2, 46, 6, 1153);
     			attr_dev(span6, "class", "sound svelte-12ra47");
-    			add_location(span6, file$2, 51, 6, 1398);
+    			add_location(span6, file$2, 47, 6, 1172);
     			attr_dev(div6, "data-key", "74");
     			attr_dev(div6, "class", "key svelte-12ra47");
-    			add_location(div6, file$2, 49, 4, 1341);
+    			add_location(div6, file$2, 45, 4, 1115);
     			attr_dev(kbd7, "class", "svelte-12ra47");
-    			add_location(kbd7, file$2, 54, 6, 1484);
+    			add_location(kbd7, file$2, 50, 6, 1258);
     			attr_dev(span7, "class", "sound svelte-12ra47");
-    			add_location(span7, file$2, 55, 6, 1503);
+    			add_location(span7, file$2, 51, 6, 1277);
     			attr_dev(div7, "data-key", "75");
     			attr_dev(div7, "class", "key svelte-12ra47");
-    			add_location(div7, file$2, 53, 4, 1446);
+    			add_location(div7, file$2, 49, 4, 1220);
     			attr_dev(kbd8, "class", "svelte-12ra47");
-    			add_location(kbd8, file$2, 58, 6, 1587);
+    			add_location(kbd8, file$2, 54, 6, 1361);
     			attr_dev(span8, "class", "sound svelte-12ra47");
-    			add_location(span8, file$2, 59, 6, 1606);
+    			add_location(span8, file$2, 55, 6, 1380);
     			attr_dev(div8, "data-key", "76");
     			attr_dev(div8, "class", "key svelte-12ra47");
-    			add_location(div8, file$2, 57, 4, 1549);
-    			attr_dev(div9, "class", "keys svelte-12ra47");
-    			add_location(div9, file$2, 24, 2, 690);
+    			add_location(div8, file$2, 53, 4, 1323);
+    			attr_dev(div9, "class", "playing svelte-12ra47");
+    			set_style(div9, "display", "none");
+    			add_location(div9, file$2, 57, 2, 1423);
+    			attr_dev(div10, "class", "keys svelte-12ra47");
+    			add_location(div10, file$2, 20, 2, 464);
     			attr_dev(track0, "kind", "captions");
-    			add_location(track0, file$2, 63, 45, 1704);
+    			add_location(track0, file$2, 60, 45, 1529);
     			attr_dev(audio0, "data-key", "65");
     			if (audio0.src !== (audio0_src_value = "sounds/clap.wav")) attr_dev(audio0, "src", audio0_src_value);
-    			add_location(audio0, file$2, 63, 2, 1661);
+    			add_location(audio0, file$2, 60, 2, 1486);
     			attr_dev(track1, "kind", "captions");
-    			add_location(track1, file$2, 64, 46, 1782);
+    			add_location(track1, file$2, 61, 46, 1607);
     			attr_dev(audio1, "data-key", "83");
     			if (audio1.src !== (audio1_src_value = "sounds/hihat.wav")) attr_dev(audio1, "src", audio1_src_value);
-    			add_location(audio1, file$2, 64, 2, 1738);
+    			add_location(audio1, file$2, 61, 2, 1563);
     			attr_dev(track2, "kind", "captions");
-    			add_location(track2, file$2, 65, 45, 1859);
+    			add_location(track2, file$2, 62, 45, 1684);
     			attr_dev(audio2, "data-key", "68");
     			if (audio2.src !== (audio2_src_value = "sounds/kick.wav")) attr_dev(audio2, "src", audio2_src_value);
-    			add_location(audio2, file$2, 65, 2, 1816);
+    			add_location(audio2, file$2, 62, 2, 1641);
     			attr_dev(track3, "kind", "captions");
-    			add_location(track3, file$2, 66, 48, 1939);
+    			add_location(track3, file$2, 63, 48, 1764);
     			attr_dev(audio3, "data-key", "70");
     			if (audio3.src !== (audio3_src_value = "sounds/openhat.wav")) attr_dev(audio3, "src", audio3_src_value);
-    			add_location(audio3, file$2, 66, 2, 1893);
+    			add_location(audio3, file$2, 63, 2, 1718);
     			attr_dev(track4, "kind", "captions");
-    			add_location(track4, file$2, 67, 45, 2016);
+    			add_location(track4, file$2, 64, 45, 1841);
     			attr_dev(audio4, "data-key", "71");
     			if (audio4.src !== (audio4_src_value = "sounds/boom.wav")) attr_dev(audio4, "src", audio4_src_value);
-    			add_location(audio4, file$2, 67, 2, 1973);
+    			add_location(audio4, file$2, 64, 2, 1798);
     			attr_dev(track5, "kind", "captions");
-    			add_location(track5, file$2, 68, 45, 2093);
+    			add_location(track5, file$2, 65, 45, 1918);
     			attr_dev(audio5, "data-key", "72");
     			if (audio5.src !== (audio5_src_value = "sounds/ride.wav")) attr_dev(audio5, "src", audio5_src_value);
-    			add_location(audio5, file$2, 68, 2, 2050);
+    			add_location(audio5, file$2, 65, 2, 1875);
     			attr_dev(track6, "kind", "captions");
-    			add_location(track6, file$2, 69, 46, 2171);
+    			add_location(track6, file$2, 66, 46, 1996);
     			attr_dev(audio6, "data-key", "74");
     			if (audio6.src !== (audio6_src_value = "sounds/snare.wav")) attr_dev(audio6, "src", audio6_src_value);
-    			add_location(audio6, file$2, 69, 2, 2127);
+    			add_location(audio6, file$2, 66, 2, 1952);
     			attr_dev(track7, "kind", "captions");
-    			add_location(track7, file$2, 70, 44, 2247);
+    			add_location(track7, file$2, 67, 44, 2072);
     			attr_dev(audio7, "data-key", "75");
     			if (audio7.src !== (audio7_src_value = "sounds/tom.wav")) attr_dev(audio7, "src", audio7_src_value);
-    			add_location(audio7, file$2, 70, 2, 2205);
+    			add_location(audio7, file$2, 67, 2, 2030);
     			attr_dev(track8, "kind", "captions");
-    			add_location(track8, file$2, 71, 45, 2324);
+    			add_location(track8, file$2, 68, 45, 2149);
     			attr_dev(audio8, "data-key", "76");
     			if (audio8.src !== (audio8_src_value = "sounds/tink.wav")) attr_dev(audio8, "src", audio8_src_value);
-    			add_location(audio8, file$2, 71, 2, 2281);
-    			attr_dev(div10, "class", "day-main svelte-12ra47");
-    			add_location(div10, file$2, 23, 0, 665);
+    			add_location(audio8, file$2, 68, 2, 2106);
+    			attr_dev(div11, "class", "day-main svelte-12ra47");
+    			add_location(div11, file$2, 19, 0, 439);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div10, anchor);
-    			append_dev(div10, div9);
-    			append_dev(div9, div0);
+    			insert_dev(target, div11, anchor);
+    			append_dev(div11, div10);
+    			append_dev(div10, div0);
     			append_dev(div0, kbd0);
     			append_dev(div0, t1);
     			append_dev(div0, span0);
-    			append_dev(div9, t3);
-    			append_dev(div9, div1);
+    			append_dev(div10, t3);
+    			append_dev(div10, div1);
     			append_dev(div1, kbd1);
     			append_dev(div1, t5);
     			append_dev(div1, span1);
-    			append_dev(div9, t7);
-    			append_dev(div9, div2);
+    			append_dev(div10, t7);
+    			append_dev(div10, div2);
     			append_dev(div2, kbd2);
     			append_dev(div2, t9);
     			append_dev(div2, span2);
-    			append_dev(div9, t11);
-    			append_dev(div9, div3);
+    			append_dev(div10, t11);
+    			append_dev(div10, div3);
     			append_dev(div3, kbd3);
     			append_dev(div3, t13);
     			append_dev(div3, span3);
-    			append_dev(div9, t15);
-    			append_dev(div9, div4);
+    			append_dev(div10, t15);
+    			append_dev(div10, div4);
     			append_dev(div4, kbd4);
     			append_dev(div4, t17);
     			append_dev(div4, span4);
-    			append_dev(div9, t19);
-    			append_dev(div9, div5);
+    			append_dev(div10, t19);
+    			append_dev(div10, div5);
     			append_dev(div5, kbd5);
     			append_dev(div5, t21);
     			append_dev(div5, span5);
-    			append_dev(div9, t23);
-    			append_dev(div9, div6);
+    			append_dev(div10, t23);
+    			append_dev(div10, div6);
     			append_dev(div6, kbd6);
     			append_dev(div6, t25);
     			append_dev(div6, span6);
-    			append_dev(div9, t27);
-    			append_dev(div9, div7);
+    			append_dev(div10, t27);
+    			append_dev(div10, div7);
     			append_dev(div7, kbd7);
     			append_dev(div7, t29);
     			append_dev(div7, span7);
-    			append_dev(div9, t31);
-    			append_dev(div9, div8);
+    			append_dev(div10, t31);
+    			append_dev(div10, div8);
     			append_dev(div8, kbd8);
     			append_dev(div8, t33);
     			append_dev(div8, span8);
     			append_dev(div10, t35);
-    			append_dev(div10, audio0);
+    			append_dev(div10, div9);
+    			append_dev(div11, t36);
+    			append_dev(div11, audio0);
     			append_dev(audio0, track0);
-    			append_dev(div10, t36);
-    			append_dev(div10, audio1);
+    			append_dev(div11, t37);
+    			append_dev(div11, audio1);
     			append_dev(audio1, track1);
-    			append_dev(div10, t37);
-    			append_dev(div10, audio2);
+    			append_dev(div11, t38);
+    			append_dev(div11, audio2);
     			append_dev(audio2, track2);
-    			append_dev(div10, t38);
-    			append_dev(div10, audio3);
+    			append_dev(div11, t39);
+    			append_dev(div11, audio3);
     			append_dev(audio3, track3);
-    			append_dev(div10, t39);
-    			append_dev(div10, audio4);
+    			append_dev(div11, t40);
+    			append_dev(div11, audio4);
     			append_dev(audio4, track4);
-    			append_dev(div10, t40);
-    			append_dev(div10, audio5);
+    			append_dev(div11, t41);
+    			append_dev(div11, audio5);
     			append_dev(audio5, track5);
-    			append_dev(div10, t41);
-    			append_dev(div10, audio6);
+    			append_dev(div11, t42);
+    			append_dev(div11, audio6);
     			append_dev(audio6, track6);
-    			append_dev(div10, t42);
-    			append_dev(div10, audio7);
+    			append_dev(div11, t43);
+    			append_dev(div11, audio7);
     			append_dev(audio7, track7);
-    			append_dev(div10, t43);
-    			append_dev(div10, audio8);
+    			append_dev(div11, t44);
+    			append_dev(div11, audio8);
     			append_dev(audio8, track8);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div10);
+    			if (detaching) detach_dev(div11);
     		}
     	};
 
@@ -1562,12 +1574,6 @@ var app = (function () {
     	return block;
     }
 
-    function removeTransition(e) {
-    	e.preventDefault();
-    	if (e.propertyName !== "transform") return;
-    	e.target.classList.remove("playing");
-    }
-
     function playSound(e) {
     	e.preventDefault();
     	const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
@@ -1576,13 +1582,18 @@ var app = (function () {
     	key.classList.add("playing");
     	audio.currentTime = 0;
     	audio.play();
+
+    	setTimeout(
+    		() => {
+    			key.classList.remove("playing");
+    		},
+    		100
+    	);
     }
 
     function instance$2($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("DayOne", slots, []);
-    	const keys = Array.from(document.querySelectorAll(".key"));
-    	keys.forEach(key => key.addEventListener("transitionend", removeTransition));
     	document.addEventListener("keydown", playSound);
     	const writable_props = [];
 
@@ -1590,7 +1601,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayOne> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ removeTransition, playSound, keys });
+    	$$self.$capture_state = () => ({ playSound });
     	return [];
     }
 
