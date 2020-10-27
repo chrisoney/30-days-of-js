@@ -61,15 +61,15 @@
     </div>
   </div>
 
-  <audio data-key="65" ><source src="clap.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="83" ><source src="hihat.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="68" ><source src="kick.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="70" ><source src="openhat.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="71" ><source src="boom.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="72" ><source src="ride.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="74" ><source src="snare.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="75" ><source src="tom.wav" type="audio/wav"><track kind="captions"></audio>
-  <audio data-key="76" ><source src="tink.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="65" src="sounds/clap.wav"><track kind="captions"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"><track kind="captions"></audio>
+  <audio data-key="68" src="sounds/kick.wav"><track kind="captions"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"><track kind="captions"></audio>
+  <audio data-key="71" src="sounds/boom.wav"><track kind="captions"></audio>
+  <audio data-key="72" src="sounds/ride.wav"><track kind="captions"></audio>
+  <audio data-key="74" src="sounds/snare.wav"><track kind="captions"></audio>
+  <audio data-key="75" src="sounds/tom.wav"><track kind="captions"></audio>
+  <audio data-key="76" src="sounds/tink.wav"><track kind="captions"></audio>
 </div>
 
 <style>
