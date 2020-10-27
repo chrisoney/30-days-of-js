@@ -1,5 +1,24 @@
 <script>
+	function removeTransition(e) {
+		e.preventDefault();
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
 
+  function playSound(e) {
+		e.preventDefault();
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  document.addEventListener('keydown', playSound);
 </script>
 
 <div class="day-main">
@@ -39,8 +58,18 @@
     <div data-key="76" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
-		</div>
-	</div>
+    </div>
+  </div>
+
+  <audio data-key="65" ><source src="clap.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="83" ><source src="hihat.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="68" ><source src="kick.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="70" ><source src="openhat.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="71" ><source src="boom.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="72" ><source src="ride.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="74" ><source src="snare.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="75" ><source src="tom.wav" type="audio/wav"><track kind="captions"></audio>
+  <audio data-key="76" ><source src="tink.wav" type="audio/wav"><track kind="captions"></audio>
 </div>
 
 <style>
