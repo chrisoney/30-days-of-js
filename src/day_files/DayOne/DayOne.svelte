@@ -72,7 +72,7 @@
 <style>
   .day-main{
 		/* margin-top: 10px; */
-		height:100%;
+		height:100vh;
 		width: 100vw;
 		display: flex;
 		justify-content: center;
@@ -85,7 +85,8 @@
 	.keys {
   display: flex;
   flex: 1;
-  min-height: 100vh;
+  flex-flow: wrap;
+  /* height: 100vh; */
   align-items: center;
 	justify-content: center;
 	font-family: sans-serif;
@@ -98,7 +99,7 @@
 		font-size: 1.5rem;
 		padding: 1rem .5rem;
 		transition: all .07s ease;
-		width: 10rem;
+		width: 7rem;
 		text-align: center;
 		color: white;
 		background: rgba(0,0,0,0.4);
