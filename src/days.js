@@ -13,7 +13,7 @@ const days = {
   2: {
     day: 2, 
     title: "02 - JS and CSS Clock",
-    completed: false,
+    completed: true,
   },
   3: {
     day: 3,
