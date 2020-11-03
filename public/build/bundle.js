@@ -1624,62 +1624,70 @@ var app = (function () {
     const file$3 = "src/day_files/DayTwo/DayTwo.svelte";
 
     function create_fragment$3(ctx) {
+    	let div6;
     	let div5;
     	let div4;
-    	let div3;
     	let div0;
     	let t0;
     	let div1;
     	let t1;
     	let div2;
+    	let t2;
+    	let div3;
 
     	const block = {
     		c: function create() {
+    			div6 = element("div");
     			div5 = element("div");
     			div4 = element("div");
-    			div3 = element("div");
     			div0 = element("div");
     			t0 = space();
     			div1 = element("div");
     			t1 = space();
     			div2 = element("div");
-    			attr_dev(div0, "class", "hand svelte-1jiuovn");
+    			t2 = space();
+    			div3 = element("div");
+    			attr_dev(div0, "class", "center svelte-dfyb90");
     			add_location(div0, file$3, 40, 3, 1272);
-    			attr_dev(div1, "class", "hand svelte-1jiuovn");
-    			add_location(div1, file$3, 41, 3, 1325);
-    			attr_dev(div2, "class", "hand svelte-1jiuovn");
-    			add_location(div2, file$3, 42, 3, 1378);
-    			attr_dev(div3, "class", "clock-face svelte-1jiuovn");
-    			add_location(div3, file$3, 39, 2, 1244);
-    			attr_dev(div4, "class", "clock svelte-1jiuovn");
-    			add_location(div4, file$3, 38, 2, 1222);
-    			attr_dev(div5, "class", "day-main svelte-1jiuovn");
-    			add_location(div5, file$3, 37, 0, 1197);
+    			attr_dev(div1, "class", "hand svelte-dfyb90");
+    			add_location(div1, file$3, 41, 3, 1302);
+    			attr_dev(div2, "class", "hand min svelte-dfyb90");
+    			add_location(div2, file$3, 42, 3, 1355);
+    			attr_dev(div3, "class", "hand hour svelte-dfyb90");
+    			add_location(div3, file$3, 43, 3, 1412);
+    			attr_dev(div4, "class", "clock-face svelte-dfyb90");
+    			add_location(div4, file$3, 39, 2, 1244);
+    			attr_dev(div5, "class", "clock svelte-dfyb90");
+    			add_location(div5, file$3, 38, 2, 1222);
+    			attr_dev(div6, "class", "day-main svelte-dfyb90");
+    			add_location(div6, file$3, 37, 0, 1197);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div5, anchor);
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, div5);
     			append_dev(div5, div4);
+    			append_dev(div4, div0);
+    			append_dev(div4, t0);
+    			append_dev(div4, div1);
+    			/*div1_binding*/ ctx[3](div1);
+    			append_dev(div4, t1);
+    			append_dev(div4, div2);
+    			/*div2_binding*/ ctx[4](div2);
+    			append_dev(div4, t2);
     			append_dev(div4, div3);
-    			append_dev(div3, div0);
-    			/*div0_binding*/ ctx[3](div0);
-    			append_dev(div3, t0);
-    			append_dev(div3, div1);
-    			/*div1_binding*/ ctx[4](div1);
-    			append_dev(div3, t1);
-    			append_dev(div3, div2);
-    			/*div2_binding*/ ctx[5](div2);
+    			/*div3_binding*/ ctx[5](div3);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div5);
-    			/*div0_binding*/ ctx[3](null);
-    			/*div1_binding*/ ctx[4](null);
-    			/*div2_binding*/ ctx[5](null);
+    			if (detaching) detach_dev(div6);
+    			/*div1_binding*/ ctx[3](null);
+    			/*div2_binding*/ ctx[4](null);
+    			/*div3_binding*/ ctx[5](null);
     		}
     	};
 
@@ -1743,21 +1751,21 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwo> was created with unknown prop '${key}'`);
     	});
 
-    	function div0_binding($$value) {
+    	function div1_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			secondHand = $$value;
     			$$invalidate(0, secondHand);
     		});
     	}
 
-    	function div1_binding($$value) {
+    	function div2_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			minuteHand = $$value;
     			$$invalidate(1, minuteHand);
     		});
     	}
 
-    	function div2_binding($$value) {
+    	function div3_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			hourHand = $$value;
     			$$invalidate(2, hourHand);
@@ -1781,7 +1789,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [secondHand, minuteHand, hourHand, div0_binding, div1_binding, div2_binding];
+    	return [secondHand, minuteHand, hourHand, div1_binding, div2_binding, div3_binding];
     }
 
     class DayTwo extends SvelteComponentDev {

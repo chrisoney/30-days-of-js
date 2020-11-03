@@ -38,9 +38,10 @@
 <div class="day-main">
   <div class="clock">
 		<div class="clock-face">
+			<div class="center"></div>
 			<div class="hand" bind:this="{secondHand}"></div>
-			<div class="hand" bind:this="{minuteHand}"></div>
-			<div class="hand" bind:this="{hourHand}"></div>
+			<div class="hand min" bind:this="{minuteHand}"></div>
+			<div class="hand hour" bind:this="{hourHand}"></div>
 		</div>
 	</div>
 </div>
@@ -90,7 +91,7 @@
 
     .hand {
       width: 50%;
-      height: 6px;
+      height: 4px;
       background: black;
       position: absolute;
 			top: 50%;
@@ -98,5 +99,25 @@
 			transform: rotate(90deg);
 			transition: all 0.05s;
 			transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-    }
+		}
+		.min {
+			width: 40%;
+			height: 6px;
+			transform-origin: 100%;
+			left: 10%;
+		}
+
+		.hour {
+			width: 30%;
+			height: 8px;
+			transform-origin: 100%;
+			left: 20%;
+		}
+
+		.center {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+		}
+
 </style>
