@@ -1643,17 +1643,17 @@ var app = (function () {
     			div1 = element("div");
     			t1 = space();
     			div2 = element("div");
-    			attr_dev(div0, "class", "hand hour-hand svelte-156emnk");
+    			attr_dev(div0, "class", "hand hour-hand svelte-16ab4bc");
     			add_location(div0, file$3, 7, 3, 96);
-    			attr_dev(div1, "class", "hand min-hand svelte-156emnk");
+    			attr_dev(div1, "class", "hand min-hand svelte-16ab4bc");
     			add_location(div1, file$3, 8, 3, 134);
-    			attr_dev(div2, "class", "hand second-hand svelte-156emnk");
+    			attr_dev(div2, "class", "hand second-hand svelte-16ab4bc");
     			add_location(div2, file$3, 9, 3, 171);
-    			attr_dev(div3, "class", "clock-face svelte-156emnk");
+    			attr_dev(div3, "class", "clock-face svelte-16ab4bc");
     			add_location(div3, file$3, 6, 2, 68);
-    			attr_dev(div4, "class", "clock svelte-156emnk");
+    			attr_dev(div4, "class", "clock svelte-16ab4bc");
     			add_location(div4, file$3, 5, 2, 46);
-    			attr_dev(div5, "class", "day-main svelte-156emnk");
+    			attr_dev(div5, "class", "day-main svelte-16ab4bc");
     			add_location(div5, file$3, 4, 0, 21);
     		},
     		l: function claim(nodes) {

@@ -29,10 +29,10 @@ main.svelte-1nez84l{text-align:center;position:relative;display:flex;flex-direct
 .day-main.svelte-uv5s0j{margin-top:10px;height:100%;width:100vw;display:flex;justify-content:center;align-items:center}
 .day-main.svelte-uv5s0j{margin-top:10px;height:100%;width:100vw;display:flex;justify-content:center;align-items:center}
 .day-main.svelte-uv5s0j{margin-top:10px;height:100%;width:100vw;display:flex;justify-content:center;align-items:center}
-.day-main.svelte-156emnk{margin-top:10px;height:100%;width:100vw;display:flex;justify-content:center;align-items:center}.clock.svelte-156emnk{width:30rem;height:30rem;border:20px solid white;border-radius:50%;margin:50px auto;position:relative;padding:2rem;box-shadow:0 0 0 4px rgba(0,0,0,0.1),
+.day-main.svelte-16ab4bc{margin-top:10px;height:100%;width:100vw;display:flex;justify-content:center;align-items:center;background:#018DED url(https://unsplash.it/1500/1000?image=881&blur=5);background-size:cover;font-family:'helvetica neue';text-align:center;font-size:10px;margin:0;font-size:2rem;display:flex;flex:1;min-height:100vh;align-items:center}.clock.svelte-16ab4bc{width:30rem;height:30rem;border:20px solid white;border-radius:50%;margin:50px auto;position:relative;padding:2rem;box-shadow:0 0 0 4px rgba(0,0,0,0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2)}.clock-face.svelte-156emnk{position:relative;width:100%;height:100%;transform:translateY(-3px)}.hand.svelte-156emnk{width:50%;height:6px;background:black;position:absolute;top:50%}
+        0 0 10px rgba(0,0,0,0.2)}.clock-face.svelte-16ab4bc{position:relative;width:100%;height:100%;transform:translateY(-3px)}.hand.svelte-16ab4bc{width:50%;height:6px;background:black;position:absolute;top:50%}
 .welcome-description.svelte-1r245p0{height:100vh;width:100vw;display:flex;justify-content:center;align-items:center;background:url(https://i.imgur.com/xP80wyc.jpg) bottom center;background-size:cover}p.svelte-1r245p0{width:400px;font-size:20px;color:white;background:black;border-radius:10px;padding:10px}a.svelte-1r245p0{color:white}
 
 /*# sourceMappingURL=bundle.css.map */
