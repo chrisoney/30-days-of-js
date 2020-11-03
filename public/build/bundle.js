@@ -1644,17 +1644,17 @@ var app = (function () {
     			t1 = space();
     			div2 = element("div");
     			attr_dev(div0, "class", "hand svelte-1jiuovn");
-    			add_location(div0, file$3, 16, 3, 368);
+    			add_location(div0, file$3, 40, 3, 1272);
     			attr_dev(div1, "class", "hand svelte-1jiuovn");
-    			add_location(div1, file$3, 17, 3, 421);
+    			add_location(div1, file$3, 41, 3, 1325);
     			attr_dev(div2, "class", "hand svelte-1jiuovn");
-    			add_location(div2, file$3, 18, 3, 474);
+    			add_location(div2, file$3, 42, 3, 1378);
     			attr_dev(div3, "class", "clock-face svelte-1jiuovn");
-    			add_location(div3, file$3, 15, 2, 340);
+    			add_location(div3, file$3, 39, 2, 1244);
     			attr_dev(div4, "class", "clock svelte-1jiuovn");
-    			add_location(div4, file$3, 14, 2, 318);
+    			add_location(div4, file$3, 38, 2, 1222);
     			attr_dev(div5, "class", "day-main svelte-1jiuovn");
-    			add_location(div5, file$3, 13, 0, 293);
+    			add_location(div5, file$3, 37, 0, 1197);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1702,8 +1702,38 @@ var app = (function () {
     	function setDate() {
     		const now = new Date();
     		const seconds = now.getSeconds();
+    		const minutes = now.getMinutes();
+    		const hours = now.getHours();
     		const secondsDegrees = seconds / 60 * 360 + 90;
+    		const minutesDegrees = minutes / 60 * 360 + 90;
+    		const hoursDegrees = hours / 12 * 360 + 90;
+
+    		if (seconds === 0) {
+    			$$invalidate(0, secondHand.style.transition = "none", secondHand);
+    		} else {
+    			$$invalidate(0, secondHand.style.transition = "all 0.05s", secondHand);
+    			$$invalidate(0, secondHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", secondHand);
+    		}
+
     		$$invalidate(0, secondHand.style.transform = `rotate(${secondsDegrees}deg)`, secondHand);
+
+    		if (minutes === 0) {
+    			$$invalidate(1, minuteHand.style.transition = "none", minuteHand);
+    		} else {
+    			$$invalidate(1, minuteHand.style.transition = "all 0.05s", minuteHand);
+    			$$invalidate(1, minuteHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", minuteHand);
+    		}
+
+    		$$invalidate(1, minuteHand.style.transform = `rotate(${minutesDegrees}deg)`, minuteHand);
+
+    		if (hours === 0) {
+    			$$invalidate(2, hourHand.style.transition = "none", hourHand);
+    		} else {
+    			$$invalidate(2, hourHand.style.transition = "all 0.05s", hourHand);
+    			$$invalidate(2, hourHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", hourHand);
+    		}
+
+    		$$invalidate(2, hourHand.style.transform = `rotate(${hoursDegrees}deg)`, hourHand);
     	}
 
     	setInterval(setDate, 1000);
