@@ -1647,19 +1647,19 @@ var app = (function () {
     			div2 = element("div");
     			t2 = space();
     			div3 = element("div");
-    			attr_dev(div0, "class", "center svelte-dfyb90");
+    			attr_dev(div0, "class", "center");
     			add_location(div0, file$3, 40, 3, 1272);
-    			attr_dev(div1, "class", "hand svelte-dfyb90");
+    			attr_dev(div1, "class", "hand svelte-1hz06bk");
     			add_location(div1, file$3, 41, 3, 1302);
-    			attr_dev(div2, "class", "hand min svelte-dfyb90");
+    			attr_dev(div2, "class", "hand min svelte-1hz06bk");
     			add_location(div2, file$3, 42, 3, 1355);
-    			attr_dev(div3, "class", "hand hour svelte-dfyb90");
+    			attr_dev(div3, "class", "hand hour svelte-1hz06bk");
     			add_location(div3, file$3, 43, 3, 1412);
-    			attr_dev(div4, "class", "clock-face svelte-dfyb90");
+    			attr_dev(div4, "class", "clock-face svelte-1hz06bk");
     			add_location(div4, file$3, 39, 2, 1244);
-    			attr_dev(div5, "class", "clock svelte-dfyb90");
+    			attr_dev(div5, "class", "clock svelte-1hz06bk");
     			add_location(div5, file$3, 38, 2, 1222);
-    			attr_dev(div6, "class", "day-main svelte-dfyb90");
+    			attr_dev(div6, "class", "day-main svelte-1hz06bk");
     			add_location(div6, file$3, 37, 0, 1197);
     		},
     		l: function claim(nodes) {

@@ -114,10 +114,14 @@
 			left: 20%;
 		}
 
-		.center {
-			width: 10px;
-			height: 10px;
+		/* .center {
+			width: 15px;
+			height: 15px;
 			border-radius: 50%;
-		}
+			position: absolute;
+			background-color: black;
+			top: 49.5%;
+			left: 49%;
+		} */
 
 </style>
