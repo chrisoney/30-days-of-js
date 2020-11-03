@@ -1,13 +1,22 @@
 <script>
+	let secondHand, minuteHand, hourHand;
+	function setDate(){
+		const now = new Date();
+		const seconds = now.getSeconds();
+		const secondsDegrees = ((seconds / 60) * 360) + 90;
+		secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+	}
+
+	setInterval(setDate, 1000);
 
 </script>
 
 <div class="day-main">
   <div class="clock">
 		<div class="clock-face">
-			<div class="hand hour-hand"></div>
-			<div class="hand min-hand"></div>
-			<div class="hand second-hand"></div>
+			<div class="hand" bind:this="{secondHand}"></div>
+			<div class="hand" bind:this="{minuteHand}"></div>
+			<div class="hand" bind:this="{hourHand}"></div>
 		</div>
 	</div>
 </div>
@@ -60,6 +69,10 @@
       height: 6px;
       background: black;
       position: absolute;
-      top: 50%;
+			top: 50%;
+			transform-origin: 100%;
+			transform: rotate(90deg);
+			transition: all 0.05s;
+			transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 </style>

@@ -1643,18 +1643,18 @@ var app = (function () {
     			div1 = element("div");
     			t1 = space();
     			div2 = element("div");
-    			attr_dev(div0, "class", "hand hour-hand svelte-16ab4bc");
-    			add_location(div0, file$3, 7, 3, 96);
-    			attr_dev(div1, "class", "hand min-hand svelte-16ab4bc");
-    			add_location(div1, file$3, 8, 3, 134);
-    			attr_dev(div2, "class", "hand second-hand svelte-16ab4bc");
-    			add_location(div2, file$3, 9, 3, 171);
-    			attr_dev(div3, "class", "clock-face svelte-16ab4bc");
-    			add_location(div3, file$3, 6, 2, 68);
-    			attr_dev(div4, "class", "clock svelte-16ab4bc");
-    			add_location(div4, file$3, 5, 2, 46);
-    			attr_dev(div5, "class", "day-main svelte-16ab4bc");
-    			add_location(div5, file$3, 4, 0, 21);
+    			attr_dev(div0, "class", "hand svelte-1jiuovn");
+    			add_location(div0, file$3, 16, 3, 368);
+    			attr_dev(div1, "class", "hand svelte-1jiuovn");
+    			add_location(div1, file$3, 17, 3, 421);
+    			attr_dev(div2, "class", "hand svelte-1jiuovn");
+    			add_location(div2, file$3, 18, 3, 474);
+    			attr_dev(div3, "class", "clock-face svelte-1jiuovn");
+    			add_location(div3, file$3, 15, 2, 340);
+    			attr_dev(div4, "class", "clock svelte-1jiuovn");
+    			add_location(div4, file$3, 14, 2, 318);
+    			attr_dev(div5, "class", "day-main svelte-1jiuovn");
+    			add_location(div5, file$3, 13, 0, 293);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1664,16 +1664,22 @@ var app = (function () {
     			append_dev(div5, div4);
     			append_dev(div4, div3);
     			append_dev(div3, div0);
+    			/*div0_binding*/ ctx[3](div0);
     			append_dev(div3, t0);
     			append_dev(div3, div1);
+    			/*div1_binding*/ ctx[4](div1);
     			append_dev(div3, t1);
     			append_dev(div3, div2);
+    			/*div2_binding*/ ctx[5](div2);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div5);
+    			/*div0_binding*/ ctx[3](null);
+    			/*div1_binding*/ ctx[4](null);
+    			/*div2_binding*/ ctx[5](null);
     		}
     	};
 
@@ -1688,16 +1694,64 @@ var app = (function () {
     	return block;
     }
 
-    function instance$3($$self, $$props) {
+    function instance$3($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("DayTwo", slots, []);
+    	let secondHand, minuteHand, hourHand;
+
+    	function setDate() {
+    		const now = new Date();
+    		const seconds = now.getSeconds();
+    		const secondsDegrees = seconds / 60 * 360 + 90;
+    		$$invalidate(0, secondHand.style.transform = `rotate(${secondsDegrees}deg)`, secondHand);
+    	}
+
+    	setInterval(setDate, 1000);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwo> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	function div0_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			secondHand = $$value;
+    			$$invalidate(0, secondHand);
+    		});
+    	}
+
+    	function div1_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			minuteHand = $$value;
+    			$$invalidate(1, minuteHand);
+    		});
+    	}
+
+    	function div2_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			hourHand = $$value;
+    			$$invalidate(2, hourHand);
+    		});
+    	}
+
+    	$$self.$capture_state = () => ({
+    		secondHand,
+    		minuteHand,
+    		hourHand,
+    		setDate
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("secondHand" in $$props) $$invalidate(0, secondHand = $$props.secondHand);
+    		if ("minuteHand" in $$props) $$invalidate(1, minuteHand = $$props.minuteHand);
+    		if ("hourHand" in $$props) $$invalidate(2, hourHand = $$props.hourHand);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [secondHand, minuteHand, hourHand, div0_binding, div1_binding, div2_binding];
     }
 
     class DayTwo extends SvelteComponentDev {
