@@ -18,7 +18,7 @@ const days = {
   3: {
     day: 3,
     title: "03 - CSS Variables",
-    completed: false,
+    completed: true,
   },
   4: {
     day: 4,
