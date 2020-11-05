@@ -26,10 +26,15 @@
 		--blur: 10px;
 	}
 
+	
 	img {
 		padding: var(--spacing);
 		background: var(--base);
 		filter: blur(var(--blur));
+	}
+
+	.hl {
+		color: var(--base);
 	}
 
   .day-main{
