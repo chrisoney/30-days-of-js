@@ -20,8 +20,19 @@
 </div>
 
 <style>
+	:root {
+		--base: #ffc600;
+		--spacing: 10px;
+		--blur: 10px;
+	}
+
+	img {
+		padding: var(--spacing);
+		background: var(--base);
+		filter: blur(var(--blur));
+	}
+
   .day-main{
-		margin-top: 10px;
 		height:100%;
 		width: 100vw;
 		display: flex;

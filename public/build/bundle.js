@@ -614,7 +614,7 @@ var app = (function () {
       3: {
         day: 3,
         title: "03 - CSS Variables",
-        completed: false,
+        completed: true,
       },
       4: {
         day: 4,
@@ -1811,26 +1811,127 @@ var app = (function () {
     const file$4 = "src/day_files/DayThree/DayThree.svelte";
 
     function create_fragment$4(ctx) {
-    	let div;
+    	let div1;
+    	let h2;
+    	let t0;
+    	let span;
+    	let t2;
+    	let div0;
+    	let label0;
+    	let t4;
+    	let input0;
+    	let t5;
+    	let label1;
+    	let t7;
+    	let input1;
+    	let t8;
+    	let label2;
+    	let t10;
+    	let input2;
+    	let t11;
+    	let img;
+    	let img_src_value;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			div.textContent = "Day Three";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
-    			add_location(div, file$4, 4, 0, 21);
+    			div1 = element("div");
+    			h2 = element("h2");
+    			t0 = text("Update CSS Variables with ");
+    			span = element("span");
+    			span.textContent = "JS";
+    			t2 = space();
+    			div0 = element("div");
+    			label0 = element("label");
+    			label0.textContent = "Spacing:";
+    			t4 = space();
+    			input0 = element("input");
+    			t5 = space();
+    			label1 = element("label");
+    			label1.textContent = "Blur:";
+    			t7 = space();
+    			input1 = element("input");
+    			t8 = space();
+    			label2 = element("label");
+    			label2.textContent = "Base Color";
+    			t10 = space();
+    			input2 = element("input");
+    			t11 = space();
+    			img = element("img");
+    			attr_dev(span, "class", "hl svelte-1qvt5l5");
+    			add_location(span, file$4, 5, 32, 76);
+    			attr_dev(h2, "class", "svelte-1qvt5l5");
+    			add_location(h2, file$4, 5, 2, 46);
+    			attr_dev(label0, "for", "spacing");
+    			attr_dev(label0, "class", "svelte-1qvt5l5");
+    			add_location(label0, file$4, 8, 4, 138);
+    			attr_dev(input0, "id", "spacing");
+    			attr_dev(input0, "type", "range");
+    			attr_dev(input0, "name", "spacing");
+    			attr_dev(input0, "min", "10");
+    			attr_dev(input0, "max", "200");
+    			input0.value = "10";
+    			attr_dev(input0, "data-sizing", "px");
+    			attr_dev(input0, "class", "svelte-1qvt5l5");
+    			add_location(input0, file$4, 9, 4, 180);
+    			attr_dev(label1, "for", "blur");
+    			attr_dev(label1, "class", "svelte-1qvt5l5");
+    			add_location(label1, file$4, 11, 4, 281);
+    			attr_dev(input1, "id", "blur");
+    			attr_dev(input1, "type", "range");
+    			attr_dev(input1, "name", "blur");
+    			attr_dev(input1, "min", "0");
+    			attr_dev(input1, "max", "25");
+    			input1.value = "10";
+    			attr_dev(input1, "data-sizing", "px");
+    			attr_dev(input1, "class", "svelte-1qvt5l5");
+    			add_location(input1, file$4, 12, 4, 317);
+    			attr_dev(label2, "for", "base");
+    			attr_dev(label2, "class", "svelte-1qvt5l5");
+    			add_location(label2, file$4, 14, 4, 410);
+    			attr_dev(input2, "id", "base");
+    			attr_dev(input2, "type", "color");
+    			attr_dev(input2, "name", "base");
+    			input2.value = "#ffc600";
+    			attr_dev(input2, "class", "svelte-1qvt5l5");
+    			add_location(input2, file$4, 15, 4, 451);
+    			attr_dev(div0, "class", "controls svelte-1qvt5l5");
+    			add_location(div0, file$4, 7, 2, 111);
+    			if (img.src !== (img_src_value = "https://source.unsplash.com/7bwQXzbF6KE/800x500")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			attr_dev(img, "class", "svelte-1qvt5l5");
+    			add_location(img, file$4, 18, 2, 522);
+    			attr_dev(div1, "class", "day-main svelte-1qvt5l5");
+    			add_location(div1, file$4, 4, 0, 21);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, h2);
+    			append_dev(h2, t0);
+    			append_dev(h2, span);
+    			append_dev(div1, t2);
+    			append_dev(div1, div0);
+    			append_dev(div0, label0);
+    			append_dev(div0, t4);
+    			append_dev(div0, input0);
+    			append_dev(div0, t5);
+    			append_dev(div0, label1);
+    			append_dev(div0, t7);
+    			append_dev(div0, input1);
+    			append_dev(div0, t8);
+    			append_dev(div0, label2);
+    			append_dev(div0, t10);
+    			append_dev(div0, input2);
+    			append_dev(div1, t11);
+    			append_dev(div1, img);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     		}
     	};
 
