@@ -44,6 +44,8 @@
 
 	
 	img {
+		width: 400px;
+		height: auto;
 		padding: var(--spacing);
 		background: var(--base);
 		filter: blur(var(--blur));
@@ -54,24 +56,32 @@
 	}
 
   .day-main{
-		height:100%;
+		height:100vh;
 		width: 100vw;
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		justify-content: flex-start;
 		align-items: center;
 		text-align: center;
 		background: #193549;
 		color: white;
 		font-family: 'helvetica neue', sans-serif;
-		font-weight: 100;
-		font-size: 50px;
+		font-weight: 50;
+		font-size: 25px;
 	}
 
 	.controls {
-		margin-bottom: 50px;
+		margin-bottom: 30px;
+		display: flex;
+		align-items: center;
+	}
+
+	label {
+		margin-right: 10px;
 	}
 
 	input {
 		width: 100px;
+		margin-right: 10px;
 	}
 </style>
