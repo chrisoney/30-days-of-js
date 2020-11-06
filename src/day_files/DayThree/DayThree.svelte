@@ -1,12 +1,19 @@
 <script>
-	const inputs = document.querySelectorAll('.controls input');
+	import { onMount } from 'svelte';
+	let controls;
+	let inputs = [];
 
+	onMount(() => {
+     inputs = controls.querySelectorAll('input');
+     inputs.forEach((input) => input.addEventListener("change", handleUpdate));
+		 inputs.forEach((input) => input.addEventListener("mousemove", handleUpdate));
+  });
 	function handleUpdate(){
 		const suffix = this.dataset.sizing || "";
+		console.log(suffix);
 		document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
 	}
-	inputs.forEach((input) => input.addEventListener("change", handleUpdate));
-	inputs.forEach((input) => input.addEventListener("mousemove", handleUpdate));
+	
 	
 
 </script>
@@ -14,7 +21,7 @@
 <div class="day-main">
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
-  <div class="controls">
+  <div class="controls" bind:this={controls}>
     <label for="spacing">Spacing:</label>
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
