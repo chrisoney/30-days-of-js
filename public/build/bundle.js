@@ -1857,13 +1857,13 @@ var app = (function () {
     			input2 = element("input");
     			t11 = space();
     			img = element("img");
-    			attr_dev(span, "class", "hl svelte-1qvt5l5");
-    			add_location(span, file$4, 5, 32, 76);
-    			attr_dev(h2, "class", "svelte-1qvt5l5");
-    			add_location(h2, file$4, 5, 2, 46);
+    			attr_dev(span, "class", "hl svelte-gbbp1v");
+    			add_location(span, file$4, 14, 32, 445);
+    			attr_dev(h2, "class", "svelte-gbbp1v");
+    			add_location(h2, file$4, 14, 2, 415);
     			attr_dev(label0, "for", "spacing");
-    			attr_dev(label0, "class", "svelte-1qvt5l5");
-    			add_location(label0, file$4, 8, 4, 138);
+    			attr_dev(label0, "class", "svelte-gbbp1v");
+    			add_location(label0, file$4, 17, 4, 507);
     			attr_dev(input0, "id", "spacing");
     			attr_dev(input0, "type", "range");
     			attr_dev(input0, "name", "spacing");
@@ -1871,11 +1871,11 @@ var app = (function () {
     			attr_dev(input0, "max", "200");
     			input0.value = "10";
     			attr_dev(input0, "data-sizing", "px");
-    			attr_dev(input0, "class", "svelte-1qvt5l5");
-    			add_location(input0, file$4, 9, 4, 180);
+    			attr_dev(input0, "class", "svelte-gbbp1v");
+    			add_location(input0, file$4, 18, 4, 549);
     			attr_dev(label1, "for", "blur");
-    			attr_dev(label1, "class", "svelte-1qvt5l5");
-    			add_location(label1, file$4, 11, 4, 281);
+    			attr_dev(label1, "class", "svelte-gbbp1v");
+    			add_location(label1, file$4, 20, 4, 650);
     			attr_dev(input1, "id", "blur");
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "name", "blur");
@@ -1883,25 +1883,25 @@ var app = (function () {
     			attr_dev(input1, "max", "25");
     			input1.value = "10";
     			attr_dev(input1, "data-sizing", "px");
-    			attr_dev(input1, "class", "svelte-1qvt5l5");
-    			add_location(input1, file$4, 12, 4, 317);
+    			attr_dev(input1, "class", "svelte-gbbp1v");
+    			add_location(input1, file$4, 21, 4, 686);
     			attr_dev(label2, "for", "base");
-    			attr_dev(label2, "class", "svelte-1qvt5l5");
-    			add_location(label2, file$4, 14, 4, 410);
+    			attr_dev(label2, "class", "svelte-gbbp1v");
+    			add_location(label2, file$4, 23, 4, 779);
     			attr_dev(input2, "id", "base");
     			attr_dev(input2, "type", "color");
     			attr_dev(input2, "name", "base");
     			input2.value = "#ffc600";
-    			attr_dev(input2, "class", "svelte-1qvt5l5");
-    			add_location(input2, file$4, 15, 4, 451);
-    			attr_dev(div0, "class", "controls svelte-1qvt5l5");
-    			add_location(div0, file$4, 7, 2, 111);
+    			attr_dev(input2, "class", "svelte-gbbp1v");
+    			add_location(input2, file$4, 24, 4, 820);
+    			attr_dev(div0, "class", "controls svelte-gbbp1v");
+    			add_location(div0, file$4, 16, 2, 480);
     			if (img.src !== (img_src_value = "https://source.unsplash.com/7bwQXzbF6KE/800x500")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			attr_dev(img, "class", "svelte-1qvt5l5");
-    			add_location(img, file$4, 18, 2, 522);
-    			attr_dev(div1, "class", "day-main svelte-1qvt5l5");
-    			add_location(div1, file$4, 4, 0, 21);
+    			attr_dev(img, "class", "svelte-gbbp1v");
+    			add_location(img, file$4, 27, 2, 891);
+    			attr_dev(div1, "class", "day-main svelte-gbbp1v");
+    			add_location(div1, file$4, 13, 0, 390);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1946,15 +1946,24 @@ var app = (function () {
     	return block;
     }
 
-    function instance$4($$self, $$props) {
+    function handleUpdate() {
+    	const suffix = this.dataset.sizing || "";
+    	document.documentElement.style.setProperty(`--${this.name}`, this.value);
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("DayThree", slots, []);
+    	const inputs = document.querySelectorAll(".controls input");
+    	inputs.forEach(input => input.addEventListener("change", handleUpdate));
+    	inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayThree> was created with unknown prop '${key}'`);
     	});
 
+    	$$self.$capture_state = () => ({ inputs, handleUpdate });
     	return [];
     }
 
