@@ -36,6 +36,7 @@
 
 	import { page, modalOpen } from './stores.js';
 	let pageNum = 0;
+	console.log(page)
 	let isModalOpen = false;
 	const unsubscribe = modalOpen.subscribe(value => {
 		isModalOpen = value;
@@ -61,28 +62,36 @@
 			<Modal />
 		{/if}
 		<div class="pages">
+			{#if page === 0}
 			<div id="home" class="page">
 				<Home />
 			</div>
+			{:else if page === 1}
 			<div id="1" class="page">
 				<DayOne />
 			</div>
+			{:else if page === 2}
 			<div id="2" class="page">
 				<DayTwo />
 			</div>
+			{:else if page === 3}
 			<div id="3" class="page">
 				<DayThree />
 			</div>
+			{:else if page === 4}
 			<div id="4" class="page">
 				<DayFour />
 			</div>
+			{:else if page === 5}
 			<div id="5" class="page">
 				<DayFive />
 			</div>
+			{:else if page === 6}
 			<div id="6" class="page">
 				<DaySix />
 			</div>
-			<div id="7" class="page">
+			{/if}
+			<!-- <div id="7" class="page">
 				<DaySeven />
 			</div>
 			<div id="8" class="page">
@@ -153,7 +162,7 @@
 			</div>
 			<div id="30" class="page">
 				<DayThirty />
-			</div>
+			</div> -->
 		</div>
 	</div>
 </main>
@@ -209,7 +218,7 @@
 	}
 
 	.page {
-		display: none;
+		/* display: none; */
 	}
 
 	#home {

@@ -1,5 +1,5 @@
 <script>
-
+  import { onMount } from 'svelte';
   function playSound(e) {
 		e.preventDefault();
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
@@ -13,11 +13,12 @@
 			key.classList.remove('playing');
 		}, 100);
   }
-	
-  document.addEventListener('keydown', playSound);
+  onMount(async () => {
+    document.addEventListener('keydown', playSound);
+  })
 </script>
 
-<div class="day-main">
+<div id="day1" class="day-main">
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
