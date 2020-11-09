@@ -91,46 +91,59 @@
 			<div id="6" class="page">
 				<DaySix />
 			</div>
-			{/if}
-			<!-- <div id="7" class="page">
+			{:else if pageNum === 7}
+			<div id="7" class="page">
 				<DaySeven />
 			</div>
+			{:else if pageNum === 8}
 			<div id="8" class="page">
 				<DayEight />
 			</div>
+			{:else if pageNum === 9}
 			<div id="9" class="page">
 				<DayNine />
 			</div>
+			{:else if pageNum === 10}
 			<div id="10" class="page">
 				<DayTen />
 			</div>
+			{:else if pageNum === 11}
 			<div id="11" class="page">
 				<DayEleven />
 			</div>
+			{:else if pageNum === 12}
 			<div id="12" class="page">
 				<DayTwelve />
 			</div>
+			{:else if pageNum === 13}
 			<div id="13" class="page">
 				<DayThirteen />
 			</div>
+			{:else if pageNum === 14}
 			<div id="14" class="page">
 				<DayFourteen />
 			</div>
+			{:else if pageNum === 15}
 			<div id="15" class="page">
 				<DayFifteen />
 			</div>
+			{:else if pageNum === 16}
 			<div id="16" class="page">
 				<DaySixteen />
 			</div>
+			{:else if pageNum === 17}
 			<div id="17" class="page">
 				<DaySeventeen />
 			</div>
+			{:else if pageNum === 18}
 			<div id="18" class="page">
 				<DayEighteen />
 			</div>
+			{:else if pageNum === 19}
 			<div id="19" class="page">
 				<DayNineteen />
 			</div>
+			{:else if pageNum === 20}
 			<div id="20" class="page">
 				<DayTwenty />
 			</div>
@@ -158,12 +171,15 @@
 			<div id="28" class="page">
 				<DayTwentyEight />
 			</div>
+			{:else if pageNum === 29}
 			<div id="29" class="page">
 				<DayTwentyNine />
 			</div>
+			{:else if pageNum === 30}
 			<div id="30" class="page">
 				<DayThirty />
-			</div> -->
+			</div>
+			{/if}
 		</div>
 	</div>
 </main>
