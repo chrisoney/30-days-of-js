@@ -2026,7 +2026,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Four";
-    			attr_dev(div, "class", "day-main svelte-rvk17m");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$5, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2091,7 +2091,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Five";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$6, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2286,7 +2286,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Eight";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$9, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2351,7 +2351,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Nine";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$a, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2676,7 +2676,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Fourteen";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$f, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3001,7 +3001,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Nineteen";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$k, 4, 0, 21);
     		},
     		l: function claim(nodes) {
