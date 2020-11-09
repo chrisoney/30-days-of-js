@@ -2026,7 +2026,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Four";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-rvk17m");
     			add_location(div, file$5, 4, 0, 21);
     		},
     		l: function claim(nodes) {
