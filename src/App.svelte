@@ -147,27 +147,35 @@
 			<div id="20" class="page">
 				<DayTwenty />
 			</div>
+			{:else if pageNum === 21}
 			<div id="21" class="page">
 				<DayTwentyOne />
 			</div>
+			{:else if pageNum === 22}
 			<div id="22" class="page">
 				<DayTwentyTwo />
 			</div>
+			{:else if pageNum === 23}
 			<div id="23" class="page">
 				<DayTwentyThree />
 			</div>
+			{:else if pageNum === 24}
 			<div id="24" class="page">
 				<DayTwentyFour />
 			</div>
+			{:else if pageNum === 25}
 			<div id="25" class="page">
 				<DayTwentyFive />
 			</div>
+			{:else if pageNum === 26}
 			<div id="26" class="page">
 				<DayTwentySix />
 			</div>
+			{:else if pageNum === 27}
 			<div id="27" class="page">
 				<DayTwentySeven />
 			</div>
+			{:else if pageNum === 28}
 			<div id="28" class="page">
 				<DayTwentyEight />
 			</div>
