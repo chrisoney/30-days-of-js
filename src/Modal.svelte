@@ -19,12 +19,6 @@
 		}
 		page.update(n => n = num)
 
-		const pages = document.getElementsByClassName('page');
-		for (let i = 0; i < pages.length; i++){
-			pages[i].style.display = 'none';
-		}
-		document.getElementById(`${pageNum}`).style.display = 'block';
-
 		modalOpen.update(n => n = false);
 	}
 

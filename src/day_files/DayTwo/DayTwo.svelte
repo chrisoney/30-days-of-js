@@ -1,4 +1,6 @@
 <script>
+	import { onDestroy } from 'svelte';
+
 	let secondHand, minuteHand, hourHand;
 	function setDate(){
 		const now = new Date();
@@ -31,7 +33,9 @@
 		hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 	}
 
-	setInterval(setDate, 1000);
+	const clockInterval = setInterval(setDate, 1000);
+
+	onDestroy(()=> clearInterval(clockInterval));
 
 </script>
 

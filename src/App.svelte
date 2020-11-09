@@ -36,12 +36,13 @@
 
 	import { page, modalOpen } from './stores.js';
 	let pageNum = 0;
-	console.log(page)
 	let isModalOpen = false;
 	const unsubscribe = modalOpen.subscribe(value => {
 		isModalOpen = value;
 	});
-
+	const unsubscribeTwo = page.subscribe(value => {
+		pageNum = value;
+	});
 	function openModal(e){
 		e.preventDefault();
 
@@ -62,31 +63,31 @@
 			<Modal />
 		{/if}
 		<div class="pages">
-			{#if page === 0}
+			{#if pageNum === 0}
 			<div id="home" class="page">
 				<Home />
 			</div>
-			{:else if page === 1}
+			{:else if pageNum === 1}
 			<div id="1" class="page">
 				<DayOne />
 			</div>
-			{:else if page === 2}
+			{:else if pageNum === 2}
 			<div id="2" class="page">
 				<DayTwo />
 			</div>
-			{:else if page === 3}
+			{:else if pageNum === 3}
 			<div id="3" class="page">
 				<DayThree />
 			</div>
-			{:else if page === 4}
+			{:else if pageNum === 4}
 			<div id="4" class="page">
 				<DayFour />
 			</div>
-			{:else if page === 5}
+			{:else if pageNum === 5}
 			<div id="5" class="page">
 				<DayFive />
 			</div>
-			{:else if page === 6}
+			{:else if pageNum === 6}
 			<div id="6" class="page">
 				<DaySix />
 			</div>
@@ -215,10 +216,6 @@
 		width: 100vw;
 		display: flex;
 		justify-content: center;
-	}
-
-	.page {
-		/* display: none; */
 	}
 
 	#home {
