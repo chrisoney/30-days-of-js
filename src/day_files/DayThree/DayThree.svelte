@@ -10,7 +10,6 @@
   });
 	function handleUpdate(){
 		const suffix = this.dataset.sizing || "";
-		console.log(suffix);
 		document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
 	}
 	
