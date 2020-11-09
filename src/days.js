@@ -23,7 +23,7 @@ const days = {
   4: {
     day: 4,
     title: "04 - Array Cardio Day 1",
-    completed: false,
+    completed: true,
   },
   5: {
     day: 5,
