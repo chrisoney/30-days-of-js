@@ -2033,10 +2033,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$5, 69, 4, 3207);
-    			add_location(p, file$5, 69, 1, 3204);
+    			add_location(em, file$5, 82, 4, 3643);
+    			add_location(p, file$5, 82, 1, 3640);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$5, 68, 0, 3180);
+    			add_location(div, file$5, 81, 0, 3616);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2229,8 +2229,21 @@ var app = (function () {
 
     	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    	// const category = document.querySelector('.mw-category');
+    	// const links = Array.from(category.querySelectorAll('a'));
+    	// const de = links
+    	// 								.map((link) => link.text)
+    	// 								.filter(streetName => streetName.includes('de'));
     	// 7. sort Exercise
     	// Sort the people alphabetically by last name
+    	const alpha = people.sort((a, b) => {
+    		const [aLast, aFirst] = a.split(", ");
+    		const [bLast, bFirst] = b.split(", ");
+    		return aLast > bLast ? 1 : -1;
+    	});
+
+    	console.log(alpha);
+
     	// 8. Reduce Exercise
     	// Sum up the instances of each of these
     	const data = [
@@ -2264,6 +2277,7 @@ var app = (function () {
     		sortByBirth,
     		fullLifespans,
     		oldest,
+    		alpha,
     		data
     	});
 
