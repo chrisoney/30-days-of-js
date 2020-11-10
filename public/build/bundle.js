@@ -2033,10 +2033,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$5, 55, 4, 2867);
-    			add_location(p, file$5, 55, 1, 2864);
+    			add_location(em, file$5, 61, 4, 3021);
+    			add_location(p, file$5, 61, 1, 3018);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$5, 54, 0, 2840);
+    			add_location(div, file$5, 60, 0, 2994);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2209,6 +2209,15 @@ var app = (function () {
 
     	// Array.prototype.reduce()
     	// 4. How many years did all the inventors live all together?
+    	const fullLifespans = inventors.reduce(
+    		(total, inventor) => {
+    			return total += inventor.passed - inventor.year;
+    		},
+    		0
+    	);
+
+    	console.log(fullLifespans);
+
     	// 5. Sort the inventors by years lived
     	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -2245,6 +2254,7 @@ var app = (function () {
     		fifteen,
     		fullnames,
     		sortByBirth,
+    		fullLifespans,
     		data
     	});
 
