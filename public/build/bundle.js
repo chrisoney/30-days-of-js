@@ -2021,19 +2021,30 @@ var app = (function () {
 
     function create_fragment$5(ctx) {
     	let div;
+    	let p;
+    	let em;
+    	let t1;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			div.textContent = "Day Four";
+    			p = element("p");
+    			em = element("em");
+    			em.textContent = "Psst: have a look at the JavaScript Console";
+    			t1 = text(" 💁");
+    			add_location(em, file$5, 46, 4, 2529);
+    			add_location(p, file$5, 46, 1, 2526);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$5, 4, 0, 21);
+    			add_location(div, file$5, 45, 0, 2502);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, p);
+    			append_dev(p, em);
+    			append_dev(p, t1);
     		},
     		p: noop,
     		i: noop,
@@ -2054,15 +2065,168 @@ var app = (function () {
     	return block;
     }
 
-    function instance$5($$self, $$props) {
+    function instance$5($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("DayFour", slots, []);
+
+    	const inventors = [
+    		{
+    			first: "Albert",
+    			last: "Einstein",
+    			year: 1879,
+    			passed: 1955
+    		},
+    		{
+    			first: "Isaac",
+    			last: "Newton",
+    			year: 1643,
+    			passed: 1727
+    		},
+    		{
+    			first: "Galileo",
+    			last: "Galilei",
+    			year: 1564,
+    			passed: 1642
+    		},
+    		{
+    			first: "Marie",
+    			last: "Curie",
+    			year: 1867,
+    			passed: 1934
+    		},
+    		{
+    			first: "Johannes",
+    			last: "Kepler",
+    			year: 1571,
+    			passed: 1630
+    		},
+    		{
+    			first: "Nicolaus",
+    			last: "Copernicus",
+    			year: 1473,
+    			passed: 1543
+    		},
+    		{
+    			first: "Max",
+    			last: "Planck",
+    			year: 1858,
+    			passed: 1947
+    		},
+    		{
+    			first: "Katherine",
+    			last: "Blodgett",
+    			year: 1898,
+    			passed: 1979
+    		},
+    		{
+    			first: "Ada",
+    			last: "Lovelace",
+    			year: 1815,
+    			passed: 1852
+    		},
+    		{
+    			first: "Sarah E.",
+    			last: "Goode",
+    			year: 1855,
+    			passed: 1905
+    		},
+    		{
+    			first: "Lise",
+    			last: "Meitner",
+    			year: 1878,
+    			passed: 1968
+    		},
+    		{
+    			first: "Hanna",
+    			last: "Hammarström",
+    			year: 1829,
+    			passed: 1909
+    		}
+    	];
+
+    	const people = [
+    		"Beck, Glenn",
+    		"Becker, Carl",
+    		"Beckett, Samuel",
+    		"Beddoes, Mick",
+    		"Beecher, Henry",
+    		"Beethoven, Ludwig",
+    		"Begin, Menachem",
+    		"Belloc, Hilaire",
+    		"Bellow, Saul",
+    		"Benchley, Robert",
+    		"Benenson, Peter",
+    		"Ben-Gurion, David",
+    		"Benjamin, Walter",
+    		"Benn, Tony",
+    		"Bennington, Chester",
+    		"Benson, Leana",
+    		"Bent, Silas",
+    		"Bentsen, Lloyd",
+    		"Berger, Ric",
+    		"Bergman, Ingmar",
+    		"Berio, Luciano",
+    		"Berle, Milton",
+    		"Berlin, Irving",
+    		"Berne, Eric",
+    		"Bernhard, Sandra",
+    		"Berra, Yogi",
+    		"Berry, Halle",
+    		"Berry, Wendell",
+    		"Bethea, Erin",
+    		"Bevan, Aneurin",
+    		"Bevel, Ken",
+    		"Biden, Joseph",
+    		"Bierce, Ambrose",
+    		"Biko, Steve",
+    		"Billings, Josh",
+    		"Biondo, Frank",
+    		"Birrell, Augustine",
+    		"Black, Elk",
+    		"Blair, Robert",
+    		"Blair, Tony",
+    		"Blake, William"
+    	];
+
+    	// Array.prototype.filter()
+    	// 1. Filter the list of inventors for those who were born in the 1500's
+    	// Array.prototype.map()
+    	// 2. Give us an array of the inventors first and last names
+    	// Array.prototype.sort()
+    	// 3. Sort the inventors by birthdate, oldest to youngest
+    	// Array.prototype.reduce()
+    	// 4. How many years did all the inventors live all together?
+    	// 5. Sort the inventors by years lived
+    	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    	// 7. sort Exercise
+    	// Sort the people alphabetically by last name
+    	// 8. Reduce Exercise
+    	// Sum up the instances of each of these
+    	const data = [
+    		"car",
+    		"car",
+    		"truck",
+    		"truck",
+    		"bike",
+    		"walk",
+    		"car",
+    		"van",
+    		"bike",
+    		"walk",
+    		"car",
+    		"van",
+    		"car",
+    		"truck"
+    	];
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFour> was created with unknown prop '${key}'`);
     	});
 
+    	$$self.$capture_state = () => ({ inventors, people, data });
     	return [];
     }
 
@@ -2156,7 +2320,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Six";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$7, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2221,7 +2385,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Seven";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$8, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2416,7 +2580,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Ten";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$b, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2546,7 +2710,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twelve";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$d, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2611,7 +2775,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Thirteen";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$e, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2806,7 +2970,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Sixteen";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$h, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -2871,7 +3035,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Seventeen";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$i, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3066,7 +3230,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$l, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3131,7 +3295,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty One";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$m, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3196,7 +3360,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Two";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$n, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3261,7 +3425,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Three";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$o, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3326,7 +3490,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Four";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$p, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3391,7 +3555,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Five";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$q, 5, 0, 22);
     		},
     		l: function claim(nodes) {
@@ -3456,7 +3620,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Six";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$r, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3521,7 +3685,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Seven";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$s, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3586,7 +3750,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Eight";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$t, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3651,7 +3815,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Twenty Nine";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$u, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3716,7 +3880,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Day Thirty";
-    			attr_dev(div, "class", "day-main svelte-uv5s0j");
+    			attr_dev(div, "class", "day-main svelte-1t7hos2");
     			add_location(div, file$v, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -3774,7 +3938,7 @@ var app = (function () {
     const file$w = "src/App.svelte";
 
     // (62:2) {#if isModalOpen}
-    function create_if_block_7(ctx) {
+    function create_if_block_31(ctx) {
     	let modal;
     	let current;
     	modal = new Modal({ $$inline: true });
@@ -3803,9 +3967,1113 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_31.name,
     		type: "if",
     		source: "(62:2) {#if isModalOpen}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (186:28) 
+    function create_if_block_30(ctx) {
+    	let div;
+    	let daythirty;
+    	let current;
+    	daythirty = new DayThirty({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daythirty.$$.fragment);
+    			attr_dev(div, "id", "30");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 186, 3, 5456);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daythirty, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daythirty.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daythirty.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daythirty);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_30.name,
+    		type: "if",
+    		source: "(186:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (182:28) 
+    function create_if_block_29(ctx) {
+    	let div;
+    	let daytwentynine;
+    	let current;
+    	daytwentynine = new DayTwentyNine({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentynine.$$.fragment);
+    			attr_dev(div, "id", "29");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 182, 3, 5365);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentynine, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentynine.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentynine.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentynine);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_29.name,
+    		type: "if",
+    		source: "(182:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (178:28) 
+    function create_if_block_28(ctx) {
+    	let div;
+    	let daytwentyeight;
+    	let current;
+    	daytwentyeight = new DayTwentyEight({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentyeight.$$.fragment);
+    			attr_dev(div, "id", "28");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 178, 3, 5273);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentyeight, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentyeight.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentyeight.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentyeight);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_28.name,
+    		type: "if",
+    		source: "(178:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (174:28) 
+    function create_if_block_27(ctx) {
+    	let div;
+    	let daytwentyseven;
+    	let current;
+    	daytwentyseven = new DayTwentySeven({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentyseven.$$.fragment);
+    			attr_dev(div, "id", "27");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 174, 3, 5181);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentyseven, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentyseven.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentyseven.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentyseven);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_27.name,
+    		type: "if",
+    		source: "(174:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (170:28) 
+    function create_if_block_26(ctx) {
+    	let div;
+    	let daytwentysix;
+    	let current;
+    	daytwentysix = new DayTwentySix({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentysix.$$.fragment);
+    			attr_dev(div, "id", "26");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 170, 3, 5091);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentysix, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentysix.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentysix.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentysix);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_26.name,
+    		type: "if",
+    		source: "(170:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (166:28) 
+    function create_if_block_25(ctx) {
+    	let div;
+    	let daytwentyfive;
+    	let current;
+    	daytwentyfive = new DayTwentyFive({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentyfive.$$.fragment);
+    			attr_dev(div, "id", "25");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 166, 3, 5000);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentyfive, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentyfive.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentyfive.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentyfive);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_25.name,
+    		type: "if",
+    		source: "(166:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (162:28) 
+    function create_if_block_24(ctx) {
+    	let div;
+    	let daytwentyfour;
+    	let current;
+    	daytwentyfour = new DayTwentyFour({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentyfour.$$.fragment);
+    			attr_dev(div, "id", "24");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 162, 3, 4909);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentyfour, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentyfour.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentyfour.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentyfour);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_24.name,
+    		type: "if",
+    		source: "(162:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (158:28) 
+    function create_if_block_23(ctx) {
+    	let div;
+    	let daytwentythree;
+    	let current;
+    	daytwentythree = new DayTwentyThree({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentythree.$$.fragment);
+    			attr_dev(div, "id", "23");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 158, 3, 4817);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentythree, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentythree.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentythree.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentythree);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_23.name,
+    		type: "if",
+    		source: "(158:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (154:28) 
+    function create_if_block_22(ctx) {
+    	let div;
+    	let daytwentytwo;
+    	let current;
+    	daytwentytwo = new DayTwentyTwo({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentytwo.$$.fragment);
+    			attr_dev(div, "id", "22");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 154, 3, 4727);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentytwo, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentytwo.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentytwo.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentytwo);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_22.name,
+    		type: "if",
+    		source: "(154:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (150:28) 
+    function create_if_block_21(ctx) {
+    	let div;
+    	let daytwentyone;
+    	let current;
+    	daytwentyone = new DayTwentyOne({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwentyone.$$.fragment);
+    			attr_dev(div, "id", "21");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 150, 3, 4637);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwentyone, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwentyone.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwentyone.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwentyone);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_21.name,
+    		type: "if",
+    		source: "(150:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (146:28) 
+    function create_if_block_20(ctx) {
+    	let div;
+    	let daytwenty;
+    	let current;
+    	daytwenty = new DayTwenty({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwenty.$$.fragment);
+    			attr_dev(div, "id", "20");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 146, 3, 4550);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwenty, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwenty.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwenty.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwenty);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_20.name,
+    		type: "if",
+    		source: "(146:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (142:28) 
+    function create_if_block_19(ctx) {
+    	let div;
+    	let daynineteen;
+    	let current;
+    	daynineteen = new DayNineteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daynineteen.$$.fragment);
+    			attr_dev(div, "id", "19");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 142, 3, 4461);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daynineteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daynineteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daynineteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daynineteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_19.name,
+    		type: "if",
+    		source: "(142:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (138:28) 
+    function create_if_block_18(ctx) {
+    	let div;
+    	let dayeighteen;
+    	let current;
+    	dayeighteen = new DayEighteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayeighteen.$$.fragment);
+    			attr_dev(div, "id", "18");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 138, 3, 4372);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayeighteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayeighteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayeighteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayeighteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_18.name,
+    		type: "if",
+    		source: "(138:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (134:28) 
+    function create_if_block_17(ctx) {
+    	let div;
+    	let dayseventeen;
+    	let current;
+    	dayseventeen = new DaySeventeen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayseventeen.$$.fragment);
+    			attr_dev(div, "id", "17");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 134, 3, 4282);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayseventeen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayseventeen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayseventeen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayseventeen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_17.name,
+    		type: "if",
+    		source: "(134:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (130:28) 
+    function create_if_block_16(ctx) {
+    	let div;
+    	let daysixteen;
+    	let current;
+    	daysixteen = new DaySixteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daysixteen.$$.fragment);
+    			attr_dev(div, "id", "16");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 130, 3, 4194);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daysixteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daysixteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daysixteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daysixteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_16.name,
+    		type: "if",
+    		source: "(130:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (126:28) 
+    function create_if_block_15(ctx) {
+    	let div;
+    	let dayfifteen;
+    	let current;
+    	dayfifteen = new DayFifteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayfifteen.$$.fragment);
+    			attr_dev(div, "id", "15");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 126, 3, 4106);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayfifteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayfifteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayfifteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayfifteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_15.name,
+    		type: "if",
+    		source: "(126:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (122:28) 
+    function create_if_block_14(ctx) {
+    	let div;
+    	let dayfourteen;
+    	let current;
+    	dayfourteen = new DayFourteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayfourteen.$$.fragment);
+    			attr_dev(div, "id", "14");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 122, 3, 4017);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayfourteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayfourteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayfourteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayfourteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_14.name,
+    		type: "if",
+    		source: "(122:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (118:28) 
+    function create_if_block_13(ctx) {
+    	let div;
+    	let daythirteen;
+    	let current;
+    	daythirteen = new DayThirteen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daythirteen.$$.fragment);
+    			attr_dev(div, "id", "13");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 118, 3, 3928);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daythirteen, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daythirteen.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daythirteen.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daythirteen);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_13.name,
+    		type: "if",
+    		source: "(118:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (114:28) 
+    function create_if_block_12(ctx) {
+    	let div;
+    	let daytwelve;
+    	let current;
+    	daytwelve = new DayTwelve({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daytwelve.$$.fragment);
+    			attr_dev(div, "id", "12");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 114, 3, 3841);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daytwelve, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daytwelve.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daytwelve.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daytwelve);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_12.name,
+    		type: "if",
+    		source: "(114:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (110:28) 
+    function create_if_block_11(ctx) {
+    	let div;
+    	let dayeleven;
+    	let current;
+    	dayeleven = new DayEleven({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayeleven.$$.fragment);
+    			attr_dev(div, "id", "11");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 110, 3, 3754);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayeleven, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayeleven.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayeleven.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayeleven);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_11.name,
+    		type: "if",
+    		source: "(110:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (106:28) 
+    function create_if_block_10(ctx) {
+    	let div;
+    	let dayten;
+    	let current;
+    	dayten = new DayTen({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayten.$$.fragment);
+    			attr_dev(div, "id", "10");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 106, 3, 3670);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayten, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayten.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayten.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayten);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_10.name,
+    		type: "if",
+    		source: "(106:28) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (102:27) 
+    function create_if_block_9(ctx) {
+    	let div;
+    	let daynine;
+    	let current;
+    	daynine = new DayNine({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(daynine.$$.fragment);
+    			attr_dev(div, "id", "9");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 102, 3, 3586);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(daynine, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(daynine.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(daynine.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(daynine);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_9.name,
+    		type: "if",
+    		source: "(102:27) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (98:27) 
+    function create_if_block_8(ctx) {
+    	let div;
+    	let dayeight;
+    	let current;
+    	dayeight = new DayEight({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayeight.$$.fragment);
+    			attr_dev(div, "id", "8");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 98, 3, 3502);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayeight, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayeight.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayeight.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayeight);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_8.name,
+    		type: "if",
+    		source: "(98:27) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (94:27) 
+    function create_if_block_7(ctx) {
+    	let div;
+    	let dayseven;
+    	let current;
+    	dayseven = new DaySeven({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(dayseven.$$.fragment);
+    			attr_dev(div, "id", "7");
+    			attr_dev(div, "class", "page");
+    			add_location(div, file$w, 94, 3, 3418);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(dayseven, div, null);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(dayseven.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(dayseven.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(dayseven);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_7.name,
+    		type: "if",
+    		source: "(94:27) ",
     		ctx
     	});
 
@@ -4151,7 +5419,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*isModalOpen*/ ctx[1] && create_if_block_7(ctx);
+    	let if_block0 = /*isModalOpen*/ ctx[1] && create_if_block_31(ctx);
 
     	const if_block_creators = [
     		create_if_block,
@@ -4160,7 +5428,31 @@ var app = (function () {
     		create_if_block_3,
     		create_if_block_4,
     		create_if_block_5,
-    		create_if_block_6
+    		create_if_block_6,
+    		create_if_block_7,
+    		create_if_block_8,
+    		create_if_block_9,
+    		create_if_block_10,
+    		create_if_block_11,
+    		create_if_block_12,
+    		create_if_block_13,
+    		create_if_block_14,
+    		create_if_block_15,
+    		create_if_block_16,
+    		create_if_block_17,
+    		create_if_block_18,
+    		create_if_block_19,
+    		create_if_block_20,
+    		create_if_block_21,
+    		create_if_block_22,
+    		create_if_block_23,
+    		create_if_block_24,
+    		create_if_block_25,
+    		create_if_block_26,
+    		create_if_block_27,
+    		create_if_block_28,
+    		create_if_block_29,
+    		create_if_block_30
     	];
 
     	const if_blocks = [];
@@ -4173,6 +5465,30 @@ var app = (function () {
     		if (/*pageNum*/ ctx[0] === 4) return 4;
     		if (/*pageNum*/ ctx[0] === 5) return 5;
     		if (/*pageNum*/ ctx[0] === 6) return 6;
+    		if (/*pageNum*/ ctx[0] === 7) return 7;
+    		if (/*pageNum*/ ctx[0] === 8) return 8;
+    		if (/*pageNum*/ ctx[0] === 9) return 9;
+    		if (/*pageNum*/ ctx[0] === 10) return 10;
+    		if (/*pageNum*/ ctx[0] === 11) return 11;
+    		if (/*pageNum*/ ctx[0] === 12) return 12;
+    		if (/*pageNum*/ ctx[0] === 13) return 13;
+    		if (/*pageNum*/ ctx[0] === 14) return 14;
+    		if (/*pageNum*/ ctx[0] === 15) return 15;
+    		if (/*pageNum*/ ctx[0] === 16) return 16;
+    		if (/*pageNum*/ ctx[0] === 17) return 17;
+    		if (/*pageNum*/ ctx[0] === 18) return 18;
+    		if (/*pageNum*/ ctx[0] === 19) return 19;
+    		if (/*pageNum*/ ctx[0] === 20) return 20;
+    		if (/*pageNum*/ ctx[0] === 21) return 21;
+    		if (/*pageNum*/ ctx[0] === 22) return 22;
+    		if (/*pageNum*/ ctx[0] === 23) return 23;
+    		if (/*pageNum*/ ctx[0] === 24) return 24;
+    		if (/*pageNum*/ ctx[0] === 25) return 25;
+    		if (/*pageNum*/ ctx[0] === 26) return 26;
+    		if (/*pageNum*/ ctx[0] === 27) return 27;
+    		if (/*pageNum*/ ctx[0] === 28) return 28;
+    		if (/*pageNum*/ ctx[0] === 29) return 29;
+    		if (/*pageNum*/ ctx[0] === 30) return 30;
     		return -1;
     	}
 
@@ -4243,7 +5559,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_7(ctx);
+    					if_block0 = create_if_block_31(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div1, t4);
