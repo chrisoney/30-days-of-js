@@ -2033,10 +2033,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$5, 82, 4, 3643);
-    			add_location(p, file$5, 82, 1, 3640);
+    			add_location(em, file$5, 89, 4, 3803);
+    			add_location(p, file$5, 89, 1, 3800);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$5, 81, 0, 3616);
+    			add_location(div, file$5, 88, 0, 3776);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2263,6 +2263,16 @@ var app = (function () {
     		"truck"
     	];
 
+    	const transportation = data.reduce(
+    		(obj, item) => {
+    			if (!obj[item]) obj[item] = 0;
+    			obj[item]++;
+    			return obj;
+    		},
+    		{}
+    	);
+
+    	console.log(transportation);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -2278,7 +2288,8 @@ var app = (function () {
     		fullLifespans,
     		oldest,
     		alpha,
-    		data
+    		data,
+    		transportation
     	});
 
     	return [];
