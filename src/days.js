@@ -28,7 +28,7 @@ const days = {
   5: {
     day: 5,
     title: "05 - Flex Panel Gallery",
-    completed: false,
+    completed: true,
   },
   6: {
     day: 6,
