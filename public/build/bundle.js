@@ -2033,10 +2033,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$5, 52, 4, 2692);
-    			add_location(p, file$5, 52, 1, 2689);
+    			add_location(em, file$5, 55, 4, 2867);
+    			add_location(p, file$5, 55, 1, 2864);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$5, 51, 0, 2665);
+    			add_location(div, file$5, 54, 0, 2840);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2191,18 +2191,22 @@ var app = (function () {
 
     	// Array.prototype.filter()
     	// 1. Filter the list of inventors for those who were born in the 1500's
-    	const fifteen = inventors.filter(function (inventor) {
-    		if (inventor.year >= 1500 && inventor.year < 1600) {
-    			return true;
-    		}
-    	});
+    	const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
 
     	console.table(fifteen);
 
     	// Array.prototype.map()
     	// 2. Give us an array of the inventors first and last names
+    	const fullnames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+
+    	console.log(fullnames);
+
     	// Array.prototype.sort()
     	// 3. Sort the inventors by birthdate, oldest to youngest
+    	const sortByBirth = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+
+    	console.log(sortByBirth);
+
     	// Array.prototype.reduce()
     	// 4. How many years did all the inventors live all together?
     	// 5. Sort the inventors by years lived
@@ -2235,7 +2239,15 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<DayFour> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ inventors, people, fifteen, data });
+    	$$self.$capture_state = () => ({
+    		inventors,
+    		people,
+    		fifteen,
+    		fullnames,
+    		sortByBirth,
+    		data
+    	});
+
     	return [];
     }
 
