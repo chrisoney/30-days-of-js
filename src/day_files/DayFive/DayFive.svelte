@@ -86,6 +86,17 @@
 		width: 100%;
 		transition: transform 0.5s;
 		flex: 1 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.panel > *:first-child {
+		transform: translateY(-100%)
+	}
+
+	.panel > *:last-child {
+		transform: translateY(100%)
 	}
 
 	.panel p {
