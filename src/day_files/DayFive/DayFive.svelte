@@ -68,6 +68,10 @@
 		background-size: cover;
 		background-position: center;
 		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 	}
 
 	.panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -81,6 +85,7 @@
 		margin: 0;
 		width: 100%;
 		transition: transform 0.5s;
+		flex: 1 0 auto;
 	}
 
 	.panel p {
