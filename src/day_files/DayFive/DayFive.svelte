@@ -49,6 +49,7 @@
 	.panels {
 		min-height: 100vh;
 		overflow: hidden;
+		display:flex;
 	}
 
 	.panel {
@@ -66,6 +67,7 @@
 		font-size: 20px;
 		background-size: cover;
 		background-position: center;
+		flex: 1;
 	}
 
 	.panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
