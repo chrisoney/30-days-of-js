@@ -83,7 +83,7 @@
 			font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
 			flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
 			background 0.2s;
-		font-size: 20px;
+		font-size: 12px;
 		background-size: cover;
 		background-position: center;
 		flex: 1;
