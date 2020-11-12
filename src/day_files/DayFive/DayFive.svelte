@@ -1,4 +1,21 @@
 <script>
+	import { onMount } from 'svelte';
+
+
+	function toggleOpen(e){
+		e.target.classList.toggle('open'); 
+	}
+	function toggleActive(e){
+		if (e.propertyName.includes('flex')){
+			e.target.classList.toggle('open-active'); 
+		}
+	}
+
+	onMount(() => {
+		let panels = document.querySelectorAll('.panel');
+    panels.forEach((panel) => panel.addEventListener("click", toggleOpen));
+		panels.forEach((panel) => panel.addEventListener("transitionend", toggleActive));
+  });
 
 </script>
 
@@ -29,7 +46,9 @@
       <p>In</p>
       <p>Motion</p>
     </div>
-  </div>
+	</div>
+	
+	<div class='hide panel open open-active'><p></p></div>
 </div>
 
 <style>
@@ -99,18 +118,28 @@
 		transform: translateY(100%)
 	}
 
+	.panel.open-active > *:first-child, .panel.panel.open-active > *:last-child {
+		transform: translateY(0)
+	}
+
 	.panel p {
 		text-transform: uppercase;
 		font-family: 'Amatic SC', cursive;
 		text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
 		font-size: 2em;
+		pointer-events: none;
 	}
 	
 	.panel p:nth-child(2) {
 		font-size: 4em;
 	}
 
-	.panel.open {
+	.open {
 		font-size: 40px;
+		flex: 5;
+	}
+
+	.hide {
+		display: none;
 	}
 </style>
