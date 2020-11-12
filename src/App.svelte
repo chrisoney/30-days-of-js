@@ -201,7 +201,7 @@
 		align-items: center;
 		width: 100vw;
 	}
-
+	
 	p {
 		color: #ff3e00;
 		text-transform: uppercase;
