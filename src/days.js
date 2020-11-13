@@ -33,7 +33,7 @@ const days = {
   6: {
     day: 6,
     title: "06 - Type Ahead",
-    completed: false,
+    completed: true,
   },
   7: {
     day: 7,
