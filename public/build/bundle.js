@@ -1,2 +1,5353 @@
-var app=function(){"use strict";function e(){}const t=e=>e;function n(e){return e()}function s(){return Object.create(null)}function a(e){e.forEach(n)}function l(e){return"function"==typeof e}function i(e,t){return e!=e?t==t:e!==t||e&&"object"==typeof e||"function"==typeof e}const r="undefined"!=typeof window;let o=r?()=>window.performance.now():()=>Date.now(),c=r?e=>requestAnimationFrame(e):e;const d=new Set;function u(e){d.forEach((t=>{t.c(e)||(d.delete(t),t.f())})),0!==d.size&&c(u)}function f(e,t){e.appendChild(t)}function p(e,t,n){e.insertBefore(t,n||null)}function m(e){e.parentNode.removeChild(e)}function v(e){return document.createElement(e)}function g(e){return document.createTextNode(e)}function $(){return g(" ")}function h(e,t,n,s){return e.addEventListener(t,n,s),()=>e.removeEventListener(t,n,s)}function y(e,t,n){null==n?e.removeAttribute(t):e.getAttribute(t)!==n&&e.setAttribute(t,n)}const k=new Set;let w,x=0;function b(e,t,n,s,a,l,i,r=0){const o=16.666/s;let c="{\n";for(let e=0;e<=1;e+=o){const s=t+(n-t)*l(e);c+=100*e+`%{${i(s,1-s)}}\n`}const d=c+`100% {${i(n,1-n)}}\n}`,u=`__svelte_${function(e){let t=5381,n=e.length;for(;n--;)t=(t<<5)-t^e.charCodeAt(n);return t>>>0}(d)}_${r}`,f=e.ownerDocument;k.add(f);const p=f.__svelte_stylesheet||(f.__svelte_stylesheet=f.head.appendChild(v("style")).sheet),m=f.__svelte_rules||(f.__svelte_rules={});m[u]||(m[u]=!0,p.insertRule(`@keyframes ${u} ${d}`,p.cssRules.length));const g=e.style.animation||"";return e.style.animation=`${g?g+", ":""}${u} ${s}ms linear ${a}ms 1 both`,x+=1,u}function C(e,t){const n=(e.style.animation||"").split(", "),s=n.filter(t?e=>e.indexOf(t)<0:e=>-1===e.indexOf("__svelte")),a=n.length-s.length;a&&(e.style.animation=s.join(", "),x-=a,x||c((()=>{x||(k.forEach((e=>{const t=e.__svelte_stylesheet;let n=t.cssRules.length;for(;n--;)t.deleteRule(n);e.__svelte_rules={}})),k.clear())})))}function B(e){w=e}function S(){if(!w)throw new Error("Function called outside component initialization");return w}function j(e){S().$$.on_mount.push(e)}const D=[],_=[],T=[],E=[],q=Promise.resolve();let L=!1;function z(e){T.push(e)}let A=!1;const M=new Set;function F(){if(!A){A=!0;do{for(let e=0;e<D.length;e+=1){const t=D[e];B(t),H(t.$$)}for(B(null),D.length=0;_.length;)_.pop()();for(let e=0;e<T.length;e+=1){const t=T[e];M.has(t)||(M.add(t),t())}T.length=0}while(D.length);for(;E.length;)E.pop()();L=!1,A=!1,M.clear()}}function H(e){if(null!==e.fragment){e.update(),a(e.before_update);const t=e.dirty;e.dirty=[-1],e.fragment&&e.fragment.p(e.ctx,t),e.after_update.forEach(z)}}let J;function N(e,t,n){e.dispatchEvent(function(e,t){const n=document.createEvent("CustomEvent");return n.initCustomEvent(e,!1,!1,t),n}(`${t?"intro":"outro"}${n}`))}const O=new Set;let G;function P(){G={r:0,c:[],p:G}}function R(){G.r||a(G.c),G=G.p}function I(e,t){e&&e.i&&(O.delete(e),e.i(t))}function K(e,t,n,s){if(e&&e.o){if(O.has(e))return;O.add(e),G.c.push((()=>{O.delete(e),s&&(n&&e.d(1),s())})),e.o(t)}}const W={duration:0};function V(n,s,i,r){let f=s(n,i),p=r?0:1,m=null,v=null,g=null;function $(){g&&C(n,g)}function h(e,t){const n=e.b-p;return t*=Math.abs(n),{a:p,b:e.b,d:n,duration:t,start:e.start,end:e.start+t,group:e.group}}function y(s){const{delay:l=0,duration:i=300,easing:r=t,tick:y=e,css:k}=f||W,w={start:o()+l,b:s};s||(w.group=G,G.r+=1),m||v?v=w:(k&&($(),g=b(n,p,s,i,l,r,k)),s&&y(0,1),m=h(w,i),z((()=>N(n,s,"start"))),function(e){let t;0===d.size&&c(u),new Promise((n=>{d.add(t={c:e,f:n})}))}((e=>{if(v&&e>v.start&&(m=h(v,i),v=null,N(n,m.b,"start"),k&&($(),g=b(n,p,m.b,m.duration,0,r,f.css))),m)if(e>=m.end)y(p=m.b,1-p),N(n,m.b,"end"),v||(m.b?$():--m.group.r||a(m.group.c)),m=null;else if(e>=m.start){const t=e-m.start;p=m.a+m.d*r(t/m.duration),y(p,1-p)}return!(!m&&!v)})))}return{run(e){l(f)?(J||(J=Promise.resolve(),J.then((()=>{J=null}))),J).then((()=>{f=f(),y(e)})):y(e)},end(){$(),m=v=null}}}function Q(e){e&&e.c()}function U(e,t,s){const{fragment:i,on_mount:r,on_destroy:o,after_update:c}=e.$$;i&&i.m(t,s),z((()=>{const t=r.map(n).filter(l);o?o.push(...t):a(t),e.$$.on_mount=[]})),c.forEach(z)}function X(e,t){const n=e.$$;null!==n.fragment&&(a(n.on_destroy),n.fragment&&n.fragment.d(t),n.on_destroy=n.fragment=null,n.ctx=[])}function Y(e,t){-1===e.$$.dirty[0]&&(D.push(e),L||(L=!0,q.then(F)),e.$$.dirty.fill(0)),e.$$.dirty[t/31|0]|=1<<t%31}function Z(t,n,l,i,r,o,c=[-1]){const d=w;B(t);const u=n.props||{},f=t.$$={fragment:null,ctx:null,props:o,update:e,not_equal:r,bound:s(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:s(),dirty:c,skip_bound:!1};let p=!1;if(f.ctx=l?l(t,u,((e,n,...s)=>{const a=s.length?s[0]:n;return f.ctx&&r(f.ctx[e],f.ctx[e]=a)&&(!f.skip_bound&&f.bound[e]&&f.bound[e](a),p&&Y(t,e)),n})):[],f.update(),p=!0,a(f.before_update),f.fragment=!!i&&i(f.ctx),n.target){if(n.hydrate){const e=function(e){return Array.from(e.childNodes)}(n.target);f.fragment&&f.fragment.l(e),e.forEach(m)}else f.fragment&&f.fragment.c();n.intro&&I(t.$$.fragment),U(t,n.target,n.anchor),F()}B(d)}class ee{$destroy(){X(this,1),this.$destroy=e}$on(e,t){const n=this.$$.callbacks[e]||(this.$$.callbacks[e]=[]);return n.push(t),()=>{const e=n.indexOf(t);-1!==e&&n.splice(e,1)}}$set(e){var t;this.$$set&&(t=e,0!==Object.keys(t).length)&&(this.$$.skip_bound=!0,this.$$set(e),this.$$.skip_bound=!1)}}const te={0:{day:"home",title:"Home",completed:!0},1:{day:1,title:"01 - Javascript Drum Kit",completed:!0},2:{day:2,title:"02 - JS and CSS Clock",completed:!0},3:{day:3,title:"03 - CSS Variables",completed:!0},4:{day:4,title:"04 - Array Cardio Day 1",completed:!0},5:{day:5,title:"05 - Flex Panel Gallery",completed:!0},6:{day:6,title:"06 - Type Ahead",completed:!0},7:{day:7,title:"07 - Array Cardio Day 2",completed:!1},8:{day:8,title:"08 - Fun with HTML5 Canvas",completed:!1},9:{day:9,title:"09 - Dev Tools Domination",completed:!1},10:{day:10,title:"10 - Hold Shift and Check Checkboxes",completed:!1},11:{day:11,title:"11 - Custom Video Player",completed:!1},12:{day:12,title:"12 - Key Sequence Detection",completed:!1},13:{day:13,title:"13 - Slide in on Scroll",completed:!1},14:{day:14,title:"14 - JavaScript References VS Copying",completed:!1},15:{day:15,title:"15 - LocalStorage",completed:!1},16:{day:16,title:"16 - Mouse Move Shadow",completed:!1},17:{day:17,title:"17 - Sort Without Articles",completed:!1},18:{day:18,title:"18 - Adding Up Times with Reduce",completed:!1},19:{day:19,title:"19 - Webcam Fun",completed:!1},20:{day:20,title:"20 - Speech Detection",completed:!1},21:{day:21,title:"21 - Geolocation",completed:!1},22:{day:22,title:"22 - Follow Along Link Highlighter",completed:!1},23:{day:23,title:"23 - Speech Synthesis",completed:!1},24:{day:24,title:"24 - Sticky Nav",completed:!1},25:{day:25,title:"25 - Event Capture, Propagation, Bubbling and Once",completed:!1},26:{day:26,title:"26 - Stripe Follow Along Nav",completed:!1},27:{day:27,title:"27 - Click and Drag",completed:!1},28:{day:28,title:"28 - Video Speed Controller",completed:!1},29:{day:29,title:"29 - Countdown Timer",completed:!1},30:{day:30,title:"30 - Whack A Mole",completed:!1}};function ne(e){const t=e-1;return t*t*t+1}function se(e,{delay:t=0,duration:n=400,easing:s=ne,x:a=0,y:l=0,opacity:i=0}){const r=getComputedStyle(e),o=+r.opacity,c="none"===r.transform?"":r.transform,d=o*(1-i);return{delay:t,duration:n,easing:s,css:(e,t)=>`\n\t\t\ttransform: ${c} translate(${(1-e)*a}px, ${(1-e)*l}px);\n\t\t\topacity: ${o-d*t}`}}const ae=[];function le(t,n=e){let s;const a=[];function l(e){if(i(t,e)&&(t=e,s)){const e=!ae.length;for(let e=0;e<a.length;e+=1){const n=a[e];n[1](),ae.push(n,t)}if(e){for(let e=0;e<ae.length;e+=2)ae[e][0](ae[e+1]);ae.length=0}}}return{set:l,update:function(e){l(e(t))},subscribe:function(i,r=e){const o=[i,r];return a.push(o),1===a.length&&(s=n(l)||e),i(t),()=>{const e=a.indexOf(o);-1!==e&&a.splice(e,1),0===a.length&&(s(),s=null)}}}}const ie=le(0),re=le(!1);function oe(e,t,n){const s=e.slice();return s[6]=t[n],s}function ce(e){let t,n,s,a,l,i,r=e[6].title+"";function o(...t){return e[2](e[6],...t)}return{c(){var l;t=v("li"),n=g(r),s=$(),y(t,"class",(l=e[6].completed?"":"not-done",a=(null==l?"":l)+" svelte-ho6qms"))},m(e,a){p(e,t,a),f(t,n),f(t,s),l||(i=h(t,"click",o),l=!0)},p(t,n){e=t},d(e){e&&m(t),l=!1,i()}}}function de(e){let t,n,s,a,l,i,r,o=Object.values(te),c=[];for(let t=0;t<o.length;t+=1)c[t]=ce(oe(e,o,t));return{c(){t=v("div"),n=v("div"),s=v("ul");for(let e=0;e<c.length;e+=1)c[e].c();y(n,"class","modal svelte-ho6qms"),y(t,"class","modal-area svelte-ho6qms")},m(a,o){p(a,t,o),f(t,n),f(n,s);for(let e=0;e<c.length;e+=1)c[e].m(s,null);l=!0,i||(r=h(t,"click",e[3]),i=!0)},p(e,[t]){if(1&t){let n;for(o=Object.values(te),n=0;n<o.length;n+=1){const a=oe(e,o,n);c[n]?c[n].p(a,t):(c[n]=ce(a),c[n].c(),c[n].m(s,null))}for(;n<c.length;n+=1)c[n].d(1);c.length=o.length}},i(e){l||(z((()=>{a||(a=V(n,se,{x:-510,duration:750},!0)),a.run(1)})),l=!0)},o(e){a||(a=V(n,se,{x:-510,duration:750},!1)),a.run(0),l=!1},d(e){e&&m(t),function(e,t){for(let n=0;n<e.length;n+=1)e[n]&&e[n].d(t)}(c,e),e&&a&&a.end(),i=!1,r()}}}function ue(e){ie.subscribe((e=>{}));function t(e,t,n){e.preventDefault(),n?(ie.update((e=>t)),re.update((e=>!1))):re.update((e=>!0))}function n(e){e.preventDefault(),re.update((e=>!1))}return[t,n,(e,n)=>t(n,e.day,e.completed),e=>n(e)]}class fe extends ee{constructor(e){super(),Z(this,e,ue,de,i,{})}}function pe(t){let n;return{c(){n=v("div"),n.innerHTML='<p class="svelte-1r245p0">30 Days of Javascript is a series of tutorials for fun javascript pages set up by\n\tWes Bos <a href="https://javascript30.com/" class="svelte-1r245p0">here</a>. Between the great ideas and \n\tthe fantastic tutorials, it&#39;s a great way to refine your skills as a developer with\n\tvery little time commitment. Check out the projects I&#39;ve completed so far and visit\n\tthe site to start doing the same for free!</p>',y(n,"class","welcome-description svelte-1r245p0")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class me extends ee{constructor(e){super(),Z(this,e,null,pe,i,{})}}function ve(t){let n;return{c(){n=v("div"),n.innerHTML='<div class="keys svelte-1fvjhws"><div data-key="65" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">A</kbd> \n      <span class="sound svelte-1fvjhws">clap</span></div> \n    <div data-key="83" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">S</kbd> \n      <span class="sound svelte-1fvjhws">hihat</span></div> \n    <div data-key="68" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">D</kbd> \n      <span class="sound svelte-1fvjhws">kick</span></div> \n    <div data-key="70" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">F</kbd> \n      <span class="sound svelte-1fvjhws">openhat</span></div> \n    <div data-key="71" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">G</kbd> \n      <span class="sound svelte-1fvjhws">boom</span></div> \n    <div data-key="72" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">H</kbd> \n      <span class="sound svelte-1fvjhws">ride</span></div> \n    <div data-key="74" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">J</kbd> \n      <span class="sound svelte-1fvjhws">snare</span></div> \n    <div data-key="75" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">K</kbd> \n      <span class="sound svelte-1fvjhws">tom</span></div> \n    <div data-key="76" class="key svelte-1fvjhws"><kbd class="svelte-1fvjhws">L</kbd> \n      <span class="sound svelte-1fvjhws">tink</span></div> \n\t\t<div class="playing svelte-1fvjhws" style="display:none;"></div></div> \n\n  <audio data-key="65" src="sounds/clap.wav"><track kind="captions"/></audio> \n  <audio data-key="83" src="sounds/hihat.wav"><track kind="captions"/></audio> \n  <audio data-key="68" src="sounds/kick.wav"><track kind="captions"/></audio> \n  <audio data-key="70" src="sounds/openhat.wav"><track kind="captions"/></audio> \n  <audio data-key="71" src="sounds/boom.wav"><track kind="captions"/></audio> \n  <audio data-key="72" src="sounds/ride.wav"><track kind="captions"/></audio> \n  <audio data-key="74" src="sounds/snare.wav"><track kind="captions"/></audio> \n  <audio data-key="75" src="sounds/tom.wav"><track kind="captions"/></audio> \n  <audio data-key="76" src="sounds/tink.wav"><track kind="captions"/></audio>',y(n,"id","day1"),y(n,"class","day-main svelte-1fvjhws")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}function ge(e){e.preventDefault();const t=document.querySelector(`audio[data-key="${e.keyCode}"]`),n=document.querySelector(`div[data-key="${e.keyCode}"]`);t&&(n.classList.add("playing"),t.currentTime=0,t.play(),setTimeout((()=>{n.classList.remove("playing")}),100))}function $e(e){return j((async()=>{document.addEventListener("keydown",ge)})),[]}class he extends ee{constructor(e){super(),Z(this,e,$e,ve,i,{})}}function ye(t){let n,s,a,l,i,r,o,c,d,u;return{c(){n=v("div"),s=v("div"),a=v("div"),l=v("div"),i=$(),r=v("div"),o=$(),c=v("div"),d=$(),u=v("div"),y(l,"class","center"),y(r,"class","hand svelte-1hz06bk"),y(c,"class","hand min svelte-1hz06bk"),y(u,"class","hand hour svelte-1hz06bk"),y(a,"class","clock-face svelte-1hz06bk"),y(s,"class","clock svelte-1hz06bk"),y(n,"class","day-main svelte-1hz06bk")},m(e,m){p(e,n,m),f(n,s),f(s,a),f(a,l),f(a,i),f(a,r),t[3](r),f(a,o),f(a,c),t[4](c),f(a,d),f(a,u),t[5](u)},p:e,i:e,o:e,d(e){e&&m(n),t[3](null),t[4](null),t[5](null)}}}function ke(e,t,n){let s,a,l;const i=setInterval((function(){const e=new Date,t=e.getSeconds(),i=e.getMinutes(),r=e.getHours(),o=t/60*360+90,c=i/60*360+90,d=r/12*360+90;0===t?n(0,s.style.transition="none",s):(n(0,s.style.transition="all 0.05s",s),n(0,s.style.transitionTimingFunction="cubic-bezier(0.1, 2.7, 0.58, 1)",s)),n(0,s.style.transform=`rotate(${o}deg)`,s),0===i?n(1,a.style.transition="none",a):(n(1,a.style.transition="all 0.05s",a),n(1,a.style.transitionTimingFunction="cubic-bezier(0.1, 2.7, 0.58, 1)",a)),n(1,a.style.transform=`rotate(${c}deg)`,a),0===r?n(2,l.style.transition="none",l):(n(2,l.style.transition="all 0.05s",l),n(2,l.style.transitionTimingFunction="cubic-bezier(0.1, 2.7, 0.58, 1)",l)),n(2,l.style.transform=`rotate(${d}deg)`,l)}),1e3);var r;return r=()=>clearInterval(i),S().$$.on_destroy.push(r),[s,a,l,function(e){_[e?"unshift":"push"]((()=>{s=e,n(0,s)}))},function(e){_[e?"unshift":"push"]((()=>{a=e,n(1,a)}))},function(e){_[e?"unshift":"push"]((()=>{l=e,n(2,l)}))}]}class we extends ee{constructor(e){super(),Z(this,e,ke,ye,i,{})}}function xe(t){let n,s,a,l,i,r,o;return{c(){n=v("div"),s=v("h2"),s.innerHTML='Update CSS Variables with <span class="hl svelte-1caz9an">JS</span>',a=$(),l=v("div"),l.innerHTML='<label for="spacing" class="svelte-1caz9an">Spacing:</label> \n    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" class="svelte-1caz9an"/> \n\n    <label for="blur" class="svelte-1caz9an">Blur:</label> \n    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px" class="svelte-1caz9an"/> \n\n    <label for="base" class="svelte-1caz9an">Base Color</label> \n    <input id="base" type="color" name="base" value="#ffc600" class="svelte-1caz9an"/>',i=$(),r=v("img"),y(s,"class","svelte-1caz9an"),y(l,"class","controls svelte-1caz9an"),r.src!==(o="https://source.unsplash.com/7bwQXzbF6KE/800x500")&&y(r,"src","https://source.unsplash.com/7bwQXzbF6KE/800x500"),y(r,"alt",""),y(r,"class","svelte-1caz9an"),y(n,"class","day-main svelte-1caz9an")},m(e,o){p(e,n,o),f(n,s),f(n,a),f(n,l),t[1](l),f(n,i),f(n,r)},p:e,i:e,o:e,d(e){e&&m(n),t[1](null)}}}function be(){const e=this.dataset.sizing||"";document.documentElement.style.setProperty("--"+this.name,this.value+e)}function Ce(e,t,n){let s,a=[];return j((()=>{a=s.querySelectorAll("input"),a.forEach((e=>e.addEventListener("change",be))),a.forEach((e=>e.addEventListener("mousemove",be)))})),[s,function(e){_[e?"unshift":"push"]((()=>{s=e,n(0,s)}))}]}class Be extends ee{constructor(e){super(),Z(this,e,Ce,xe,i,{})}}function Se(t){let n;return{c(){n=v("div"),n.innerHTML="<p><em>Psst: have a look at the JavaScript Console</em> 💁</p>",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}function je(e){const t=[{first:"Albert",last:"Einstein",year:1879,passed:1955},{first:"Isaac",last:"Newton",year:1643,passed:1727},{first:"Galileo",last:"Galilei",year:1564,passed:1642},{first:"Marie",last:"Curie",year:1867,passed:1934},{first:"Johannes",last:"Kepler",year:1571,passed:1630},{first:"Nicolaus",last:"Copernicus",year:1473,passed:1543},{first:"Max",last:"Planck",year:1858,passed:1947},{first:"Katherine",last:"Blodgett",year:1898,passed:1979},{first:"Ada",last:"Lovelace",year:1815,passed:1852},{first:"Sarah E.",last:"Goode",year:1855,passed:1905},{first:"Lise",last:"Meitner",year:1878,passed:1968},{first:"Hanna",last:"Hammarström",year:1829,passed:1909}],n=t.filter((e=>e.year>=1500&&e.year<1600));console.table(n);const s=t.map((e=>`${e.first} ${e.last}`));console.log(s);const a=t.sort(((e,t)=>e.year>t.year?1:-1));console.log(a);const l=t.reduce(((e,t)=>e+(t.passed-t.year)),0);console.log(l);const i=t.sort(((e,t)=>e.passed-e.year>t.passed-t.year?-1:1));console.log(i);const r=["Beck, Glenn","Becker, Carl","Beckett, Samuel","Beddoes, Mick","Beecher, Henry","Beethoven, Ludwig","Begin, Menachem","Belloc, Hilaire","Bellow, Saul","Benchley, Robert","Benenson, Peter","Ben-Gurion, David","Benjamin, Walter","Benn, Tony","Bennington, Chester","Benson, Leana","Bent, Silas","Bentsen, Lloyd","Berger, Ric","Bergman, Ingmar","Berio, Luciano","Berle, Milton","Berlin, Irving","Berne, Eric","Bernhard, Sandra","Berra, Yogi","Berry, Halle","Berry, Wendell","Bethea, Erin","Bevan, Aneurin","Bevel, Ken","Biden, Joseph","Bierce, Ambrose","Biko, Steve","Billings, Josh","Biondo, Frank","Birrell, Augustine","Black, Elk","Blair, Robert","Blair, Tony","Blake, William"].sort(((e,t)=>{const[n,s]=e.split(", "),[a,l]=t.split(", ");return n>a?1:-1}));console.log(r);const o=["car","car","truck","truck","bike","walk","car","van","bike","walk","car","van","car","truck"].reduce(((e,t)=>(e[t]||(e[t]=0),e[t]++,e)),{});return console.log(o),[]}class De extends ee{constructor(e){super(),Z(this,e,je,Se,i,{})}}function _e(t){let n;return{c(){n=v("div"),n.innerHTML='<div class="panels svelte-etwxkq"><div class="panel panel1 svelte-etwxkq"><p class="svelte-etwxkq">Hey</p> \n      <p class="svelte-etwxkq">Let&#39;s</p> \n      <p class="svelte-etwxkq">Dance</p></div> \n    <div class="panel panel2 svelte-etwxkq"><p class="svelte-etwxkq">Give</p> \n      <p class="svelte-etwxkq">Take</p> \n      <p class="svelte-etwxkq">Receive</p></div> \n    <div class="panel panel3 svelte-etwxkq"><p class="svelte-etwxkq">Experience</p> \n      <p class="svelte-etwxkq">It</p> \n      <p class="svelte-etwxkq">Today</p></div> \n    <div class="panel panel4 svelte-etwxkq"><p class="svelte-etwxkq">Give</p> \n      <p class="svelte-etwxkq">All</p> \n      <p class="svelte-etwxkq">You can</p></div> \n    <div class="panel panel5 svelte-etwxkq"><p class="svelte-etwxkq">Life</p> \n      <p class="svelte-etwxkq">In</p> \n      <p class="svelte-etwxkq">Motion</p></div></div> \n\t\n\t<div class="hide panel open open-active svelte-etwxkq"><p class="svelte-etwxkq"></p></div>',y(n,"class","day-main svelte-etwxkq")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}function Te(e){e.target.classList.toggle("open")}function Ee(e){e.propertyName.includes("flex")&&e.target.classList.toggle("open-active")}function qe(e){return j((()=>{let e=document.querySelectorAll(".panel");e.forEach((e=>e.addEventListener("click",Te))),e.forEach((e=>e.addEventListener("transitionend",Ee)))})),[]}class Le extends ee{constructor(e){super(),Z(this,e,qe,_e,i,{})}}function ze(t){let n;return{c(){n=v("div"),n.innerHTML='<form class="search-form"><input type="text" class="search" placeholder="City or State"/> \n    <ul class="suggestions"><li>Filter for a city</li> \n      <li>or a state</li></ul></form>',y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Ae extends ee{constructor(e){super(),Z(this,e,null,ze,i,{})}}function Me(t){let n;return{c(){n=v("div"),n.textContent="Day Seven",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Fe extends ee{constructor(e){super(),Z(this,e,null,Me,i,{})}}function He(t){let n;return{c(){n=v("div"),n.textContent="Day Eight",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Je extends ee{constructor(e){super(),Z(this,e,null,He,i,{})}}function Ne(t){let n;return{c(){n=v("div"),n.textContent="Day Nine",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Oe extends ee{constructor(e){super(),Z(this,e,null,Ne,i,{})}}function Ge(t){let n;return{c(){n=v("div"),n.textContent="Day Ten",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Pe extends ee{constructor(e){super(),Z(this,e,null,Ge,i,{})}}function Re(t){let n;return{c(){n=v("div"),n.textContent="Day Eleven",y(n,"class","day-main svelte-uv5s0j")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Ie extends ee{constructor(e){super(),Z(this,e,null,Re,i,{})}}function Ke(t){let n;return{c(){n=v("div"),n.textContent="Day Twelve",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class We extends ee{constructor(e){super(),Z(this,e,null,Ke,i,{})}}function Ve(t){let n;return{c(){n=v("div"),n.textContent="Day Thirteen",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Qe extends ee{constructor(e){super(),Z(this,e,null,Ve,i,{})}}function Ue(t){let n;return{c(){n=v("div"),n.textContent="Day Fourteen",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Xe extends ee{constructor(e){super(),Z(this,e,null,Ue,i,{})}}function Ye(t){let n;return{c(){n=v("div"),n.textContent="Day Fifteen",y(n,"class","day-main svelte-uv5s0j")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Ze extends ee{constructor(e){super(),Z(this,e,null,Ye,i,{})}}function et(t){let n;return{c(){n=v("div"),n.textContent="Day Sixteen",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class tt extends ee{constructor(e){super(),Z(this,e,null,et,i,{})}}function nt(t){let n;return{c(){n=v("div"),n.textContent="Day Seventeen",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class st extends ee{constructor(e){super(),Z(this,e,null,nt,i,{})}}function at(t){let n;return{c(){n=v("div"),n.textContent="Day Eighteen",y(n,"class","day-main svelte-uv5s0j")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class lt extends ee{constructor(e){super(),Z(this,e,null,at,i,{})}}function it(t){let n;return{c(){n=v("div"),n.textContent="Day Nineteen",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class rt extends ee{constructor(e){super(),Z(this,e,null,it,i,{})}}function ot(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class ct extends ee{constructor(e){super(),Z(this,e,null,ot,i,{})}}function dt(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty One",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class ut extends ee{constructor(e){super(),Z(this,e,null,dt,i,{})}}function ft(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Two",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class pt extends ee{constructor(e){super(),Z(this,e,null,ft,i,{})}}function mt(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Three",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class vt extends ee{constructor(e){super(),Z(this,e,null,mt,i,{})}}function gt(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Four",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class $t extends ee{constructor(e){super(),Z(this,e,null,gt,i,{})}}function ht(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Five",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class yt extends ee{constructor(e){super(),Z(this,e,null,ht,i,{})}}function kt(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Six",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class wt extends ee{constructor(e){super(),Z(this,e,null,kt,i,{})}}function xt(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Seven",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class bt extends ee{constructor(e){super(),Z(this,e,null,xt,i,{})}}function Ct(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Eight",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class Bt extends ee{constructor(e){super(),Z(this,e,null,Ct,i,{})}}function St(t){let n;return{c(){n=v("div"),n.textContent="Day Twenty Nine",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class jt extends ee{constructor(e){super(),Z(this,e,null,St,i,{})}}function Dt(t){let n;return{c(){n=v("div"),n.textContent="Day Thirty",y(n,"class","day-main svelte-1t7hos2")},m(e,t){p(e,n,t)},p:e,i:e,o:e,d(e){e&&m(n)}}}class _t extends ee{constructor(e){super(),Z(this,e,null,Dt,i,{})}}function Tt(e){let t,n;return t=new fe({}),{c(){Q(t.$$.fragment)},m(e,s){U(t,e,s),n=!0},i(e){n||(I(t.$$.fragment,e),n=!0)},o(e){K(t.$$.fragment,e),n=!1},d(e){X(t,e)}}}function Et(e){let t,n,s;return n=new _t({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","30"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function qt(e){let t,n,s;return n=new jt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","29"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Lt(e){let t,n,s;return n=new Bt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","28"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function zt(e){let t,n,s;return n=new bt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","27"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function At(e){let t,n,s;return n=new wt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","26"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Mt(e){let t,n,s;return n=new yt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","25"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Ft(e){let t,n,s;return n=new $t({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","24"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Ht(e){let t,n,s;return n=new vt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","23"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Jt(e){let t,n,s;return n=new pt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","22"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Nt(e){let t,n,s;return n=new ut({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","21"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Ot(e){let t,n,s;return n=new ct({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","20"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Gt(e){let t,n,s;return n=new rt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","19"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Pt(e){let t,n,s;return n=new lt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","18"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Rt(e){let t,n,s;return n=new st({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","17"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function It(e){let t,n,s;return n=new tt({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","16"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Kt(e){let t,n,s;return n=new Ze({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","15"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Wt(e){let t,n,s;return n=new Xe({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","14"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Vt(e){let t,n,s;return n=new Qe({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","13"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Qt(e){let t,n,s;return n=new We({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","12"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Ut(e){let t,n,s;return n=new Ie({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","11"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Xt(e){let t,n,s;return n=new Pe({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","10"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Yt(e){let t,n,s;return n=new Oe({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","9"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function Zt(e){let t,n,s;return n=new Je({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","8"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function en(e){let t,n,s;return n=new Fe({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","7"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function tn(e){let t,n,s;return n=new Ae({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","6"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function nn(e){let t,n,s;return n=new Le({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","5"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function sn(e){let t,n,s;return n=new De({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","4"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function an(e){let t,n,s;return n=new Be({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","3"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function ln(e){let t,n,s;return n=new we({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","2"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function rn(e){let t,n,s;return n=new he({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","1"),y(t,"class","page")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function on(e){let t,n,s;return n=new me({}),{c(){t=v("div"),Q(n.$$.fragment),y(t,"id","home"),y(t,"class","page svelte-1etalgk")},m(e,a){p(e,t,a),U(n,t,null),s=!0},i(e){s||(I(n.$$.fragment,e),s=!0)},o(e){K(n.$$.fragment,e),s=!1},d(e){e&&m(t),X(n)}}}function cn(e){let t,n,s,a,l,i,r,o,c,d,u,g,k,w,x,b,C=e[1]&&Tt();const B=[on,rn,ln,an,sn,nn,tn,en,Zt,Yt,Xt,Ut,Qt,Vt,Wt,Kt,It,Rt,Pt,Gt,Ot,Nt,Jt,Ht,Ft,Mt,At,zt,Lt,qt,Et],S=[];function j(e,t){return 0===e[0]?0:1===e[0]?1:2===e[0]?2:3===e[0]?3:4===e[0]?4:5===e[0]?5:6===e[0]?6:7===e[0]?7:8===e[0]?8:9===e[0]?9:10===e[0]?10:11===e[0]?11:12===e[0]?12:13===e[0]?13:14===e[0]?14:15===e[0]?15:16===e[0]?16:17===e[0]?17:18===e[0]?18:19===e[0]?19:20===e[0]?20:21===e[0]?21:22===e[0]?22:23===e[0]?23:24===e[0]?24:25===e[0]?25:26===e[0]?26:27===e[0]?27:28===e[0]?28:29===e[0]?29:30===e[0]?30:-1}return~(g=j(e))&&(k=S[g]=B[g](e)),{c(){t=v("script"),s=$(),a=v("main"),l=v("p"),l.textContent="30 Days Of Javascript",i=$(),r=v("span"),o=$(),c=v("div"),C&&C.c(),d=$(),u=v("div"),k&&k.c(),t.src!==(n="https://kit.fontawesome.com/a229c5b13d.js")&&y(t,"src","https://kit.fontawesome.com/a229c5b13d.js"),y(t,"crossorigin","anonymous"),y(l,"class","svelte-1etalgk"),y(r,"class","menu fas fa-bars svelte-1etalgk"),y(u,"class","pages svelte-1etalgk"),y(c,"class","main-section svelte-1etalgk"),y(a,"class","svelte-1etalgk")},m(n,m){f(document.head,t),p(n,s,m),p(n,a,m),f(a,l),f(a,i),f(a,r),f(a,o),f(a,c),C&&C.m(c,null),f(c,d),f(c,u),~g&&S[g].m(u,null),w=!0,x||(b=h(r,"click",e[3]),x=!0)},p(e,[t]){e[1]?C?2&t&&I(C,1):(C=Tt(),C.c(),I(C,1),C.m(c,d)):C&&(P(),K(C,1,1,(()=>{C=null})),R());let n=g;g=j(e),g!==n&&(k&&(P(),K(S[n],1,1,(()=>{S[n]=null})),R()),~g?(k=S[g],k||(k=S[g]=B[g](e),k.c()),I(k,1),k.m(u,null)):k=null)},i(e){w||(I(C),I(k),w=!0)},o(e){K(C),K(k),w=!1},d(e){m(t),e&&m(s),e&&m(a),C&&C.d(),~g&&S[g].d(),x=!1,b()}}}function dn(e,t,n){let s=0,a=!1;re.subscribe((e=>{n(1,a=e)})),ie.subscribe((e=>{n(0,s=e)}));function l(e){e.preventDefault(),re.update((e=>!e))}return[s,a,l,e=>l(e)]}return new class extends ee{constructor(e){super(),Z(this,e,dn,cn,i,{})}}({target:document.body})}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+var app = (function (internal, transition, store, svelte) {
+  'use strict';
+
+  const days = {
+    0: {
+      day: 'home',
+      title: "Home",
+      completed: true,
+    },
+    1: {
+      day: 1,
+      title: "01 - Javascript Drum Kit",
+      completed: true,
+    },
+    2: {
+      day: 2, 
+      title: "02 - JS and CSS Clock",
+      completed: true,
+    },
+    3: {
+      day: 3,
+      title: "03 - CSS Variables",
+      completed: true,
+    },
+    4: {
+      day: 4,
+      title: "04 - Array Cardio Day 1",
+      completed: true,
+    },
+    5: {
+      day: 5,
+      title: "05 - Flex Panel Gallery",
+      completed: true,
+    },
+    6: {
+      day: 6,
+      title: "06 - Type Ahead",
+      completed: true,
+    },
+    7: {
+      day: 7,
+      title: "07 - Array Cardio Day 2",
+      completed: false,
+    },
+    8: {
+      day: 8,
+      title: "08 - Fun with HTML5 Canvas",
+      completed: false,
+    },
+    9: {
+      day: 9,
+      title: "09 - Dev Tools Domination",
+      completed: false,
+    },
+    10: {
+      day: 10,
+      title: "10 - Hold Shift and Check Checkboxes",
+      completed: false,
+    },
+    11: {
+      day: 11,
+      title: "11 - Custom Video Player",
+      completed: false,
+    },
+    12: {
+      day: 12,
+      title: "12 - Key Sequence Detection",
+      completed: false,
+    },
+    13: {
+      day: 13,
+      title: "13 - Slide in on Scroll",
+      completed: false,
+    },
+    14: {
+      day: 14,
+      title: "14 - JavaScript References VS Copying",
+      completed: false,
+    },
+    15: {
+      day: 15,
+      title: "15 - LocalStorage",
+      completed: false,
+    },
+    16: {
+      day: 16,
+      title: "16 - Mouse Move Shadow",
+      completed: false,
+    },
+    17: {
+      day: 17,
+      title: "17 - Sort Without Articles",
+      completed: false,
+    },
+    18: {
+      day: 18,
+      title: "18 - Adding Up Times with Reduce",
+      completed: false,
+    },
+    19: {
+      day: 19,
+      title: "19 - Webcam Fun",
+      completed: false,
+    },
+    20: {
+      day: 20,
+      title: "20 - Speech Detection",
+      completed: false,
+    },
+    21: {
+      day: 21,
+      title: "21 - Geolocation",
+      completed: false,
+    },
+    22: {
+      day: 22,
+      title: "22 - Follow Along Link Highlighter",
+      completed: false,
+    },
+    23: {
+      day: 23,
+      title: "23 - Speech Synthesis",
+      completed: false,
+    },
+    24: {
+      day: 24,
+      title: "24 - Sticky Nav",
+      completed: false,
+    },
+    25: {
+      day: 25,
+      title: "25 - Event Capture, Propagation, Bubbling and Once",
+      completed: false,
+    },
+    26: {
+      day: 26,
+      title: "26 - Stripe Follow Along Nav",
+      completed: false,
+    },
+    27: {
+      day: 27,
+      title: "27 - Click and Drag",
+      completed: false,
+    },
+    28: {
+      day: 28,
+      title: "28 - Video Speed Controller",
+      completed: false,
+    },
+    29: {
+      day: 29,
+      title: "29 - Countdown Timer",
+      completed: false,
+    },
+    30: {
+      day: 30,
+      title: "30 - Whack A Mole",
+      completed: false,
+    },
+  };
+
+  const page = store.writable(0);
+  const modalOpen = store.writable(false);
+
+  /* src/Modal.svelte generated by Svelte v3.29.0 */
+
+  const { Object: Object_1 } = internal.globals;
+  const file = "src/Modal.svelte";
+
+  function get_each_context(ctx, list, i) {
+  	const child_ctx = ctx.slice();
+  	child_ctx[6] = list[i];
+  	return child_ctx;
+  }
+
+  // (34:3) {#each Object.values(days) as day}
+  function create_each_block(ctx) {
+  	let li;
+  	let t0_value = /*day*/ ctx[6].title + "";
+  	let t0;
+  	let t1;
+  	let li_class_value;
+  	let mounted;
+  	let dispose;
+
+  	function click_handler(...args) {
+  		return /*click_handler*/ ctx[2](/*day*/ ctx[6], ...args);
+  	}
+
+  	const block = {
+  		c: function create() {
+  			li = internal.element("li");
+  			t0 = internal.text(t0_value);
+  			t1 = internal.space();
+  			internal.attr_dev(li, "class", li_class_value = "" + (internal.null_to_empty(!/*day*/ ctx[6].completed ? "not-done" : "") + " svelte-ho6qms"));
+  			internal.add_location(li, file, 34, 4, 708);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, li, anchor);
+  			internal.append_dev(li, t0);
+  			internal.append_dev(li, t1);
+
+  			if (!mounted) {
+  				dispose = internal.listen_dev(li, "click", click_handler, false, false, false);
+  				mounted = true;
+  			}
+  		},
+  		p: function update(new_ctx, dirty) {
+  			ctx = new_ctx;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(li);
+  			mounted = false;
+  			dispose();
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_each_block.name,
+  		type: "each",
+  		source: "(34:3) {#each Object.values(days) as day}",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function create_fragment(ctx) {
+  	let div1;
+  	let div0;
+  	let ul;
+  	let div0_transition;
+  	let current;
+  	let mounted;
+  	let dispose;
+  	let each_value = Object.values(days);
+  	internal.validate_each_argument(each_value);
+  	let each_blocks = [];
+
+  	for (let i = 0; i < each_value.length; i += 1) {
+  		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  	}
+
+  	const block = {
+  		c: function create() {
+  			div1 = internal.element("div");
+  			div0 = internal.element("div");
+  			ul = internal.element("ul");
+
+  			for (let i = 0; i < each_blocks.length; i += 1) {
+  				each_blocks[i].c();
+  			}
+
+  			internal.add_location(ul, file, 32, 2, 661);
+  			internal.attr_dev(div0, "class", "modal svelte-ho6qms");
+  			internal.add_location(div0, file, 31, 1, 593);
+  			internal.attr_dev(div1, "class", "modal-area svelte-ho6qms");
+  			internal.add_location(div1, file, 30, 0, 536);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div1, anchor);
+  			internal.append_dev(div1, div0);
+  			internal.append_dev(div0, ul);
+
+  			for (let i = 0; i < each_blocks.length; i += 1) {
+  				each_blocks[i].m(ul, null);
+  			}
+
+  			current = true;
+
+  			if (!mounted) {
+  				dispose = internal.listen_dev(div1, "click", /*click_handler_1*/ ctx[3], false, false, false);
+  				mounted = true;
+  			}
+  		},
+  		p: function update(ctx, [dirty]) {
+  			if (dirty & /*Object, days, switchPage*/ 1) {
+  				each_value = Object.values(days);
+  				internal.validate_each_argument(each_value);
+  				let i;
+
+  				for (i = 0; i < each_value.length; i += 1) {
+  					const child_ctx = get_each_context(ctx, each_value, i);
+
+  					if (each_blocks[i]) {
+  						each_blocks[i].p(child_ctx, dirty);
+  					} else {
+  						each_blocks[i] = create_each_block(child_ctx);
+  						each_blocks[i].c();
+  						each_blocks[i].m(ul, null);
+  					}
+  				}
+
+  				for (; i < each_blocks.length; i += 1) {
+  					each_blocks[i].d(1);
+  				}
+
+  				each_blocks.length = each_value.length;
+  			}
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+
+  			internal.add_render_callback(() => {
+  				if (!div0_transition) div0_transition = internal.create_bidirectional_transition(div0, transition.fly, { x: -510, duration: 750 }, true);
+  				div0_transition.run(1);
+  			});
+
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			if (!div0_transition) div0_transition = internal.create_bidirectional_transition(div0, transition.fly, { x: -510, duration: 750 }, false);
+  			div0_transition.run(0);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div1);
+  			internal.destroy_each(each_blocks, detaching);
+  			if (detaching && div0_transition) div0_transition.end();
+  			mounted = false;
+  			dispose();
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("Modal", slots, []);
+  	let pageNum;
+
+  	// export let modalOpen;
+  	const unsubscribe = page.subscribe(value => {
+  		pageNum = value;
+  	});
+
+  	function switchPage(e, num, done) {
+  		e.preventDefault();
+
+  		if (!done) {
+  			modalOpen.update(n => n = true);
+  			return;
+  		}
+
+  		page.update(n => n = num);
+  		modalOpen.update(n => n = false);
+  	}
+
+  	function closeModal(e) {
+  		e.preventDefault();
+  		modalOpen.update(n => false);
+  	}
+
+  	const writable_props = [];
+
+  	Object_1.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Modal> was created with unknown prop '${key}'`);
+  	});
+
+  	const click_handler = (day, e) => switchPage(e, day.day, day.completed);
+  	const click_handler_1 = e => closeModal(e);
+
+  	$$self.$capture_state = () => ({
+  		fade: transition.fade,
+  		fly: transition.fly,
+  		page,
+  		modalOpen,
+  		days,
+  		pageNum,
+  		unsubscribe,
+  		switchPage,
+  		closeModal
+  	});
+
+  	$$self.$inject_state = $$props => {
+  		if ("pageNum" in $$props) pageNum = $$props.pageNum;
+  	};
+
+  	if ($$props && "$$inject" in $$props) {
+  		$$self.$inject_state($$props.$$inject);
+  	}
+
+  	return [switchPage, closeModal, click_handler, click_handler_1];
+  }
+
+  class Modal extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance, create_fragment, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "Modal",
+  			options,
+  			id: create_fragment.name
+  		});
+  	}
+  }
+
+  /* src/day_files/Home.svelte generated by Svelte v3.29.0 */
+
+  const file$1 = "src/day_files/Home.svelte";
+
+  function create_fragment$1(ctx) {
+  	let div;
+  	let p;
+  	let t0;
+  	let a;
+  	let t2;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			p = internal.element("p");
+  			t0 = internal.text("30 Days of Javascript is a series of tutorials for fun javascript pages set up by\n\tWes Bos ");
+  			a = internal.element("a");
+  			a.textContent = "here";
+  			t2 = internal.text(". Between the great ideas and \n\tthe fantastic tutorials, it's a great way to refine your skills as a developer with\n\tvery little time commitment. Check out the projects I've completed so far and visit\n\tthe site to start doing the same for free!");
+  			internal.attr_dev(a, "href", "https://javascript30.com/");
+  			internal.attr_dev(a, "class", "svelte-1r245p0");
+  			internal.add_location(a, file$1, 6, 9, 150);
+  			internal.attr_dev(p, "class", "svelte-1r245p0");
+  			internal.add_location(p, file$1, 5, 1, 56);
+  			internal.attr_dev(div, "class", "welcome-description svelte-1r245p0");
+  			internal.add_location(div, file$1, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.append_dev(div, p);
+  			internal.append_dev(p, t0);
+  			internal.append_dev(p, a);
+  			internal.append_dev(p, t2);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$1.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$1($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("Home", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Home> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class Home extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$1, create_fragment$1, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "Home",
+  			options,
+  			id: create_fragment$1.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayOne/DayOne.svelte generated by Svelte v3.29.0 */
+  const file$2 = "src/day_files/DayOne/DayOne.svelte";
+
+  function create_fragment$2(ctx) {
+  	let div11;
+  	let div10;
+  	let div0;
+  	let kbd0;
+  	let t1;
+  	let span0;
+  	let t3;
+  	let div1;
+  	let kbd1;
+  	let t5;
+  	let span1;
+  	let t7;
+  	let div2;
+  	let kbd2;
+  	let t9;
+  	let span2;
+  	let t11;
+  	let div3;
+  	let kbd3;
+  	let t13;
+  	let span3;
+  	let t15;
+  	let div4;
+  	let kbd4;
+  	let t17;
+  	let span4;
+  	let t19;
+  	let div5;
+  	let kbd5;
+  	let t21;
+  	let span5;
+  	let t23;
+  	let div6;
+  	let kbd6;
+  	let t25;
+  	let span6;
+  	let t27;
+  	let div7;
+  	let kbd7;
+  	let t29;
+  	let span7;
+  	let t31;
+  	let div8;
+  	let kbd8;
+  	let t33;
+  	let span8;
+  	let t35;
+  	let div9;
+  	let t36;
+  	let audio0;
+  	let track0;
+  	let audio0_src_value;
+  	let t37;
+  	let audio1;
+  	let track1;
+  	let audio1_src_value;
+  	let t38;
+  	let audio2;
+  	let track2;
+  	let audio2_src_value;
+  	let t39;
+  	let audio3;
+  	let track3;
+  	let audio3_src_value;
+  	let t40;
+  	let audio4;
+  	let track4;
+  	let audio4_src_value;
+  	let t41;
+  	let audio5;
+  	let track5;
+  	let audio5_src_value;
+  	let t42;
+  	let audio6;
+  	let track6;
+  	let audio6_src_value;
+  	let t43;
+  	let audio7;
+  	let track7;
+  	let audio7_src_value;
+  	let t44;
+  	let audio8;
+  	let track8;
+  	let audio8_src_value;
+
+  	const block = {
+  		c: function create() {
+  			div11 = internal.element("div");
+  			div10 = internal.element("div");
+  			div0 = internal.element("div");
+  			kbd0 = internal.element("kbd");
+  			kbd0.textContent = "A";
+  			t1 = internal.space();
+  			span0 = internal.element("span");
+  			span0.textContent = "clap";
+  			t3 = internal.space();
+  			div1 = internal.element("div");
+  			kbd1 = internal.element("kbd");
+  			kbd1.textContent = "S";
+  			t5 = internal.space();
+  			span1 = internal.element("span");
+  			span1.textContent = "hihat";
+  			t7 = internal.space();
+  			div2 = internal.element("div");
+  			kbd2 = internal.element("kbd");
+  			kbd2.textContent = "D";
+  			t9 = internal.space();
+  			span2 = internal.element("span");
+  			span2.textContent = "kick";
+  			t11 = internal.space();
+  			div3 = internal.element("div");
+  			kbd3 = internal.element("kbd");
+  			kbd3.textContent = "F";
+  			t13 = internal.space();
+  			span3 = internal.element("span");
+  			span3.textContent = "openhat";
+  			t15 = internal.space();
+  			div4 = internal.element("div");
+  			kbd4 = internal.element("kbd");
+  			kbd4.textContent = "G";
+  			t17 = internal.space();
+  			span4 = internal.element("span");
+  			span4.textContent = "boom";
+  			t19 = internal.space();
+  			div5 = internal.element("div");
+  			kbd5 = internal.element("kbd");
+  			kbd5.textContent = "H";
+  			t21 = internal.space();
+  			span5 = internal.element("span");
+  			span5.textContent = "ride";
+  			t23 = internal.space();
+  			div6 = internal.element("div");
+  			kbd6 = internal.element("kbd");
+  			kbd6.textContent = "J";
+  			t25 = internal.space();
+  			span6 = internal.element("span");
+  			span6.textContent = "snare";
+  			t27 = internal.space();
+  			div7 = internal.element("div");
+  			kbd7 = internal.element("kbd");
+  			kbd7.textContent = "K";
+  			t29 = internal.space();
+  			span7 = internal.element("span");
+  			span7.textContent = "tom";
+  			t31 = internal.space();
+  			div8 = internal.element("div");
+  			kbd8 = internal.element("kbd");
+  			kbd8.textContent = "L";
+  			t33 = internal.space();
+  			span8 = internal.element("span");
+  			span8.textContent = "tink";
+  			t35 = internal.space();
+  			div9 = internal.element("div");
+  			t36 = internal.space();
+  			audio0 = internal.element("audio");
+  			track0 = internal.element("track");
+  			t37 = internal.space();
+  			audio1 = internal.element("audio");
+  			track1 = internal.element("track");
+  			t38 = internal.space();
+  			audio2 = internal.element("audio");
+  			track2 = internal.element("track");
+  			t39 = internal.space();
+  			audio3 = internal.element("audio");
+  			track3 = internal.element("track");
+  			t40 = internal.space();
+  			audio4 = internal.element("audio");
+  			track4 = internal.element("track");
+  			t41 = internal.space();
+  			audio5 = internal.element("audio");
+  			track5 = internal.element("track");
+  			t42 = internal.space();
+  			audio6 = internal.element("audio");
+  			track6 = internal.element("track");
+  			t43 = internal.space();
+  			audio7 = internal.element("audio");
+  			track7 = internal.element("track");
+  			t44 = internal.space();
+  			audio8 = internal.element("audio");
+  			track8 = internal.element("track");
+  			internal.attr_dev(kbd0, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd0, file$2, 23, 6, 599);
+  			internal.attr_dev(span0, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span0, file$2, 24, 6, 618);
+  			internal.attr_dev(div0, "data-key", "65");
+  			internal.attr_dev(div0, "class", "key svelte-1fvjhws");
+  			internal.add_location(div0, file$2, 22, 4, 561);
+  			internal.attr_dev(kbd1, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd1, file$2, 27, 6, 703);
+  			internal.attr_dev(span1, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span1, file$2, 28, 6, 722);
+  			internal.attr_dev(div1, "data-key", "83");
+  			internal.attr_dev(div1, "class", "key svelte-1fvjhws");
+  			internal.add_location(div1, file$2, 26, 4, 665);
+  			internal.attr_dev(kbd2, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd2, file$2, 31, 6, 808);
+  			internal.attr_dev(span2, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span2, file$2, 32, 6, 827);
+  			internal.attr_dev(div2, "data-key", "68");
+  			internal.attr_dev(div2, "class", "key svelte-1fvjhws");
+  			internal.add_location(div2, file$2, 30, 4, 770);
+  			internal.attr_dev(kbd3, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd3, file$2, 35, 6, 912);
+  			internal.attr_dev(span3, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span3, file$2, 36, 6, 931);
+  			internal.attr_dev(div3, "data-key", "70");
+  			internal.attr_dev(div3, "class", "key svelte-1fvjhws");
+  			internal.add_location(div3, file$2, 34, 4, 874);
+  			internal.attr_dev(kbd4, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd4, file$2, 39, 6, 1019);
+  			internal.attr_dev(span4, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span4, file$2, 40, 6, 1038);
+  			internal.attr_dev(div4, "data-key", "71");
+  			internal.attr_dev(div4, "class", "key svelte-1fvjhws");
+  			internal.add_location(div4, file$2, 38, 4, 981);
+  			internal.attr_dev(kbd5, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd5, file$2, 43, 6, 1123);
+  			internal.attr_dev(span5, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span5, file$2, 44, 6, 1142);
+  			internal.attr_dev(div5, "data-key", "72");
+  			internal.attr_dev(div5, "class", "key svelte-1fvjhws");
+  			internal.add_location(div5, file$2, 42, 4, 1085);
+  			internal.attr_dev(kbd6, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd6, file$2, 47, 6, 1227);
+  			internal.attr_dev(span6, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span6, file$2, 48, 6, 1246);
+  			internal.attr_dev(div6, "data-key", "74");
+  			internal.attr_dev(div6, "class", "key svelte-1fvjhws");
+  			internal.add_location(div6, file$2, 46, 4, 1189);
+  			internal.attr_dev(kbd7, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd7, file$2, 51, 6, 1332);
+  			internal.attr_dev(span7, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span7, file$2, 52, 6, 1351);
+  			internal.attr_dev(div7, "data-key", "75");
+  			internal.attr_dev(div7, "class", "key svelte-1fvjhws");
+  			internal.add_location(div7, file$2, 50, 4, 1294);
+  			internal.attr_dev(kbd8, "class", "svelte-1fvjhws");
+  			internal.add_location(kbd8, file$2, 55, 6, 1435);
+  			internal.attr_dev(span8, "class", "sound svelte-1fvjhws");
+  			internal.add_location(span8, file$2, 56, 6, 1454);
+  			internal.attr_dev(div8, "data-key", "76");
+  			internal.attr_dev(div8, "class", "key svelte-1fvjhws");
+  			internal.add_location(div8, file$2, 54, 4, 1397);
+  			internal.attr_dev(div9, "class", "playing svelte-1fvjhws");
+  			internal.set_style(div9, "display", "none");
+  			internal.add_location(div9, file$2, 58, 2, 1497);
+  			internal.attr_dev(div10, "class", "keys svelte-1fvjhws");
+  			internal.add_location(div10, file$2, 21, 2, 538);
+  			internal.attr_dev(track0, "kind", "captions");
+  			internal.add_location(track0, file$2, 61, 45, 1603);
+  			internal.attr_dev(audio0, "data-key", "65");
+  			if (audio0.src !== (audio0_src_value = "sounds/clap.wav")) internal.attr_dev(audio0, "src", audio0_src_value);
+  			internal.add_location(audio0, file$2, 61, 2, 1560);
+  			internal.attr_dev(track1, "kind", "captions");
+  			internal.add_location(track1, file$2, 62, 46, 1681);
+  			internal.attr_dev(audio1, "data-key", "83");
+  			if (audio1.src !== (audio1_src_value = "sounds/hihat.wav")) internal.attr_dev(audio1, "src", audio1_src_value);
+  			internal.add_location(audio1, file$2, 62, 2, 1637);
+  			internal.attr_dev(track2, "kind", "captions");
+  			internal.add_location(track2, file$2, 63, 45, 1758);
+  			internal.attr_dev(audio2, "data-key", "68");
+  			if (audio2.src !== (audio2_src_value = "sounds/kick.wav")) internal.attr_dev(audio2, "src", audio2_src_value);
+  			internal.add_location(audio2, file$2, 63, 2, 1715);
+  			internal.attr_dev(track3, "kind", "captions");
+  			internal.add_location(track3, file$2, 64, 48, 1838);
+  			internal.attr_dev(audio3, "data-key", "70");
+  			if (audio3.src !== (audio3_src_value = "sounds/openhat.wav")) internal.attr_dev(audio3, "src", audio3_src_value);
+  			internal.add_location(audio3, file$2, 64, 2, 1792);
+  			internal.attr_dev(track4, "kind", "captions");
+  			internal.add_location(track4, file$2, 65, 45, 1915);
+  			internal.attr_dev(audio4, "data-key", "71");
+  			if (audio4.src !== (audio4_src_value = "sounds/boom.wav")) internal.attr_dev(audio4, "src", audio4_src_value);
+  			internal.add_location(audio4, file$2, 65, 2, 1872);
+  			internal.attr_dev(track5, "kind", "captions");
+  			internal.add_location(track5, file$2, 66, 45, 1992);
+  			internal.attr_dev(audio5, "data-key", "72");
+  			if (audio5.src !== (audio5_src_value = "sounds/ride.wav")) internal.attr_dev(audio5, "src", audio5_src_value);
+  			internal.add_location(audio5, file$2, 66, 2, 1949);
+  			internal.attr_dev(track6, "kind", "captions");
+  			internal.add_location(track6, file$2, 67, 46, 2070);
+  			internal.attr_dev(audio6, "data-key", "74");
+  			if (audio6.src !== (audio6_src_value = "sounds/snare.wav")) internal.attr_dev(audio6, "src", audio6_src_value);
+  			internal.add_location(audio6, file$2, 67, 2, 2026);
+  			internal.attr_dev(track7, "kind", "captions");
+  			internal.add_location(track7, file$2, 68, 44, 2146);
+  			internal.attr_dev(audio7, "data-key", "75");
+  			if (audio7.src !== (audio7_src_value = "sounds/tom.wav")) internal.attr_dev(audio7, "src", audio7_src_value);
+  			internal.add_location(audio7, file$2, 68, 2, 2104);
+  			internal.attr_dev(track8, "kind", "captions");
+  			internal.add_location(track8, file$2, 69, 45, 2223);
+  			internal.attr_dev(audio8, "data-key", "76");
+  			if (audio8.src !== (audio8_src_value = "sounds/tink.wav")) internal.attr_dev(audio8, "src", audio8_src_value);
+  			internal.add_location(audio8, file$2, 69, 2, 2180);
+  			internal.attr_dev(div11, "id", "day1");
+  			internal.attr_dev(div11, "class", "day-main svelte-1fvjhws");
+  			internal.add_location(div11, file$2, 20, 0, 503);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div11, anchor);
+  			internal.append_dev(div11, div10);
+  			internal.append_dev(div10, div0);
+  			internal.append_dev(div0, kbd0);
+  			internal.append_dev(div0, t1);
+  			internal.append_dev(div0, span0);
+  			internal.append_dev(div10, t3);
+  			internal.append_dev(div10, div1);
+  			internal.append_dev(div1, kbd1);
+  			internal.append_dev(div1, t5);
+  			internal.append_dev(div1, span1);
+  			internal.append_dev(div10, t7);
+  			internal.append_dev(div10, div2);
+  			internal.append_dev(div2, kbd2);
+  			internal.append_dev(div2, t9);
+  			internal.append_dev(div2, span2);
+  			internal.append_dev(div10, t11);
+  			internal.append_dev(div10, div3);
+  			internal.append_dev(div3, kbd3);
+  			internal.append_dev(div3, t13);
+  			internal.append_dev(div3, span3);
+  			internal.append_dev(div10, t15);
+  			internal.append_dev(div10, div4);
+  			internal.append_dev(div4, kbd4);
+  			internal.append_dev(div4, t17);
+  			internal.append_dev(div4, span4);
+  			internal.append_dev(div10, t19);
+  			internal.append_dev(div10, div5);
+  			internal.append_dev(div5, kbd5);
+  			internal.append_dev(div5, t21);
+  			internal.append_dev(div5, span5);
+  			internal.append_dev(div10, t23);
+  			internal.append_dev(div10, div6);
+  			internal.append_dev(div6, kbd6);
+  			internal.append_dev(div6, t25);
+  			internal.append_dev(div6, span6);
+  			internal.append_dev(div10, t27);
+  			internal.append_dev(div10, div7);
+  			internal.append_dev(div7, kbd7);
+  			internal.append_dev(div7, t29);
+  			internal.append_dev(div7, span7);
+  			internal.append_dev(div10, t31);
+  			internal.append_dev(div10, div8);
+  			internal.append_dev(div8, kbd8);
+  			internal.append_dev(div8, t33);
+  			internal.append_dev(div8, span8);
+  			internal.append_dev(div10, t35);
+  			internal.append_dev(div10, div9);
+  			internal.append_dev(div11, t36);
+  			internal.append_dev(div11, audio0);
+  			internal.append_dev(audio0, track0);
+  			internal.append_dev(div11, t37);
+  			internal.append_dev(div11, audio1);
+  			internal.append_dev(audio1, track1);
+  			internal.append_dev(div11, t38);
+  			internal.append_dev(div11, audio2);
+  			internal.append_dev(audio2, track2);
+  			internal.append_dev(div11, t39);
+  			internal.append_dev(div11, audio3);
+  			internal.append_dev(audio3, track3);
+  			internal.append_dev(div11, t40);
+  			internal.append_dev(div11, audio4);
+  			internal.append_dev(audio4, track4);
+  			internal.append_dev(div11, t41);
+  			internal.append_dev(div11, audio5);
+  			internal.append_dev(audio5, track5);
+  			internal.append_dev(div11, t42);
+  			internal.append_dev(div11, audio6);
+  			internal.append_dev(audio6, track6);
+  			internal.append_dev(div11, t43);
+  			internal.append_dev(div11, audio7);
+  			internal.append_dev(audio7, track7);
+  			internal.append_dev(div11, t44);
+  			internal.append_dev(div11, audio8);
+  			internal.append_dev(audio8, track8);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div11);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$2.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function playSound(e) {
+  	e.preventDefault();
+  	const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  	const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  	if (!audio) return;
+  	key.classList.add("playing");
+  	audio.currentTime = 0;
+  	audio.play();
+
+  	setTimeout(
+  		() => {
+  			key.classList.remove("playing");
+  		},
+  		100
+  	);
+  }
+
+  function instance$2($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayOne", slots, []);
+
+  	svelte.onMount(async () => {
+  		document.addEventListener("keydown", playSound);
+  	});
+
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayOne> was created with unknown prop '${key}'`);
+  	});
+
+  	$$self.$capture_state = () => ({ onMount: svelte.onMount, playSound });
+  	return [];
+  }
+
+  class DayOne extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$2, create_fragment$2, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayOne",
+  			options,
+  			id: create_fragment$2.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwo/DayTwo.svelte generated by Svelte v3.29.0 */
+  const file$3 = "src/day_files/DayTwo/DayTwo.svelte";
+
+  function create_fragment$3(ctx) {
+  	let div6;
+  	let div5;
+  	let div4;
+  	let div0;
+  	let t0;
+  	let div1;
+  	let t1;
+  	let div2;
+  	let t2;
+  	let div3;
+
+  	const block = {
+  		c: function create() {
+  			div6 = internal.element("div");
+  			div5 = internal.element("div");
+  			div4 = internal.element("div");
+  			div0 = internal.element("div");
+  			t0 = internal.space();
+  			div1 = internal.element("div");
+  			t1 = internal.space();
+  			div2 = internal.element("div");
+  			t2 = internal.space();
+  			div3 = internal.element("div");
+  			internal.attr_dev(div0, "class", "center");
+  			internal.add_location(div0, file$3, 44, 3, 1380);
+  			internal.attr_dev(div1, "class", "hand svelte-1hz06bk");
+  			internal.add_location(div1, file$3, 45, 3, 1410);
+  			internal.attr_dev(div2, "class", "hand min svelte-1hz06bk");
+  			internal.add_location(div2, file$3, 46, 3, 1463);
+  			internal.attr_dev(div3, "class", "hand hour svelte-1hz06bk");
+  			internal.add_location(div3, file$3, 47, 3, 1520);
+  			internal.attr_dev(div4, "class", "clock-face svelte-1hz06bk");
+  			internal.add_location(div4, file$3, 43, 2, 1352);
+  			internal.attr_dev(div5, "class", "clock svelte-1hz06bk");
+  			internal.add_location(div5, file$3, 42, 2, 1330);
+  			internal.attr_dev(div6, "class", "day-main svelte-1hz06bk");
+  			internal.add_location(div6, file$3, 41, 0, 1305);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div6, anchor);
+  			internal.append_dev(div6, div5);
+  			internal.append_dev(div5, div4);
+  			internal.append_dev(div4, div0);
+  			internal.append_dev(div4, t0);
+  			internal.append_dev(div4, div1);
+  			/*div1_binding*/ ctx[3](div1);
+  			internal.append_dev(div4, t1);
+  			internal.append_dev(div4, div2);
+  			/*div2_binding*/ ctx[4](div2);
+  			internal.append_dev(div4, t2);
+  			internal.append_dev(div4, div3);
+  			/*div3_binding*/ ctx[5](div3);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div6);
+  			/*div1_binding*/ ctx[3](null);
+  			/*div2_binding*/ ctx[4](null);
+  			/*div3_binding*/ ctx[5](null);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$3.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$3($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwo", slots, []);
+  	let secondHand, minuteHand, hourHand;
+
+  	function setDate() {
+  		const now = new Date();
+  		const seconds = now.getSeconds();
+  		const minutes = now.getMinutes();
+  		const hours = now.getHours();
+  		const secondsDegrees = seconds / 60 * 360 + 90;
+  		const minutesDegrees = minutes / 60 * 360 + 90;
+  		const hoursDegrees = hours / 12 * 360 + 90;
+
+  		if (seconds === 0) {
+  			$$invalidate(0, secondHand.style.transition = "none", secondHand);
+  		} else {
+  			$$invalidate(0, secondHand.style.transition = "all 0.05s", secondHand);
+  			$$invalidate(0, secondHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", secondHand);
+  		}
+
+  		$$invalidate(0, secondHand.style.transform = `rotate(${secondsDegrees}deg)`, secondHand);
+
+  		if (minutes === 0) {
+  			$$invalidate(1, minuteHand.style.transition = "none", minuteHand);
+  		} else {
+  			$$invalidate(1, minuteHand.style.transition = "all 0.05s", minuteHand);
+  			$$invalidate(1, minuteHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", minuteHand);
+  		}
+
+  		$$invalidate(1, minuteHand.style.transform = `rotate(${minutesDegrees}deg)`, minuteHand);
+
+  		if (hours === 0) {
+  			$$invalidate(2, hourHand.style.transition = "none", hourHand);
+  		} else {
+  			$$invalidate(2, hourHand.style.transition = "all 0.05s", hourHand);
+  			$$invalidate(2, hourHand.style.transitionTimingFunction = "cubic-bezier(0.1, 2.7, 0.58, 1)", hourHand);
+  		}
+
+  		$$invalidate(2, hourHand.style.transform = `rotate(${hoursDegrees}deg)`, hourHand);
+  	}
+
+  	const clockInterval = setInterval(setDate, 1000);
+  	svelte.onDestroy(() => clearInterval(clockInterval));
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwo> was created with unknown prop '${key}'`);
+  	});
+
+  	function div1_binding($$value) {
+  		internal.binding_callbacks[$$value ? "unshift" : "push"](() => {
+  			secondHand = $$value;
+  			$$invalidate(0, secondHand);
+  		});
+  	}
+
+  	function div2_binding($$value) {
+  		internal.binding_callbacks[$$value ? "unshift" : "push"](() => {
+  			minuteHand = $$value;
+  			$$invalidate(1, minuteHand);
+  		});
+  	}
+
+  	function div3_binding($$value) {
+  		internal.binding_callbacks[$$value ? "unshift" : "push"](() => {
+  			hourHand = $$value;
+  			$$invalidate(2, hourHand);
+  		});
+  	}
+
+  	$$self.$capture_state = () => ({
+  		onDestroy: svelte.onDestroy,
+  		secondHand,
+  		minuteHand,
+  		hourHand,
+  		setDate,
+  		clockInterval
+  	});
+
+  	$$self.$inject_state = $$props => {
+  		if ("secondHand" in $$props) $$invalidate(0, secondHand = $$props.secondHand);
+  		if ("minuteHand" in $$props) $$invalidate(1, minuteHand = $$props.minuteHand);
+  		if ("hourHand" in $$props) $$invalidate(2, hourHand = $$props.hourHand);
+  	};
+
+  	if ($$props && "$$inject" in $$props) {
+  		$$self.$inject_state($$props.$$inject);
+  	}
+
+  	return [secondHand, minuteHand, hourHand, div1_binding, div2_binding, div3_binding];
+  }
+
+  class DayTwo extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$3, create_fragment$3, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwo",
+  			options,
+  			id: create_fragment$3.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayThree/DayThree.svelte generated by Svelte v3.29.0 */
+  const file$4 = "src/day_files/DayThree/DayThree.svelte";
+
+  function create_fragment$4(ctx) {
+  	let div1;
+  	let h2;
+  	let t0;
+  	let span;
+  	let t2;
+  	let div0;
+  	let label0;
+  	let t4;
+  	let input0;
+  	let t5;
+  	let label1;
+  	let t7;
+  	let input1;
+  	let t8;
+  	let label2;
+  	let t10;
+  	let input2;
+  	let t11;
+  	let img;
+  	let img_src_value;
+
+  	const block = {
+  		c: function create() {
+  			div1 = internal.element("div");
+  			h2 = internal.element("h2");
+  			t0 = internal.text("Update CSS Variables with ");
+  			span = internal.element("span");
+  			span.textContent = "JS";
+  			t2 = internal.space();
+  			div0 = internal.element("div");
+  			label0 = internal.element("label");
+  			label0.textContent = "Spacing:";
+  			t4 = internal.space();
+  			input0 = internal.element("input");
+  			t5 = internal.space();
+  			label1 = internal.element("label");
+  			label1.textContent = "Blur:";
+  			t7 = internal.space();
+  			input1 = internal.element("input");
+  			t8 = internal.space();
+  			label2 = internal.element("label");
+  			label2.textContent = "Base Color";
+  			t10 = internal.space();
+  			input2 = internal.element("input");
+  			t11 = internal.space();
+  			img = internal.element("img");
+  			internal.attr_dev(span, "class", "hl svelte-1caz9an");
+  			internal.add_location(span, file$4, 20, 32, 541);
+  			internal.attr_dev(h2, "class", "svelte-1caz9an");
+  			internal.add_location(h2, file$4, 20, 2, 511);
+  			internal.attr_dev(label0, "for", "spacing");
+  			internal.attr_dev(label0, "class", "svelte-1caz9an");
+  			internal.add_location(label0, file$4, 23, 4, 624);
+  			internal.attr_dev(input0, "id", "spacing");
+  			internal.attr_dev(input0, "type", "range");
+  			internal.attr_dev(input0, "name", "spacing");
+  			internal.attr_dev(input0, "min", "10");
+  			internal.attr_dev(input0, "max", "200");
+  			input0.value = "10";
+  			internal.attr_dev(input0, "data-sizing", "px");
+  			internal.attr_dev(input0, "class", "svelte-1caz9an");
+  			internal.add_location(input0, file$4, 24, 4, 666);
+  			internal.attr_dev(label1, "for", "blur");
+  			internal.attr_dev(label1, "class", "svelte-1caz9an");
+  			internal.add_location(label1, file$4, 26, 4, 767);
+  			internal.attr_dev(input1, "id", "blur");
+  			internal.attr_dev(input1, "type", "range");
+  			internal.attr_dev(input1, "name", "blur");
+  			internal.attr_dev(input1, "min", "0");
+  			internal.attr_dev(input1, "max", "25");
+  			input1.value = "10";
+  			internal.attr_dev(input1, "data-sizing", "px");
+  			internal.attr_dev(input1, "class", "svelte-1caz9an");
+  			internal.add_location(input1, file$4, 27, 4, 803);
+  			internal.attr_dev(label2, "for", "base");
+  			internal.attr_dev(label2, "class", "svelte-1caz9an");
+  			internal.add_location(label2, file$4, 29, 4, 896);
+  			internal.attr_dev(input2, "id", "base");
+  			internal.attr_dev(input2, "type", "color");
+  			internal.attr_dev(input2, "name", "base");
+  			input2.value = "#ffc600";
+  			internal.attr_dev(input2, "class", "svelte-1caz9an");
+  			internal.add_location(input2, file$4, 30, 4, 937);
+  			internal.attr_dev(div0, "class", "controls svelte-1caz9an");
+  			internal.add_location(div0, file$4, 22, 2, 576);
+  			if (img.src !== (img_src_value = "https://source.unsplash.com/7bwQXzbF6KE/800x500")) internal.attr_dev(img, "src", img_src_value);
+  			internal.attr_dev(img, "alt", "");
+  			internal.attr_dev(img, "class", "svelte-1caz9an");
+  			internal.add_location(img, file$4, 33, 2, 1008);
+  			internal.attr_dev(div1, "class", "day-main svelte-1caz9an");
+  			internal.add_location(div1, file$4, 19, 0, 486);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div1, anchor);
+  			internal.append_dev(div1, h2);
+  			internal.append_dev(h2, t0);
+  			internal.append_dev(h2, span);
+  			internal.append_dev(div1, t2);
+  			internal.append_dev(div1, div0);
+  			internal.append_dev(div0, label0);
+  			internal.append_dev(div0, t4);
+  			internal.append_dev(div0, input0);
+  			internal.append_dev(div0, t5);
+  			internal.append_dev(div0, label1);
+  			internal.append_dev(div0, t7);
+  			internal.append_dev(div0, input1);
+  			internal.append_dev(div0, t8);
+  			internal.append_dev(div0, label2);
+  			internal.append_dev(div0, t10);
+  			internal.append_dev(div0, input2);
+  			/*div0_binding*/ ctx[1](div0);
+  			internal.append_dev(div1, t11);
+  			internal.append_dev(div1, img);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div1);
+  			/*div0_binding*/ ctx[1](null);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$4.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function handleUpdate() {
+  	const suffix = this.dataset.sizing || "";
+  	document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+  }
+
+  function instance$4($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayThree", slots, []);
+  	let controls;
+  	let inputs = [];
+
+  	svelte.onMount(() => {
+  		inputs = controls.querySelectorAll("input");
+  		inputs.forEach(input => input.addEventListener("change", handleUpdate));
+  		inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+  	});
+
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayThree> was created with unknown prop '${key}'`);
+  	});
+
+  	function div0_binding($$value) {
+  		internal.binding_callbacks[$$value ? "unshift" : "push"](() => {
+  			controls = $$value;
+  			$$invalidate(0, controls);
+  		});
+  	}
+
+  	$$self.$capture_state = () => ({ onMount: svelte.onMount, controls, inputs, handleUpdate });
+
+  	$$self.$inject_state = $$props => {
+  		if ("controls" in $$props) $$invalidate(0, controls = $$props.controls);
+  		if ("inputs" in $$props) inputs = $$props.inputs;
+  	};
+
+  	if ($$props && "$$inject" in $$props) {
+  		$$self.$inject_state($$props.$$inject);
+  	}
+
+  	return [controls, div0_binding];
+  }
+
+  class DayThree extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$4, create_fragment$4, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayThree",
+  			options,
+  			id: create_fragment$4.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayFour/DayFour.svelte generated by Svelte v3.29.0 */
+
+  const { console: console_1 } = internal.globals;
+  const file$5 = "src/day_files/DayFour/DayFour.svelte";
+
+  function create_fragment$5(ctx) {
+  	let div;
+  	let p;
+  	let em;
+  	let t1;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			p = internal.element("p");
+  			em = internal.element("em");
+  			em.textContent = "Psst: have a look at the JavaScript Console";
+  			t1 = internal.text(" 💁");
+  			internal.add_location(em, file$5, 89, 4, 3803);
+  			internal.add_location(p, file$5, 89, 1, 3800);
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$5, 88, 0, 3776);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.append_dev(div, p);
+  			internal.append_dev(p, em);
+  			internal.append_dev(p, t1);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$5.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$5($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayFour", slots, []);
+
+  	const inventors = [
+  		{
+  			first: "Albert",
+  			last: "Einstein",
+  			year: 1879,
+  			passed: 1955
+  		},
+  		{
+  			first: "Isaac",
+  			last: "Newton",
+  			year: 1643,
+  			passed: 1727
+  		},
+  		{
+  			first: "Galileo",
+  			last: "Galilei",
+  			year: 1564,
+  			passed: 1642
+  		},
+  		{
+  			first: "Marie",
+  			last: "Curie",
+  			year: 1867,
+  			passed: 1934
+  		},
+  		{
+  			first: "Johannes",
+  			last: "Kepler",
+  			year: 1571,
+  			passed: 1630
+  		},
+  		{
+  			first: "Nicolaus",
+  			last: "Copernicus",
+  			year: 1473,
+  			passed: 1543
+  		},
+  		{
+  			first: "Max",
+  			last: "Planck",
+  			year: 1858,
+  			passed: 1947
+  		},
+  		{
+  			first: "Katherine",
+  			last: "Blodgett",
+  			year: 1898,
+  			passed: 1979
+  		},
+  		{
+  			first: "Ada",
+  			last: "Lovelace",
+  			year: 1815,
+  			passed: 1852
+  		},
+  		{
+  			first: "Sarah E.",
+  			last: "Goode",
+  			year: 1855,
+  			passed: 1905
+  		},
+  		{
+  			first: "Lise",
+  			last: "Meitner",
+  			year: 1878,
+  			passed: 1968
+  		},
+  		{
+  			first: "Hanna",
+  			last: "Hammarström",
+  			year: 1829,
+  			passed: 1909
+  		}
+  	];
+
+  	const people = [
+  		"Beck, Glenn",
+  		"Becker, Carl",
+  		"Beckett, Samuel",
+  		"Beddoes, Mick",
+  		"Beecher, Henry",
+  		"Beethoven, Ludwig",
+  		"Begin, Menachem",
+  		"Belloc, Hilaire",
+  		"Bellow, Saul",
+  		"Benchley, Robert",
+  		"Benenson, Peter",
+  		"Ben-Gurion, David",
+  		"Benjamin, Walter",
+  		"Benn, Tony",
+  		"Bennington, Chester",
+  		"Benson, Leana",
+  		"Bent, Silas",
+  		"Bentsen, Lloyd",
+  		"Berger, Ric",
+  		"Bergman, Ingmar",
+  		"Berio, Luciano",
+  		"Berle, Milton",
+  		"Berlin, Irving",
+  		"Berne, Eric",
+  		"Bernhard, Sandra",
+  		"Berra, Yogi",
+  		"Berry, Halle",
+  		"Berry, Wendell",
+  		"Bethea, Erin",
+  		"Bevan, Aneurin",
+  		"Bevel, Ken",
+  		"Biden, Joseph",
+  		"Bierce, Ambrose",
+  		"Biko, Steve",
+  		"Billings, Josh",
+  		"Biondo, Frank",
+  		"Birrell, Augustine",
+  		"Black, Elk",
+  		"Blair, Robert",
+  		"Blair, Tony",
+  		"Blake, William"
+  	];
+
+  	// Array.prototype.filter()
+  	// 1. Filter the list of inventors for those who were born in the 1500's
+  	const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+
+  	console.table(fifteen);
+
+  	// Array.prototype.map()
+  	// 2. Give us an array of the inventors first and last names
+  	const fullnames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+
+  	console.log(fullnames);
+
+  	// Array.prototype.sort()
+  	// 3. Sort the inventors by birthdate, oldest to youngest
+  	const sortByBirth = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+
+  	console.log(sortByBirth);
+
+  	// Array.prototype.reduce()
+  	// 4. How many years did all the inventors live all together?
+  	const fullLifespans = inventors.reduce(
+  		(total, inventor) => {
+  			return total += inventor.passed - inventor.year;
+  		},
+  		0
+  	);
+
+  	console.log(fullLifespans);
+
+  	// 5. Sort the inventors by years lived
+  	const oldest = inventors.sort((a, b) => {
+  		const lastGuy = a.passed - a.year;
+  		const newGuy = b.passed - b.year;
+  		return lastGuy > newGuy ? -1 : 1;
+  	});
+
+  	console.log(oldest);
+
+  	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+  	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+  	// const category = document.querySelector('.mw-category');
+  	// const links = Array.from(category.querySelectorAll('a'));
+  	// const de = links
+  	// 								.map((link) => link.text)
+  	// 								.filter(streetName => streetName.includes('de'));
+  	// 7. sort Exercise
+  	// Sort the people alphabetically by last name
+  	const alpha = people.sort((a, b) => {
+  		const [aLast, aFirst] = a.split(", ");
+  		const [bLast, bFirst] = b.split(", ");
+  		return aLast > bLast ? 1 : -1;
+  	});
+
+  	console.log(alpha);
+
+  	// 8. Reduce Exercise
+  	// Sum up the instances of each of these
+  	const data = [
+  		"car",
+  		"car",
+  		"truck",
+  		"truck",
+  		"bike",
+  		"walk",
+  		"car",
+  		"van",
+  		"bike",
+  		"walk",
+  		"car",
+  		"van",
+  		"car",
+  		"truck"
+  	];
+
+  	const transportation = data.reduce(
+  		(obj, item) => {
+  			if (!obj[item]) obj[item] = 0;
+  			obj[item]++;
+  			return obj;
+  		},
+  		{}
+  	);
+
+  	console.log(transportation);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<DayFour> was created with unknown prop '${key}'`);
+  	});
+
+  	$$self.$capture_state = () => ({
+  		inventors,
+  		people,
+  		fifteen,
+  		fullnames,
+  		sortByBirth,
+  		fullLifespans,
+  		oldest,
+  		alpha,
+  		data,
+  		transportation
+  	});
+
+  	return [];
+  }
+
+  class DayFour extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$5, create_fragment$5, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayFour",
+  			options,
+  			id: create_fragment$5.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayFive/DayFive.svelte generated by Svelte v3.29.0 */
+  const file$6 = "src/day_files/DayFive/DayFive.svelte";
+
+  function create_fragment$6(ctx) {
+  	let div7;
+  	let div5;
+  	let div0;
+  	let p0;
+  	let t1;
+  	let p1;
+  	let t3;
+  	let p2;
+  	let t5;
+  	let div1;
+  	let p3;
+  	let t7;
+  	let p4;
+  	let t9;
+  	let p5;
+  	let t11;
+  	let div2;
+  	let p6;
+  	let t13;
+  	let p7;
+  	let t15;
+  	let p8;
+  	let t17;
+  	let div3;
+  	let p9;
+  	let t19;
+  	let p10;
+  	let t21;
+  	let p11;
+  	let t23;
+  	let div4;
+  	let p12;
+  	let t25;
+  	let p13;
+  	let t27;
+  	let p14;
+  	let t29;
+  	let div6;
+  	let p15;
+
+  	const block = {
+  		c: function create() {
+  			div7 = internal.element("div");
+  			div5 = internal.element("div");
+  			div0 = internal.element("div");
+  			p0 = internal.element("p");
+  			p0.textContent = "Hey";
+  			t1 = internal.space();
+  			p1 = internal.element("p");
+  			p1.textContent = "Let's";
+  			t3 = internal.space();
+  			p2 = internal.element("p");
+  			p2.textContent = "Dance";
+  			t5 = internal.space();
+  			div1 = internal.element("div");
+  			p3 = internal.element("p");
+  			p3.textContent = "Give";
+  			t7 = internal.space();
+  			p4 = internal.element("p");
+  			p4.textContent = "Take";
+  			t9 = internal.space();
+  			p5 = internal.element("p");
+  			p5.textContent = "Receive";
+  			t11 = internal.space();
+  			div2 = internal.element("div");
+  			p6 = internal.element("p");
+  			p6.textContent = "Experience";
+  			t13 = internal.space();
+  			p7 = internal.element("p");
+  			p7.textContent = "It";
+  			t15 = internal.space();
+  			p8 = internal.element("p");
+  			p8.textContent = "Today";
+  			t17 = internal.space();
+  			div3 = internal.element("div");
+  			p9 = internal.element("p");
+  			p9.textContent = "Give";
+  			t19 = internal.space();
+  			p10 = internal.element("p");
+  			p10.textContent = "All";
+  			t21 = internal.space();
+  			p11 = internal.element("p");
+  			p11.textContent = "You can";
+  			t23 = internal.space();
+  			div4 = internal.element("div");
+  			p12 = internal.element("p");
+  			p12.textContent = "Life";
+  			t25 = internal.space();
+  			p13 = internal.element("p");
+  			p13.textContent = "In";
+  			t27 = internal.space();
+  			p14 = internal.element("p");
+  			p14.textContent = "Motion";
+  			t29 = internal.space();
+  			div6 = internal.element("div");
+  			p15 = internal.element("p");
+  			internal.attr_dev(p0, "class", "svelte-etwxkq");
+  			internal.add_location(p0, file$6, 24, 6, 563);
+  			internal.attr_dev(p1, "class", "svelte-etwxkq");
+  			internal.add_location(p1, file$6, 25, 6, 580);
+  			internal.attr_dev(p2, "class", "svelte-etwxkq");
+  			internal.add_location(p2, file$6, 26, 6, 599);
+  			internal.attr_dev(div0, "class", "panel panel1 svelte-etwxkq");
+  			internal.add_location(div0, file$6, 23, 4, 530);
+  			internal.attr_dev(p3, "class", "svelte-etwxkq");
+  			internal.add_location(p3, file$6, 29, 6, 660);
+  			internal.attr_dev(p4, "class", "svelte-etwxkq");
+  			internal.add_location(p4, file$6, 30, 6, 678);
+  			internal.attr_dev(p5, "class", "svelte-etwxkq");
+  			internal.add_location(p5, file$6, 31, 6, 696);
+  			internal.attr_dev(div1, "class", "panel panel2 svelte-etwxkq");
+  			internal.add_location(div1, file$6, 28, 4, 627);
+  			internal.attr_dev(p6, "class", "svelte-etwxkq");
+  			internal.add_location(p6, file$6, 34, 6, 759);
+  			internal.attr_dev(p7, "class", "svelte-etwxkq");
+  			internal.add_location(p7, file$6, 35, 6, 783);
+  			internal.attr_dev(p8, "class", "svelte-etwxkq");
+  			internal.add_location(p8, file$6, 36, 6, 799);
+  			internal.attr_dev(div2, "class", "panel panel3 svelte-etwxkq");
+  			internal.add_location(div2, file$6, 33, 4, 726);
+  			internal.attr_dev(p9, "class", "svelte-etwxkq");
+  			internal.add_location(p9, file$6, 39, 6, 860);
+  			internal.attr_dev(p10, "class", "svelte-etwxkq");
+  			internal.add_location(p10, file$6, 40, 6, 878);
+  			internal.attr_dev(p11, "class", "svelte-etwxkq");
+  			internal.add_location(p11, file$6, 41, 6, 895);
+  			internal.attr_dev(div3, "class", "panel panel4 svelte-etwxkq");
+  			internal.add_location(div3, file$6, 38, 4, 827);
+  			internal.attr_dev(p12, "class", "svelte-etwxkq");
+  			internal.add_location(p12, file$6, 44, 6, 958);
+  			internal.attr_dev(p13, "class", "svelte-etwxkq");
+  			internal.add_location(p13, file$6, 45, 6, 976);
+  			internal.attr_dev(p14, "class", "svelte-etwxkq");
+  			internal.add_location(p14, file$6, 46, 6, 992);
+  			internal.attr_dev(div4, "class", "panel panel5 svelte-etwxkq");
+  			internal.add_location(div4, file$6, 43, 4, 925);
+  			internal.attr_dev(div5, "class", "panels svelte-etwxkq");
+  			internal.add_location(div5, file$6, 22, 2, 505);
+  			internal.attr_dev(p15, "class", "svelte-etwxkq");
+  			internal.add_location(p15, file$6, 50, 42, 1069);
+  			internal.attr_dev(div6, "class", "hide panel open open-active svelte-etwxkq");
+  			internal.add_location(div6, file$6, 50, 1, 1028);
+  			internal.attr_dev(div7, "class", "day-main svelte-etwxkq");
+  			internal.add_location(div7, file$6, 21, 0, 480);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div7, anchor);
+  			internal.append_dev(div7, div5);
+  			internal.append_dev(div5, div0);
+  			internal.append_dev(div0, p0);
+  			internal.append_dev(div0, t1);
+  			internal.append_dev(div0, p1);
+  			internal.append_dev(div0, t3);
+  			internal.append_dev(div0, p2);
+  			internal.append_dev(div5, t5);
+  			internal.append_dev(div5, div1);
+  			internal.append_dev(div1, p3);
+  			internal.append_dev(div1, t7);
+  			internal.append_dev(div1, p4);
+  			internal.append_dev(div1, t9);
+  			internal.append_dev(div1, p5);
+  			internal.append_dev(div5, t11);
+  			internal.append_dev(div5, div2);
+  			internal.append_dev(div2, p6);
+  			internal.append_dev(div2, t13);
+  			internal.append_dev(div2, p7);
+  			internal.append_dev(div2, t15);
+  			internal.append_dev(div2, p8);
+  			internal.append_dev(div5, t17);
+  			internal.append_dev(div5, div3);
+  			internal.append_dev(div3, p9);
+  			internal.append_dev(div3, t19);
+  			internal.append_dev(div3, p10);
+  			internal.append_dev(div3, t21);
+  			internal.append_dev(div3, p11);
+  			internal.append_dev(div5, t23);
+  			internal.append_dev(div5, div4);
+  			internal.append_dev(div4, p12);
+  			internal.append_dev(div4, t25);
+  			internal.append_dev(div4, p13);
+  			internal.append_dev(div4, t27);
+  			internal.append_dev(div4, p14);
+  			internal.append_dev(div7, t29);
+  			internal.append_dev(div7, div6);
+  			internal.append_dev(div6, p15);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div7);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$6.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function toggleOpen(e) {
+  	e.target.classList.toggle("open");
+  }
+
+  function toggleActive(e) {
+  	if (e.propertyName.includes("flex")) {
+  		e.target.classList.toggle("open-active");
+  	}
+  }
+
+  function instance$6($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayFive", slots, []);
+
+  	svelte.onMount(() => {
+  		let panels = document.querySelectorAll(".panel");
+  		panels.forEach(panel => panel.addEventListener("click", toggleOpen));
+  		panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
+  	});
+
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFive> was created with unknown prop '${key}'`);
+  	});
+
+  	$$self.$capture_state = () => ({ onMount: svelte.onMount, toggleOpen, toggleActive });
+  	return [];
+  }
+
+  class DayFive extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$6, create_fragment$6, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayFive",
+  			options,
+  			id: create_fragment$6.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DaySix/DaySix.svelte generated by Svelte v3.29.0 */
+
+  const file$7 = "src/day_files/DaySix/DaySix.svelte";
+
+  function create_fragment$7(ctx) {
+  	let div;
+  	let form;
+  	let input;
+  	let t0;
+  	let ul;
+  	let li0;
+  	let t2;
+  	let li1;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			form = internal.element("form");
+  			input = internal.element("input");
+  			t0 = internal.space();
+  			ul = internal.element("ul");
+  			li0 = internal.element("li");
+  			li0.textContent = "Filter for a city";
+  			t2 = internal.space();
+  			li1 = internal.element("li");
+  			li1.textContent = "or a state";
+  			internal.attr_dev(input, "type", "text");
+  			internal.attr_dev(input, "class", "search");
+  			internal.attr_dev(input, "placeholder", "City or State");
+  			internal.add_location(input, file$7, 8, 4, 221);
+  			internal.add_location(li0, file$7, 10, 6, 319);
+  			internal.add_location(li1, file$7, 11, 6, 352);
+  			internal.attr_dev(ul, "class", "suggestions");
+  			internal.add_location(ul, file$7, 9, 4, 288);
+  			internal.attr_dev(form, "class", "search-form");
+  			internal.add_location(form, file$7, 7, 2, 190);
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$7, 6, 0, 165);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.append_dev(div, form);
+  			internal.append_dev(form, input);
+  			internal.append_dev(form, t0);
+  			internal.append_dev(form, ul);
+  			internal.append_dev(ul, li0);
+  			internal.append_dev(ul, t2);
+  			internal.append_dev(ul, li1);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$7.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+
+  function instance$7($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DaySix", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DaySix> was created with unknown prop '${key}'`);
+  	});
+
+  	$$self.$capture_state = () => ({ endpoint });
+  	return [];
+  }
+
+  class DaySix extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$7, create_fragment$7, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DaySix",
+  			options,
+  			id: create_fragment$7.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DaySeven/DaySeven.svelte generated by Svelte v3.29.0 */
+
+  const file$8 = "src/day_files/DaySeven/DaySeven.svelte";
+
+  function create_fragment$8(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Seven";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$8, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$8.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$8($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DaySeven", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DaySeven> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DaySeven extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$8, create_fragment$8, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DaySeven",
+  			options,
+  			id: create_fragment$8.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayEight/DayEight.svelte generated by Svelte v3.29.0 */
+
+  const file$9 = "src/day_files/DayEight/DayEight.svelte";
+
+  function create_fragment$9(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Eight";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$9, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$9.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$9($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayEight", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayEight> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayEight extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$9, create_fragment$9, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayEight",
+  			options,
+  			id: create_fragment$9.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayNine/DayNine.svelte generated by Svelte v3.29.0 */
+
+  const file$a = "src/day_files/DayNine/DayNine.svelte";
+
+  function create_fragment$a(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Nine";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$a, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$a.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$a($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayNine", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayNine> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayNine extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$a, create_fragment$a, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayNine",
+  			options,
+  			id: create_fragment$a.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTen/DayTen.svelte generated by Svelte v3.29.0 */
+
+  const file$b = "src/day_files/DayTen/DayTen.svelte";
+
+  function create_fragment$b(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Ten";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$b, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$b.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$b($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$b, create_fragment$b, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTen",
+  			options,
+  			id: create_fragment$b.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayEleven/DayEleven.svelte generated by Svelte v3.29.0 */
+
+  const file$c = "src/day_files/DayEleven/DayEleven.svelte";
+
+  function create_fragment$c(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Eleven";
+  			internal.attr_dev(div, "class", "day-main svelte-uv5s0j");
+  			internal.add_location(div, file$c, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$c.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$c($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayEleven", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayEleven> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayEleven extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$c, create_fragment$c, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayEleven",
+  			options,
+  			id: create_fragment$c.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwelve/DayTwelve.svelte generated by Svelte v3.29.0 */
+
+  const file$d = "src/day_files/DayTwelve/DayTwelve.svelte";
+
+  function create_fragment$d(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twelve";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$d, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$d.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$d($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwelve", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwelve> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwelve extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$d, create_fragment$d, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwelve",
+  			options,
+  			id: create_fragment$d.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayThirteen/DayThirteen.svelte generated by Svelte v3.29.0 */
+
+  const file$e = "src/day_files/DayThirteen/DayThirteen.svelte";
+
+  function create_fragment$e(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Thirteen";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$e, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$e.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$e($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayThirteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayThirteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayThirteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$e, create_fragment$e, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayThirteen",
+  			options,
+  			id: create_fragment$e.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayFourteen/DayFourteen.svelte generated by Svelte v3.29.0 */
+
+  const file$f = "src/day_files/DayFourteen/DayFourteen.svelte";
+
+  function create_fragment$f(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Fourteen";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$f, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$f.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$f($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayFourteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFourteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayFourteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$f, create_fragment$f, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayFourteen",
+  			options,
+  			id: create_fragment$f.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayFifteen/DayFifteen.svelte generated by Svelte v3.29.0 */
+
+  const file$g = "src/day_files/DayFifteen/DayFifteen.svelte";
+
+  function create_fragment$g(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Fifteen";
+  			internal.attr_dev(div, "class", "day-main svelte-uv5s0j");
+  			internal.add_location(div, file$g, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$g.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$g($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayFifteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayFifteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayFifteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$g, create_fragment$g, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayFifteen",
+  			options,
+  			id: create_fragment$g.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DaySixteen/DaySixteen.svelte generated by Svelte v3.29.0 */
+
+  const file$h = "src/day_files/DaySixteen/DaySixteen.svelte";
+
+  function create_fragment$h(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Sixteen";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$h, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$h.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$h($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DaySixteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DaySixteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DaySixteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$h, create_fragment$h, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DaySixteen",
+  			options,
+  			id: create_fragment$h.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DaySeventeen/DaySeventeen.svelte generated by Svelte v3.29.0 */
+
+  const file$i = "src/day_files/DaySeventeen/DaySeventeen.svelte";
+
+  function create_fragment$i(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Seventeen";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$i, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$i.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$i($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DaySeventeen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DaySeventeen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DaySeventeen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$i, create_fragment$i, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DaySeventeen",
+  			options,
+  			id: create_fragment$i.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayEighteen/DayEighteen.svelte generated by Svelte v3.29.0 */
+
+  const file$j = "src/day_files/DayEighteen/DayEighteen.svelte";
+
+  function create_fragment$j(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Eighteen";
+  			internal.attr_dev(div, "class", "day-main svelte-uv5s0j");
+  			internal.add_location(div, file$j, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$j.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$j($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayEighteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayEighteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayEighteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$j, create_fragment$j, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayEighteen",
+  			options,
+  			id: create_fragment$j.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayNineteen/DayNineteen.svelte generated by Svelte v3.29.0 */
+
+  const file$k = "src/day_files/DayNineteen/DayNineteen.svelte";
+
+  function create_fragment$k(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Nineteen";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$k, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$k.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$k($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayNineteen", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayNineteen> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayNineteen extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$k, create_fragment$k, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayNineteen",
+  			options,
+  			id: create_fragment$k.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwenty/DayTwenty.svelte generated by Svelte v3.29.0 */
+
+  const file$l = "src/day_files/DayTwenty/DayTwenty.svelte";
+
+  function create_fragment$l(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$l, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$l.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$l($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwenty", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwenty> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwenty extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$l, create_fragment$l, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwenty",
+  			options,
+  			id: create_fragment$l.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyOne/DayTwentyOne.svelte generated by Svelte v3.29.0 */
+
+  const file$m = "src/day_files/DayTwentyOne/DayTwentyOne.svelte";
+
+  function create_fragment$m(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty One";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$m, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$m.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$m($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyOne", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyOne> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyOne extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$m, create_fragment$m, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyOne",
+  			options,
+  			id: create_fragment$m.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyTwo/DayTwentyTwo.svelte generated by Svelte v3.29.0 */
+
+  const file$n = "src/day_files/DayTwentyTwo/DayTwentyTwo.svelte";
+
+  function create_fragment$n(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Two";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$n, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$n.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$n($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyTwo", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyTwo> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyTwo extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$n, create_fragment$n, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyTwo",
+  			options,
+  			id: create_fragment$n.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyThree/DayTwentyThree.svelte generated by Svelte v3.29.0 */
+
+  const file$o = "src/day_files/DayTwentyThree/DayTwentyThree.svelte";
+
+  function create_fragment$o(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Three";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$o, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$o.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$o($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyThree", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyThree> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyThree extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$o, create_fragment$o, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyThree",
+  			options,
+  			id: create_fragment$o.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyFour/DayTwentyFour.svelte generated by Svelte v3.29.0 */
+
+  const file$p = "src/day_files/DayTwentyFour/DayTwentyFour.svelte";
+
+  function create_fragment$p(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Four";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$p, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$p.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$p($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyFour", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyFour> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyFour extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$p, create_fragment$p, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyFour",
+  			options,
+  			id: create_fragment$p.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyFive/DayTwentyFive.svelte generated by Svelte v3.29.0 */
+
+  const file$q = "src/day_files/DayTwentyFive/DayTwentyFive.svelte";
+
+  function create_fragment$q(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Five";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$q, 5, 0, 22);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$q.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$q($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyFive", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyFive> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyFive extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$q, create_fragment$q, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyFive",
+  			options,
+  			id: create_fragment$q.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentySix/DayTwentySix.svelte generated by Svelte v3.29.0 */
+
+  const file$r = "src/day_files/DayTwentySix/DayTwentySix.svelte";
+
+  function create_fragment$r(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Six";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$r, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$r.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$r($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentySix", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentySix> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentySix extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$r, create_fragment$r, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentySix",
+  			options,
+  			id: create_fragment$r.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentySeven/DayTwentySeven.svelte generated by Svelte v3.29.0 */
+
+  const file$s = "src/day_files/DayTwentySeven/DayTwentySeven.svelte";
+
+  function create_fragment$s(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Seven";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$s, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$s.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$s($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentySeven", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentySeven> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentySeven extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$s, create_fragment$s, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentySeven",
+  			options,
+  			id: create_fragment$s.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyEight/DayTwentyEight.svelte generated by Svelte v3.29.0 */
+
+  const file$t = "src/day_files/DayTwentyEight/DayTwentyEight.svelte";
+
+  function create_fragment$t(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Eight";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$t, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$t.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$t($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyEight", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyEight> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyEight extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$t, create_fragment$t, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyEight",
+  			options,
+  			id: create_fragment$t.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayTwentyNine/DayTwentyNine.svelte generated by Svelte v3.29.0 */
+
+  const file$u = "src/day_files/DayTwentyNine/DayTwentyNine.svelte";
+
+  function create_fragment$u(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Twenty Nine";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$u, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$u.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$u($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayTwentyNine", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayTwentyNine> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayTwentyNine extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$u, create_fragment$u, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayTwentyNine",
+  			options,
+  			id: create_fragment$u.name
+  		});
+  	}
+  }
+
+  /* src/day_files/DayThirty/DayThirty.svelte generated by Svelte v3.29.0 */
+
+  const file$v = "src/day_files/DayThirty/DayThirty.svelte";
+
+  function create_fragment$v(ctx) {
+  	let div;
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			div.textContent = "Day Thirty";
+  			internal.attr_dev(div, "class", "day-main svelte-1t7hos2");
+  			internal.add_location(div, file$v, 4, 0, 21);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  		},
+  		p: internal.noop,
+  		i: internal.noop,
+  		o: internal.noop,
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$v.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$v($$self, $$props) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("DayThirty", slots, []);
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DayThirty> was created with unknown prop '${key}'`);
+  	});
+
+  	return [];
+  }
+
+  class DayThirty extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$v, create_fragment$v, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "DayThirty",
+  			options,
+  			id: create_fragment$v.name
+  		});
+  	}
+  }
+
+  /* src/App.svelte generated by Svelte v3.29.0 */
+  const file$w = "src/App.svelte";
+
+  // (62:2) {#if isModalOpen}
+  function create_if_block_31(ctx) {
+  	let modal;
+  	let current;
+  	modal = new Modal({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			internal.create_component(modal.$$.fragment);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.mount_component(modal, target, anchor);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(modal.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(modal.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			internal.destroy_component(modal, detaching);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_31.name,
+  		type: "if",
+  		source: "(62:2) {#if isModalOpen}",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (186:28) 
+  function create_if_block_30(ctx) {
+  	let div;
+  	let daythirty;
+  	let current;
+  	daythirty = new DayThirty({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daythirty.$$.fragment);
+  			internal.attr_dev(div, "id", "30");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 186, 3, 5456);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daythirty, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daythirty.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daythirty.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daythirty);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_30.name,
+  		type: "if",
+  		source: "(186:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (182:28) 
+  function create_if_block_29(ctx) {
+  	let div;
+  	let daytwentynine;
+  	let current;
+  	daytwentynine = new DayTwentyNine({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentynine.$$.fragment);
+  			internal.attr_dev(div, "id", "29");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 182, 3, 5365);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentynine, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentynine.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentynine.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentynine);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_29.name,
+  		type: "if",
+  		source: "(182:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (178:28) 
+  function create_if_block_28(ctx) {
+  	let div;
+  	let daytwentyeight;
+  	let current;
+  	daytwentyeight = new DayTwentyEight({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentyeight.$$.fragment);
+  			internal.attr_dev(div, "id", "28");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 178, 3, 5273);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentyeight, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentyeight.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentyeight.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentyeight);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_28.name,
+  		type: "if",
+  		source: "(178:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (174:28) 
+  function create_if_block_27(ctx) {
+  	let div;
+  	let daytwentyseven;
+  	let current;
+  	daytwentyseven = new DayTwentySeven({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentyseven.$$.fragment);
+  			internal.attr_dev(div, "id", "27");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 174, 3, 5181);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentyseven, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentyseven.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentyseven.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentyseven);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_27.name,
+  		type: "if",
+  		source: "(174:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (170:28) 
+  function create_if_block_26(ctx) {
+  	let div;
+  	let daytwentysix;
+  	let current;
+  	daytwentysix = new DayTwentySix({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentysix.$$.fragment);
+  			internal.attr_dev(div, "id", "26");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 170, 3, 5091);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentysix, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentysix.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentysix.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentysix);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_26.name,
+  		type: "if",
+  		source: "(170:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (166:28) 
+  function create_if_block_25(ctx) {
+  	let div;
+  	let daytwentyfive;
+  	let current;
+  	daytwentyfive = new DayTwentyFive({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentyfive.$$.fragment);
+  			internal.attr_dev(div, "id", "25");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 166, 3, 5000);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentyfive, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentyfive.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentyfive.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentyfive);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_25.name,
+  		type: "if",
+  		source: "(166:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (162:28) 
+  function create_if_block_24(ctx) {
+  	let div;
+  	let daytwentyfour;
+  	let current;
+  	daytwentyfour = new DayTwentyFour({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentyfour.$$.fragment);
+  			internal.attr_dev(div, "id", "24");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 162, 3, 4909);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentyfour, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentyfour.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentyfour.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentyfour);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_24.name,
+  		type: "if",
+  		source: "(162:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (158:28) 
+  function create_if_block_23(ctx) {
+  	let div;
+  	let daytwentythree;
+  	let current;
+  	daytwentythree = new DayTwentyThree({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentythree.$$.fragment);
+  			internal.attr_dev(div, "id", "23");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 158, 3, 4817);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentythree, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentythree.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentythree.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentythree);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_23.name,
+  		type: "if",
+  		source: "(158:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (154:28) 
+  function create_if_block_22(ctx) {
+  	let div;
+  	let daytwentytwo;
+  	let current;
+  	daytwentytwo = new DayTwentyTwo({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentytwo.$$.fragment);
+  			internal.attr_dev(div, "id", "22");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 154, 3, 4727);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentytwo, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentytwo.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentytwo.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentytwo);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_22.name,
+  		type: "if",
+  		source: "(154:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (150:28) 
+  function create_if_block_21(ctx) {
+  	let div;
+  	let daytwentyone;
+  	let current;
+  	daytwentyone = new DayTwentyOne({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwentyone.$$.fragment);
+  			internal.attr_dev(div, "id", "21");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 150, 3, 4637);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwentyone, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwentyone.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwentyone.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwentyone);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_21.name,
+  		type: "if",
+  		source: "(150:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (146:28) 
+  function create_if_block_20(ctx) {
+  	let div;
+  	let daytwenty;
+  	let current;
+  	daytwenty = new DayTwenty({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwenty.$$.fragment);
+  			internal.attr_dev(div, "id", "20");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 146, 3, 4550);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwenty, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwenty.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwenty.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwenty);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_20.name,
+  		type: "if",
+  		source: "(146:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (142:28) 
+  function create_if_block_19(ctx) {
+  	let div;
+  	let daynineteen;
+  	let current;
+  	daynineteen = new DayNineteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daynineteen.$$.fragment);
+  			internal.attr_dev(div, "id", "19");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 142, 3, 4461);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daynineteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daynineteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daynineteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daynineteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_19.name,
+  		type: "if",
+  		source: "(142:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (138:28) 
+  function create_if_block_18(ctx) {
+  	let div;
+  	let dayeighteen;
+  	let current;
+  	dayeighteen = new DayEighteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayeighteen.$$.fragment);
+  			internal.attr_dev(div, "id", "18");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 138, 3, 4372);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayeighteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayeighteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayeighteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayeighteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_18.name,
+  		type: "if",
+  		source: "(138:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (134:28) 
+  function create_if_block_17(ctx) {
+  	let div;
+  	let dayseventeen;
+  	let current;
+  	dayseventeen = new DaySeventeen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayseventeen.$$.fragment);
+  			internal.attr_dev(div, "id", "17");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 134, 3, 4282);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayseventeen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayseventeen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayseventeen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayseventeen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_17.name,
+  		type: "if",
+  		source: "(134:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (130:28) 
+  function create_if_block_16(ctx) {
+  	let div;
+  	let daysixteen;
+  	let current;
+  	daysixteen = new DaySixteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daysixteen.$$.fragment);
+  			internal.attr_dev(div, "id", "16");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 130, 3, 4194);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daysixteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daysixteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daysixteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daysixteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_16.name,
+  		type: "if",
+  		source: "(130:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (126:28) 
+  function create_if_block_15(ctx) {
+  	let div;
+  	let dayfifteen;
+  	let current;
+  	dayfifteen = new DayFifteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayfifteen.$$.fragment);
+  			internal.attr_dev(div, "id", "15");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 126, 3, 4106);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayfifteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayfifteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayfifteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayfifteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_15.name,
+  		type: "if",
+  		source: "(126:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (122:28) 
+  function create_if_block_14(ctx) {
+  	let div;
+  	let dayfourteen;
+  	let current;
+  	dayfourteen = new DayFourteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayfourteen.$$.fragment);
+  			internal.attr_dev(div, "id", "14");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 122, 3, 4017);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayfourteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayfourteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayfourteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayfourteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_14.name,
+  		type: "if",
+  		source: "(122:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (118:28) 
+  function create_if_block_13(ctx) {
+  	let div;
+  	let daythirteen;
+  	let current;
+  	daythirteen = new DayThirteen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daythirteen.$$.fragment);
+  			internal.attr_dev(div, "id", "13");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 118, 3, 3928);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daythirteen, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daythirteen.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daythirteen.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daythirteen);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_13.name,
+  		type: "if",
+  		source: "(118:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (114:28) 
+  function create_if_block_12(ctx) {
+  	let div;
+  	let daytwelve;
+  	let current;
+  	daytwelve = new DayTwelve({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwelve.$$.fragment);
+  			internal.attr_dev(div, "id", "12");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 114, 3, 3841);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwelve, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwelve.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwelve.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwelve);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_12.name,
+  		type: "if",
+  		source: "(114:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (110:28) 
+  function create_if_block_11(ctx) {
+  	let div;
+  	let dayeleven;
+  	let current;
+  	dayeleven = new DayEleven({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayeleven.$$.fragment);
+  			internal.attr_dev(div, "id", "11");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 110, 3, 3754);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayeleven, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayeleven.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayeleven.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayeleven);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_11.name,
+  		type: "if",
+  		source: "(110:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (106:28) 
+  function create_if_block_10(ctx) {
+  	let div;
+  	let dayten;
+  	let current;
+  	dayten = new DayTen({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayten.$$.fragment);
+  			internal.attr_dev(div, "id", "10");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 106, 3, 3670);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayten, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayten.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayten.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayten);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_10.name,
+  		type: "if",
+  		source: "(106:28) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (102:27) 
+  function create_if_block_9(ctx) {
+  	let div;
+  	let daynine;
+  	let current;
+  	daynine = new DayNine({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daynine.$$.fragment);
+  			internal.attr_dev(div, "id", "9");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 102, 3, 3586);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daynine, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daynine.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daynine.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daynine);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_9.name,
+  		type: "if",
+  		source: "(102:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (98:27) 
+  function create_if_block_8(ctx) {
+  	let div;
+  	let dayeight;
+  	let current;
+  	dayeight = new DayEight({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayeight.$$.fragment);
+  			internal.attr_dev(div, "id", "8");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 98, 3, 3502);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayeight, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayeight.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayeight.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayeight);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_8.name,
+  		type: "if",
+  		source: "(98:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (94:27) 
+  function create_if_block_7(ctx) {
+  	let div;
+  	let dayseven;
+  	let current;
+  	dayseven = new DaySeven({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayseven.$$.fragment);
+  			internal.attr_dev(div, "id", "7");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 94, 3, 3418);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayseven, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayseven.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayseven.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayseven);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_7.name,
+  		type: "if",
+  		source: "(94:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (90:27) 
+  function create_if_block_6(ctx) {
+  	let div;
+  	let daysix;
+  	let current;
+  	daysix = new DaySix({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daysix.$$.fragment);
+  			internal.attr_dev(div, "id", "6");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 90, 3, 3336);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daysix, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daysix.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daysix.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daysix);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_6.name,
+  		type: "if",
+  		source: "(90:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (86:27) 
+  function create_if_block_5(ctx) {
+  	let div;
+  	let dayfive;
+  	let current;
+  	dayfive = new DayFive({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayfive.$$.fragment);
+  			internal.attr_dev(div, "id", "5");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 86, 3, 3253);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayfive, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayfive.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayfive.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayfive);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_5.name,
+  		type: "if",
+  		source: "(86:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (82:27) 
+  function create_if_block_4(ctx) {
+  	let div;
+  	let dayfour;
+  	let current;
+  	dayfour = new DayFour({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayfour.$$.fragment);
+  			internal.attr_dev(div, "id", "4");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 82, 3, 3170);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayfour, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayfour.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayfour.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayfour);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_4.name,
+  		type: "if",
+  		source: "(82:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (78:27) 
+  function create_if_block_3(ctx) {
+  	let div;
+  	let daythree;
+  	let current;
+  	daythree = new DayThree({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daythree.$$.fragment);
+  			internal.attr_dev(div, "id", "3");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 78, 3, 3086);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daythree, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daythree.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daythree.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daythree);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_3.name,
+  		type: "if",
+  		source: "(78:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (74:27) 
+  function create_if_block_2(ctx) {
+  	let div;
+  	let daytwo;
+  	let current;
+  	daytwo = new DayTwo({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(daytwo.$$.fragment);
+  			internal.attr_dev(div, "id", "2");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 74, 3, 3004);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(daytwo, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(daytwo.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(daytwo.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(daytwo);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_2.name,
+  		type: "if",
+  		source: "(74:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (70:27) 
+  function create_if_block_1(ctx) {
+  	let div;
+  	let dayone;
+  	let current;
+  	dayone = new DayOne({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(dayone.$$.fragment);
+  			internal.attr_dev(div, "id", "1");
+  			internal.attr_dev(div, "class", "page");
+  			internal.add_location(div, file$w, 70, 3, 2922);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(dayone, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(dayone.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(dayone.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(dayone);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block_1.name,
+  		type: "if",
+  		source: "(70:27) ",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  // (66:3) {#if pageNum === 0}
+  function create_if_block(ctx) {
+  	let div;
+  	let home;
+  	let current;
+  	home = new Home({ $$inline: true });
+
+  	const block = {
+  		c: function create() {
+  			div = internal.element("div");
+  			internal.create_component(home.$$.fragment);
+  			internal.attr_dev(div, "id", "home");
+  			internal.attr_dev(div, "class", "page svelte-1etalgk");
+  			internal.add_location(div, file$w, 66, 3, 2839);
+  		},
+  		m: function mount(target, anchor) {
+  			internal.insert_dev(target, div, anchor);
+  			internal.mount_component(home, div, null);
+  			current = true;
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(home.$$.fragment, local);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(home.$$.fragment, local);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			if (detaching) internal.detach_dev(div);
+  			internal.destroy_component(home);
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_if_block.name,
+  		type: "if",
+  		source: "(66:3) {#if pageNum === 0}",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function create_fragment$w(ctx) {
+  	let script;
+  	let script_src_value;
+  	let t0;
+  	let main;
+  	let p;
+  	let t2;
+  	let span;
+  	let t3;
+  	let div1;
+  	let t4;
+  	let div0;
+  	let current_block_type_index;
+  	let if_block1;
+  	let current;
+  	let mounted;
+  	let dispose;
+  	let if_block0 = /*isModalOpen*/ ctx[1] && create_if_block_31(ctx);
+
+  	const if_block_creators = [
+  		create_if_block,
+  		create_if_block_1,
+  		create_if_block_2,
+  		create_if_block_3,
+  		create_if_block_4,
+  		create_if_block_5,
+  		create_if_block_6,
+  		create_if_block_7,
+  		create_if_block_8,
+  		create_if_block_9,
+  		create_if_block_10,
+  		create_if_block_11,
+  		create_if_block_12,
+  		create_if_block_13,
+  		create_if_block_14,
+  		create_if_block_15,
+  		create_if_block_16,
+  		create_if_block_17,
+  		create_if_block_18,
+  		create_if_block_19,
+  		create_if_block_20,
+  		create_if_block_21,
+  		create_if_block_22,
+  		create_if_block_23,
+  		create_if_block_24,
+  		create_if_block_25,
+  		create_if_block_26,
+  		create_if_block_27,
+  		create_if_block_28,
+  		create_if_block_29,
+  		create_if_block_30
+  	];
+
+  	const if_blocks = [];
+
+  	function select_block_type(ctx, dirty) {
+  		if (/*pageNum*/ ctx[0] === 0) return 0;
+  		if (/*pageNum*/ ctx[0] === 1) return 1;
+  		if (/*pageNum*/ ctx[0] === 2) return 2;
+  		if (/*pageNum*/ ctx[0] === 3) return 3;
+  		if (/*pageNum*/ ctx[0] === 4) return 4;
+  		if (/*pageNum*/ ctx[0] === 5) return 5;
+  		if (/*pageNum*/ ctx[0] === 6) return 6;
+  		if (/*pageNum*/ ctx[0] === 7) return 7;
+  		if (/*pageNum*/ ctx[0] === 8) return 8;
+  		if (/*pageNum*/ ctx[0] === 9) return 9;
+  		if (/*pageNum*/ ctx[0] === 10) return 10;
+  		if (/*pageNum*/ ctx[0] === 11) return 11;
+  		if (/*pageNum*/ ctx[0] === 12) return 12;
+  		if (/*pageNum*/ ctx[0] === 13) return 13;
+  		if (/*pageNum*/ ctx[0] === 14) return 14;
+  		if (/*pageNum*/ ctx[0] === 15) return 15;
+  		if (/*pageNum*/ ctx[0] === 16) return 16;
+  		if (/*pageNum*/ ctx[0] === 17) return 17;
+  		if (/*pageNum*/ ctx[0] === 18) return 18;
+  		if (/*pageNum*/ ctx[0] === 19) return 19;
+  		if (/*pageNum*/ ctx[0] === 20) return 20;
+  		if (/*pageNum*/ ctx[0] === 21) return 21;
+  		if (/*pageNum*/ ctx[0] === 22) return 22;
+  		if (/*pageNum*/ ctx[0] === 23) return 23;
+  		if (/*pageNum*/ ctx[0] === 24) return 24;
+  		if (/*pageNum*/ ctx[0] === 25) return 25;
+  		if (/*pageNum*/ ctx[0] === 26) return 26;
+  		if (/*pageNum*/ ctx[0] === 27) return 27;
+  		if (/*pageNum*/ ctx[0] === 28) return 28;
+  		if (/*pageNum*/ ctx[0] === 29) return 29;
+  		if (/*pageNum*/ ctx[0] === 30) return 30;
+  		return -1;
+  	}
+
+  	if (~(current_block_type_index = select_block_type(ctx))) {
+  		if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  	}
+
+  	const block = {
+  		c: function create() {
+  			script = internal.element("script");
+  			t0 = internal.space();
+  			main = internal.element("main");
+  			p = internal.element("p");
+  			p.textContent = "30 Days Of Javascript";
+  			t2 = internal.space();
+  			span = internal.element("span");
+  			t3 = internal.space();
+  			div1 = internal.element("div");
+  			if (if_block0) if_block0.c();
+  			t4 = internal.space();
+  			div0 = internal.element("div");
+  			if (if_block1) if_block1.c();
+  			if (script.src !== (script_src_value = "https://kit.fontawesome.com/a229c5b13d.js")) internal.attr_dev(script, "src", script_src_value);
+  			internal.attr_dev(script, "crossorigin", "anonymous");
+  			internal.add_location(script, file$w, 55, 1, 2511);
+  			internal.attr_dev(p, "class", "svelte-1etalgk");
+  			internal.add_location(p, file$w, 58, 1, 2624);
+  			internal.attr_dev(span, "class", "menu fas fa-bars svelte-1etalgk");
+  			internal.add_location(span, file$w, 59, 1, 2654);
+  			internal.attr_dev(div0, "class", "pages svelte-1etalgk");
+  			internal.add_location(div0, file$w, 64, 2, 2793);
+  			internal.attr_dev(div1, "class", "main-section svelte-1etalgk");
+  			internal.add_location(div1, file$w, 60, 1, 2723);
+  			internal.attr_dev(main, "class", "svelte-1etalgk");
+  			internal.add_location(main, file$w, 57, 0, 2616);
+  		},
+  		l: function claim(nodes) {
+  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+  		},
+  		m: function mount(target, anchor) {
+  			internal.append_dev(document.head, script);
+  			internal.insert_dev(target, t0, anchor);
+  			internal.insert_dev(target, main, anchor);
+  			internal.append_dev(main, p);
+  			internal.append_dev(main, t2);
+  			internal.append_dev(main, span);
+  			internal.append_dev(main, t3);
+  			internal.append_dev(main, div1);
+  			if (if_block0) if_block0.m(div1, null);
+  			internal.append_dev(div1, t4);
+  			internal.append_dev(div1, div0);
+
+  			if (~current_block_type_index) {
+  				if_blocks[current_block_type_index].m(div0, null);
+  			}
+
+  			current = true;
+
+  			if (!mounted) {
+  				dispose = internal.listen_dev(span, "click", /*click_handler*/ ctx[3], false, false, false);
+  				mounted = true;
+  			}
+  		},
+  		p: function update(ctx, [dirty]) {
+  			if (/*isModalOpen*/ ctx[1]) {
+  				if (if_block0) {
+  					if (dirty & /*isModalOpen*/ 2) {
+  						internal.transition_in(if_block0, 1);
+  					}
+  				} else {
+  					if_block0 = create_if_block_31(ctx);
+  					if_block0.c();
+  					internal.transition_in(if_block0, 1);
+  					if_block0.m(div1, t4);
+  				}
+  			} else if (if_block0) {
+  				internal.group_outros();
+
+  				internal.transition_out(if_block0, 1, 1, () => {
+  					if_block0 = null;
+  				});
+
+  				internal.check_outros();
+  			}
+
+  			let previous_block_index = current_block_type_index;
+  			current_block_type_index = select_block_type(ctx);
+
+  			if (current_block_type_index !== previous_block_index) {
+  				if (if_block1) {
+  					internal.group_outros();
+
+  					internal.transition_out(if_blocks[previous_block_index], 1, 1, () => {
+  						if_blocks[previous_block_index] = null;
+  					});
+
+  					internal.check_outros();
+  				}
+
+  				if (~current_block_type_index) {
+  					if_block1 = if_blocks[current_block_type_index];
+
+  					if (!if_block1) {
+  						if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  						if_block1.c();
+  					}
+
+  					internal.transition_in(if_block1, 1);
+  					if_block1.m(div0, null);
+  				} else {
+  					if_block1 = null;
+  				}
+  			}
+  		},
+  		i: function intro(local) {
+  			if (current) return;
+  			internal.transition_in(if_block0);
+  			internal.transition_in(if_block1);
+  			current = true;
+  		},
+  		o: function outro(local) {
+  			internal.transition_out(if_block0);
+  			internal.transition_out(if_block1);
+  			current = false;
+  		},
+  		d: function destroy(detaching) {
+  			internal.detach_dev(script);
+  			if (detaching) internal.detach_dev(t0);
+  			if (detaching) internal.detach_dev(main);
+  			if (if_block0) if_block0.d();
+
+  			if (~current_block_type_index) {
+  				if_blocks[current_block_type_index].d();
+  			}
+
+  			mounted = false;
+  			dispose();
+  		}
+  	};
+
+  	internal.dispatch_dev("SvelteRegisterBlock", {
+  		block,
+  		id: create_fragment$w.name,
+  		type: "component",
+  		source: "",
+  		ctx
+  	});
+
+  	return block;
+  }
+
+  function instance$w($$self, $$props, $$invalidate) {
+  	let { $$slots: slots = {}, $$scope } = $$props;
+  	internal.validate_slots("App", slots, []);
+  	let pageNum = 0;
+  	let isModalOpen = false;
+
+  	const unsubscribe = modalOpen.subscribe(value => {
+  		$$invalidate(1, isModalOpen = value);
+  	});
+
+  	const unsubscribeTwo = page.subscribe(value => {
+  		$$invalidate(0, pageNum = value);
+  	});
+
+  	function openModal(e) {
+  		e.preventDefault();
+  		modalOpen.update(n => n = !n);
+  	}
+
+  	const writable_props = [];
+
+  	Object.keys($$props).forEach(key => {
+  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
+  	});
+
+  	const click_handler = e => openModal(e);
+
+  	$$self.$capture_state = () => ({
+  		days,
+  		Modal,
+  		Home,
+  		DayOne,
+  		DayTwo,
+  		DayThree,
+  		DayFour,
+  		DayFive,
+  		DaySix,
+  		DaySeven,
+  		DayEight,
+  		DayNine,
+  		DayTen,
+  		DayEleven,
+  		DayTwelve,
+  		DayThirteen,
+  		DayFourteen,
+  		DayFifteen,
+  		DaySixteen,
+  		DaySeventeen,
+  		DayEighteen,
+  		DayNineteen,
+  		DayTwenty,
+  		DayTwentyOne,
+  		DayTwentyTwo,
+  		DayTwentyThree,
+  		DayTwentyFour,
+  		DayTwentyFive,
+  		DayTwentySix,
+  		DayTwentySeven,
+  		DayTwentyEight,
+  		DayTwentyNine,
+  		DayThirty,
+  		page,
+  		modalOpen,
+  		pageNum,
+  		isModalOpen,
+  		unsubscribe,
+  		unsubscribeTwo,
+  		openModal
+  	});
+
+  	$$self.$inject_state = $$props => {
+  		if ("pageNum" in $$props) $$invalidate(0, pageNum = $$props.pageNum);
+  		if ("isModalOpen" in $$props) $$invalidate(1, isModalOpen = $$props.isModalOpen);
+  	};
+
+  	if ($$props && "$$inject" in $$props) {
+  		$$self.$inject_state($$props.$$inject);
+  	}
+
+  	return [pageNum, isModalOpen, openModal, click_handler];
+  }
+
+  class App extends internal.SvelteComponentDev {
+  	constructor(options) {
+  		super(options);
+  		internal.init(this, options, instance$w, create_fragment$w, internal.safe_not_equal, {});
+
+  		internal.dispatch_dev("SvelteRegisterComponent", {
+  			component: this,
+  			tagName: "App",
+  			options,
+  			id: create_fragment$w.name
+  		});
+  	}
+  }
+
+  const app = new App({
+  	target: document.body,
+  });
+
+  return app;
+
+}(internal, transition, store, svelte));
 //# sourceMappingURL=bundle.js.map
