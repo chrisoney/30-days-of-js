@@ -2726,10 +2726,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$8, 44, 4, 1219);
-    			add_location(p, file$8, 44, 1, 1216);
+    			add_location(em, file$8, 45, 4, 1338);
+    			add_location(p, file$8, 45, 1, 1335);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$8, 43, 0, 1192);
+    			add_location(div, file$8, 44, 0, 1311);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2792,14 +2792,16 @@ var app = (function () {
     	// })
     	const isAdult = people.some(person => new Date().getFullYear() - person.year >= 19);
 
+    	const everyAdult = people.every(person => new Date().getFullYear() - person.year >= 19);
     	console.log({ isAdult });
+    	console.log({ everyAdult });
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$2.warn(`<DaySeven> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ people, comments, isAdult });
+    	$$self.$capture_state = () => ({ people, comments, isAdult, everyAdult });
     	return [];
     }
 
