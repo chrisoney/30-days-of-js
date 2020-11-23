@@ -2726,10 +2726,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$8, 42, 4, 1112);
-    			add_location(p, file$8, 42, 1, 1109);
+    			add_location(em, file$8, 44, 4, 1219);
+    			add_location(p, file$8, 44, 1, 1216);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$8, 41, 0, 1085);
+    			add_location(div, file$8, 43, 0, 1192);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2784,13 +2784,13 @@ var app = (function () {
     	// Some and Every Checks
     	// Array.prototype.some() // is at least one person 19 or older?
     	// Array.prototype.every() // is everyone 19 or older?
-    	const isAdult = people.some(function (person) {
-    		const currentYear = new Date().getFullYear();
-
-    		if (currentYear - person.year >= 19) {
-    			return true;
-    		}
-    	});
+    	// const isAdult = people.some(function(person) {
+    	// 	const currentYear = (new Date()).getFullYear();
+    	// 	if (currentYear - person.year >= 19){
+    	// 		return true;
+    	// 	}
+    	// })
+    	const isAdult = people.some(person => new Date().getFullYear() - person.year >= 19);
 
     	console.log({ isAdult });
     	const writable_props = [];
