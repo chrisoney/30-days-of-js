@@ -13,11 +13,21 @@ const people = [
       { text: 'You are the best', id: 2039842 },
       { text: 'Ramen is my fav food ever', id: 123523 },
       { text: 'Nice Nice Nice!', id: 542328 }
-    ];
+		];
+	
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
-    // Array.prototype.every() // is everyone 19 or older?
+		// Array.prototype.every() // is everyone 19 or older?
+		
+		const isAdult = people.some(function(person) {
+			const currentYear = (new Date()).getFullYear();
+			if (currentYear - person.year >= 19){
+				return true;
+			}
+		})
+
+		console.log({isAdult})
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
