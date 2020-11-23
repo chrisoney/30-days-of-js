@@ -2726,10 +2726,10 @@ var app = (function () {
     			em = element("em");
     			em.textContent = "Psst: have a look at the JavaScript Console";
     			t1 = text(" 💁");
-    			add_location(em, file$8, 48, 4, 1429);
-    			add_location(p, file$8, 48, 1, 1426);
+    			add_location(em, file$8, 58, 4, 1678);
+    			add_location(p, file$8, 58, 1, 1675);
     			attr_dev(div, "class", "day-main svelte-1t7hos2");
-    			add_location(div, file$8, 47, 0, 1402);
+    			add_location(div, file$8, 57, 0, 1651);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2802,6 +2802,18 @@ var app = (function () {
     	const comment = comments.find(comment => comment.id === 823423);
 
     	console.log(comment);
+
+    	// Array.prototype.findIndex()
+    	// Find the comment with this ID
+    	// delete the comment with the ID of 542328
+    	const index = comments.findIndex(comment => comment.id === 542328);
+
+    	console.log(index);
+
+    	// comments.splice(index,1);
+    	const newComments = [...comments.slice(0, index), ...comments.slice(index + 1)];
+
+    	console.table(newComments);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -2813,7 +2825,9 @@ var app = (function () {
     		comments,
     		isAdult,
     		everyAdult,
-    		comment
+    		comment,
+    		index,
+    		newComments
     	});
 
     	return [];
