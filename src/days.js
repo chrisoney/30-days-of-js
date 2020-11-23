@@ -43,7 +43,7 @@ const days = {
   8: {
     day: 8,
     title: "08 - Fun with HTML5 Canvas",
-    completed: false,
+    completed: true,
   },
   9: {
     day: 9,

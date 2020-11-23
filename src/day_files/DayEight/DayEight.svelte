@@ -3,7 +3,7 @@
 </script>
 
 <div class="day-main">
-  Day Eight
+  <canvas id="draw" width="800" height="800"></canvas>
 </div>
 
 <style>
